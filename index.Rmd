@@ -12,11 +12,9 @@ github-repo: nataliegnelson/ml_primer
 description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
 ---
 
-# Foreword  
+# Some words first  
 
-This booklet is meant to provide guidelines for natural resource management practitioners.  
-
-test test 
+This booklet is meant to provide guidelines for natural resource management practitioners.
 
 
 ```{r eval=FALSE, include = FALSE}
