@@ -1,0 +1,7 @@
+# Data  
+
+## What to do with data?  
+
+One could argue that data is the single most important ingredient when it comes to machine learning models or any type of analysis. As one might say, junk in, junk out.  
+
+## Data Requirement  

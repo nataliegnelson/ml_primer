@@ -1,0 +1,8 @@
+# Machine Learning Methods  
+
+Here we provide a list of commonly used machine learning methods and some brief discussion.  
+
+
+## Random Forest  
+
+
