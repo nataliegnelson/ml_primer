@@ -1,6 +1,6 @@
 --- 
-title: "A Minimal Book Example"
-author: "Yihui Xie"
+title: "Machine Learning Guidelines for Natural Resource Management Practitioners"
+author: "Shih-Ni Prim and Natalie Nelson"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
