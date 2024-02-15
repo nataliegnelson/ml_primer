@@ -19,5 +19,7 @@ table
 figure
 ethical-considerations
 reproducibility
+decision-making
+uncertain-qualification
 appendix
 dos-and-donts

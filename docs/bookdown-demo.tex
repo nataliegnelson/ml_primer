@@ -87,7 +87,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-02-10}
+\date{2024-02-15}
 
 \begin{document}
 \maketitle
@@ -179,6 +179,16 @@ It is also important to present the results in a way that aids rather than imped
 \section{Reproducibility}\label{reproducibility}}
 
 To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to have all the code and data available online in a repository. If parts or all of the data should not be shared publicly, it helps to provide a simulated data set.
+
+\hypertarget{decision-making}{%
+\section{Decision making}\label{decision-making}}
+
+Since research related to environmental sciences and natural resources could likely affect decision making, we will now address some topics.
+
+\hypertarget{uncertain-qualification}{%
+\subsection{Uncertain qualification}\label{uncertain-qualification}}
+
+While all ML models can provide point estimates, not all can quantify uncertainty. It is, however, important to show how confident the model is about the estimates. If the conclusion of the study could affect an important policy change, it is crucial to present a full picture of the findings, which include uncertainty quantification. It is wildly different whether the model is 20\% or 95\% confident about its answer, for instance.
 
 \hypertarget{appendix}{%
 \chapter{Appendix}\label{appendix}}
