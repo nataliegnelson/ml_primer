@@ -21,5 +21,6 @@ ethical-considerations
 reproducibility
 decision-making
 uncertain-qualification
+interpretability
 appendix
 dos-and-donts
