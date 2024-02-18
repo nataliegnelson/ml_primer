@@ -318,7 +318,7 @@ Here we provide a list of commonly used machine learning methods and some brief 
 \hypertarget{tree-based-methods}{%
 \section{Tree-based Methods}\label{tree-based-methods}}
 
-Tree-based methods are popular for their ease for interpretation.
+Tree-based methods are popular for their ease for interpretation. Essentially, the algorithm tries to split the data into subsets by finding the most significant (or consequential) variables in a way that reduces the prediction error the most. For example, in the graph below, the variable that helps reduce prediction error at the first level is gender. In other words, the object being male or female can greatly help the algorithm predict the survival of passengers on Titanic.
 
 \begin{figure}
 \centering
@@ -326,8 +326,15 @@ Tree-based methods are popular for their ease for interpretation.
 \caption{Image Source: \url{https://en.wikipedia.org/wiki/Decision_tree_learning}}
 \end{figure}
 
+Decision trees are easy to use but not very accurate for complex data; however, we can go beyond one tree. If we use multiple trees and, for instance, take the average of the predictions of all the trees, we can improve the performance. This is the idea of ensemble methods. One of the ensemble methods, random forests, is commonly used, including in natural resources management, and quite accurate for many kinds of data. So next we'll dive into this one method.
+
 \hypertarget{random-forest}{%
 \subsection{Random Forest}\label{random-forest}}
+
+\hypertarget{other-ensemble-tree-methods}{%
+\subsection{Other Ensemble Tree Methods}\label{other-ensemble-tree-methods}}
+
+Other ensemble tree methods include boosting and bagging. If you are interested, take a look at {[}a source{]}.
 
 \hypertarget{presentation}{%
 \chapter{Presentation}\label{presentation}}

@@ -15,6 +15,7 @@ cross-validation
 machine-learning-methods
 tree-based-methods
 random-forest
+other-ensemble-tree-methods
 presentation
 table
 figure

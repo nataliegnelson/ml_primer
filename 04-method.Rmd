@@ -4,12 +4,17 @@ Here we provide a list of commonly used machine learning methods and some brief 
 
 ## Tree-based Methods  
 
-Tree-based methods are popular for their ease for interpretation. 
+Tree-based methods are popular for their ease for interpretation. Essentially, the algorithm tries to split the data into subsets by finding the most significant (or consequential) variables in a way that reduces the prediction error the most. For example, in the graph below, the variable that helps reduce prediction error at the first level is gender. In other words, the object being male or female can greatly help the algorithm predict the survival of passengers on Titanic. 
 
 ![Image Source: https://en.wikipedia.org/wiki/Decision_tree_learning](images/Decision_Tree.jpg)
 
+Decision trees are easy to use but not very accurate for complex data; however, we can go beyond one tree. If we use multiple trees and, for instance, take the average of the predictions of all the trees, we can improve the performance. This is the idea of ensemble methods. One of the ensemble methods, random forests, is commonly used, including in natural resources management, and quite accurate for many kinds of data. So next we'll dive into this one method.  
 
 
 ### Random Forest  
 
+
+### Other Ensemble Tree Methods  
+
+Other ensemble tree methods include boosting and bagging. If you are interested, take a look at [a source].  
 
