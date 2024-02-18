@@ -13,6 +13,7 @@ continuous-responses
 discrete-responses
 cross-validation
 machine-learning-methods
+tree-based-methods
 random-forest
 presentation
 table

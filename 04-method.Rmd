@@ -2,7 +2,14 @@
 
 Here we provide a list of commonly used machine learning methods and some brief discussion.  
 
+## Tree-based Methods  
 
-## Random Forest  
+Tree-based methods are popular for their ease for interpretation. 
+
+![Image Source: https://en.wikipedia.org/wiki/Decision_tree_learning](images/Decision_Tree.jpg)
+
+
+
+### Random Forest  
 
 
