@@ -1,10 +1,10 @@
-fig:unnamed-chunk-4
+fig:unnamed-chunk-8
 motivation
 intro
 supervised-learning
 unsupervised-learning
 data
-what-to-do-with-data
+data-exploratoary-analysis
 data-requirement
 evaluation
 training-vs-testing

@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 3 Data | Machine Learning Guidelines for Natural Resource Management Practitioners</title>
 <meta name="author" content="Shih-Ni Prim and Natalie Nelson">
-<meta name="description" content="3.1 What to do with data? One could argue that data is the single most important ingredient when it comes to machine learning models or any type of analysis. As one might say, junk in, junk out. ...">
+<meta name="description" content="When you have data, don’t feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road.  3.1 Data Exploratoary...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="Chapter 3 Data | Machine Learning Guidelines for Natural Resource Management Practitioners">
 <meta property="og:type" content="book">
-<meta property="og:description" content="3.1 What to do with data? One could argue that data is the single most important ingredient when it comes to machine learning models or any type of analysis. As one might say, junk in, junk out. ...">
+<meta property="og:description" content="When you have data, don’t feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road.  3.1 Data Exploratoary...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 3 Data | Machine Learning Guidelines for Natural Resource Management Practitioners">
-<meta name="twitter:description" content="3.1 What to do with data? One could argue that data is the single most important ingredient when it comes to machine learning models or any type of analysis. As one might say, junk in, junk out. ...">
+<meta name="twitter:description" content="When you have data, don’t feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road.  3.1 Data Exploratoary...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -62,11 +62,91 @@
 <h1>
 <span class="header-section-number">3</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
 </h1>
-<div id="what-to-do-with-data" class="section level2" number="3.1">
+<p>When you have data, don’t feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road.</p>
+<div id="data-exploratoary-analysis" class="section level2" number="3.1">
 <h2>
-<span class="header-section-number">3.1</span> What to do with data?<a class="anchor" aria-label="anchor" href="#what-to-do-with-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1</span> Data Exploratoary Analysis<a class="anchor" aria-label="anchor" href="#data-exploratoary-analysis"><i class="fas fa-link"></i></a>
 </h2>
-<p>One could argue that data is the single most important ingredient when it comes to machine learning models or any type of analysis. As one might say, junk in, junk out.</p>
+<p>After you read in data, do some checks. Below we use the embedded <code>mtcars</code> as an example for illustration.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 'data.frame':    32 obs. of  11 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...
+##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec: num  16.5 17 18.6 19.4 17 ...
+##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
+<p>As seen above, the command <code>str</code> allows you to see the variables and their types. For this dataset, all variables are numerical. If some are categorical but they should be numerical, make sure you transform them into the right type of data. (Sometimes numbers can be saved as characters, and the analysis would not be correct if the datatype remains as character.)</p>
+<p>Next, try to make some plots–typically histograms for numerical variables and barplots for categorical variables.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span>,<span class="va">i</span><span class="op">]</span>, main <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"Histogram of "</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-4-1.png" width="672"><img src="bookdown-demo_files/figure-html/unnamed-chunk-4-2.png" width="672"></p>
+<p>You can also look at the paired plots to see if two variables are too perfectly correlated, which could cause problems in regression models.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
+<p>Next, take a look at the summary statistics.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"***** Summaries of "</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,<span class="st">" *****"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span>,<span class="va">i</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<pre><code>## [1] "***** Summaries of mpg *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   10.40   15.43   19.20   20.09   22.80   33.90 
+## [1] "***** Summaries of cyl *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   4.000   4.000   6.000   6.188   8.000   8.000 
+## [1] "***** Summaries of disp *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    71.1   120.8   196.3   230.7   326.0   472.0 
+## [1] "***** Summaries of hp *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    52.0    96.5   123.0   146.7   180.0   335.0 
+## [1] "***** Summaries of drat *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   2.760   3.080   3.695   3.597   3.920   4.930 
+## [1] "***** Summaries of wt *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.513   2.581   3.325   3.217   3.610   5.424 
+## [1] "***** Summaries of qsec *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   14.50   16.89   17.71   17.85   18.90   22.90 
+## [1] "***** Summaries of vs *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0000  0.0000  0.0000  0.4375  1.0000  1.0000 
+## [1] "***** Summaries of am *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0000  0.0000  0.0000  0.4062  1.0000  1.0000 
+## [1] "***** Summaries of gear *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   3.000   3.000   4.000   3.688   4.000   5.000 
+## [1] "***** Summaries of carb *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   2.000   2.000   2.812   4.000   8.000</code></pre>
+<p>The summaries can show, for example, ranges and means of the variables. They can give you a better understanding of where the values are and whether there might be data entry errors.</p>
 </div>
 <div id="data-requirement" class="section level2" number="3.2">
 <h2>
@@ -82,7 +162,7 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#data"><span class="header-section-number">3</span> Data</a></li>
-<li><a class="nav-link" href="#what-to-do-with-data"><span class="header-section-number">3.1</span> What to do with data?</a></li>
+<li><a class="nav-link" href="#data-exploratoary-analysis"><span class="header-section-number">3.1</span> Data Exploratoary Analysis</a></li>
 <li><a class="nav-link" href="#data-requirement"><span class="header-section-number">3.2</span> Data Requirement</a></li>
 </ul>
 
@@ -100,7 +180,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-02-15.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-02-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -1,7 +1,46 @@
 # Data  
 
-## What to do with data?  
+When you have data, don't feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road. 
 
-One could argue that data is the single most important ingredient when it comes to machine learning models or any type of analysis. As one might say, junk in, junk out.  
+## Data Exploratoary Analysis  
+
+After you read in data, do some checks. Below we use the embedded `mtcars` as an example for illustration.    
+
+```{r, warning = FALSE}
+library(tidyverse)
+data("mtcars")
+str(mtcars)
+```
+
+As seen above, the command `str` allows you to see the variables and their types. For this dataset, all variables are numerical. If some are categorical but they should be numerical, make sure you transform them into the right type of data. (Sometimes numbers can be saved as characters, and the analysis would not be correct if the datatype remains as character.) 
+
+Next, try to make some plots--typically histograms for numerical variables and barplots for categorical variables.  
+
+```{r}
+par(mfrow = c(3,3), mar = c(2,2,2,2))
+for (i in 1:ncol(mtcars)){
+  hist(mtcars[,i], main = paste0("Histogram of ", colnames(mtcars)[i]))
+}
+```
+
+You can also look at the paired plots to see if two variables are too perfectly correlated, which could cause problems in regression models.  
+
+```{r}
+pairs(mtcars)
+```
+
+
+Next, take a look at the summary statistics.  
+
+```{r}
+for (i in 1:ncol(mtcars)){
+  print(paste0("***** Summaries of ", colnames(mtcars)[i]," *****"))
+  print(summary(mtcars[,i]))
+}
+```
+
+The summaries can show, for example, ranges and means of the variables. They can give you a better understanding of where the values are and whether there might be data entry errors.  
+
+
 
 ## Data Requirement  

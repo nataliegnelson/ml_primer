@@ -36,6 +36,46 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
@@ -87,7 +127,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-02-15}
+\date{2024-02-18}
 
 \begin{document}
 \maketitle
@@ -115,10 +155,127 @@ What is machine learning? Essentially, machine learning teaches computer models 
 \hypertarget{data}{%
 \chapter{Data}\label{data}}
 
-\hypertarget{what-to-do-with-data}{%
-\section{What to do with data?}\label{what-to-do-with-data}}
+When you have data, don't feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road.
 
-One could argue that data is the single most important ingredient when it comes to machine learning models or any type of analysis. As one might say, junk in, junk out.
+\hypertarget{data-exploratoary-analysis}{%
+\section{Data Exploratoary Analysis}\label{data-exploratoary-analysis}}
+
+After you read in data, do some checks. Below we use the embedded \texttt{mtcars} as an example for illustration.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.4
+## v forcats   1.0.0     v stringr   1.5.1
+## v ggplot2   3.4.4     v tibble    3.2.1
+## v lubridate 1.9.3     v tidyr     1.3.0
+## v purrr     1.0.2     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(}\StringTok{"mtcars"}\NormalTok{)}
+\FunctionTok{str}\NormalTok{(mtcars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    32 obs. of  11 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...
+##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec: num  16.5 17 18.6 19.4 17 ...
+##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
+\end{verbatim}
+
+As seen above, the command \texttt{str} allows you to see the variables and their types. For this dataset, all variables are numerical. If some are categorical but they should be numerical, make sure you transform them into the right type of data. (Sometimes numbers can be saved as characters, and the analysis would not be correct if the datatype remains as character.)
+
+Next, try to make some plots--typically histograms for numerical variables and barplots for categorical variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{), }\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(mtcars))\{}
+  \FunctionTok{hist}\NormalTok{(mtcars[,i], }\AttributeTok{main =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Histogram of "}\NormalTok{, }\FunctionTok{colnames}\NormalTok{(mtcars)[i]))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-4-1.pdf} \includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-4-2.pdf}
+
+You can also look at the paired plots to see if two variables are too perfectly correlated, which could cause problems in regression models.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pairs}\NormalTok{(mtcars)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+Next, take a look at the summary statistics.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(mtcars))\{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"***** Summaries of "}\NormalTok{, }\FunctionTok{colnames}\NormalTok{(mtcars)[i],}\StringTok{" *****"}\NormalTok{))}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{summary}\NormalTok{(mtcars[,i]))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "***** Summaries of mpg *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   10.40   15.43   19.20   20.09   22.80   33.90 
+## [1] "***** Summaries of cyl *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   4.000   4.000   6.000   6.188   8.000   8.000 
+## [1] "***** Summaries of disp *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    71.1   120.8   196.3   230.7   326.0   472.0 
+## [1] "***** Summaries of hp *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    52.0    96.5   123.0   146.7   180.0   335.0 
+## [1] "***** Summaries of drat *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   2.760   3.080   3.695   3.597   3.920   4.930 
+## [1] "***** Summaries of wt *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.513   2.581   3.325   3.217   3.610   5.424 
+## [1] "***** Summaries of qsec *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   14.50   16.89   17.71   17.85   18.90   22.90 
+## [1] "***** Summaries of vs *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0000  0.0000  0.0000  0.4375  1.0000  1.0000 
+## [1] "***** Summaries of am *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0000  0.0000  0.0000  0.4062  1.0000  1.0000 
+## [1] "***** Summaries of gear *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   3.000   3.000   4.000   3.688   4.000   5.000 
+## [1] "***** Summaries of carb *****"
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   2.000   2.000   2.812   4.000   8.000
+\end{verbatim}
+
+The summaries can show, for example, ranges and means of the variables. They can give you a better understanding of where the values are and whether there might be data entry errors.
 
 \hypertarget{data-requirement}{%
 \section{Data Requirement}\label{data-requirement}}
@@ -150,7 +307,7 @@ In this way, although less data is used for training, the metrics are more accur
 \begin{figure}
 \centering
 \includegraphics{images/K-fold_cross_validation_EN.pdf}
-\caption{\label{fig:unnamed-chunk-4}Image Source: \url{https://en.wikipedia.org/wiki/Cross-validation_(statistics)}}
+\caption{\label{fig:unnamed-chunk-8}Image Source: \url{https://en.wikipedia.org/wiki/Cross-validation_(statistics)}}
 \end{figure}
 
 \hypertarget{machine-learning-methods}{%
