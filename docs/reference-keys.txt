@@ -6,6 +6,9 @@ unsupervised-learning
 data
 data-exploratoary-analysis
 data-requirement
+strategies-for-missing-data
+removing-observations
+imputation
 evaluation
 training-vs-testing
 metrics

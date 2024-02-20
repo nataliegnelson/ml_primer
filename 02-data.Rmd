@@ -44,3 +44,16 @@ The summaries can show, for example, ranges and means of the variables. They can
 
 
 ## Data Requirement  
+
+
+## Strategies for Missing Data  
+
+### Removing observations  
+
+If you have a large dataset and the percentage of missing data is small, you can simply ignore those observations. Note that you should check whether the pattern of missingness is "missing at random," meaning that the reason why certain observations are missing is pure chance. If, for example, some observations are missing because the pollution level is too high or too low and the detection is not ideal, then ignoring these observations could result in biased conclusions.  
+
+### Imputation  
+
+Imputation is a commonly used method for missing data. If linearity is plausible, you can use linear imputation. If some response variables are missing, some Bayesian method can fill in the values using posterior draws. (In other words, in the process of running the analysis, the algorithm can predict what the response variable should be and fill it in.) Imputation is a big tool set that, if needed, you should consult a more comprehensive resource. [provide suggestions]  
+
+

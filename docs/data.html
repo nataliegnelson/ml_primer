@@ -152,7 +152,24 @@
 <h2>
 <span class="header-section-number">3.2</span> Data Requirement<a class="anchor" aria-label="anchor" href="#data-requirement"><i class="fas fa-link"></i></a>
 </h2>
+</div>
+<div id="strategies-for-missing-data" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Strategies for Missing Data<a class="anchor" aria-label="anchor" href="#strategies-for-missing-data"><i class="fas fa-link"></i></a>
+</h2>
+<div id="removing-observations" class="section level3" number="3.3.1">
+<h3>
+<span class="header-section-number">3.3.1</span> Removing observations<a class="anchor" aria-label="anchor" href="#removing-observations"><i class="fas fa-link"></i></a>
+</h3>
+<p>If you have a large dataset and the percentage of missing data is small, you can simply ignore those observations. Note that you should check whether the pattern of missingness is “missing at random,” meaning that the reason why certain observations are missing is pure chance. If, for example, some observations are missing because the pollution level is too high or too low and the detection is not ideal, then ignoring these observations could result in biased conclusions.</p>
+</div>
+<div id="imputation" class="section level3" number="3.3.2">
+<h3>
+<span class="header-section-number">3.3.2</span> Imputation<a class="anchor" aria-label="anchor" href="#imputation"><i class="fas fa-link"></i></a>
+</h3>
+<p>Imputation is a commonly used method for missing data. If linearity is plausible, you can use linear imputation. If some response variables are missing, some Bayesian method can fill in the values using posterior draws. (In other words, in the process of running the analysis, the algorithm can predict what the response variable should be and fill it in.) Imputation is a big tool set that, if needed, you should consult a more comprehensive resource. [provide suggestions]</p>
 
+</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -164,6 +181,12 @@
 <li><a class="nav-link" href="#data"><span class="header-section-number">3</span> Data</a></li>
 <li><a class="nav-link" href="#data-exploratoary-analysis"><span class="header-section-number">3.1</span> Data Exploratoary Analysis</a></li>
 <li><a class="nav-link" href="#data-requirement"><span class="header-section-number">3.2</span> Data Requirement</a></li>
+<li>
+<a class="nav-link" href="#strategies-for-missing-data"><span class="header-section-number">3.3</span> Strategies for Missing Data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#removing-observations"><span class="header-section-number">3.3.1</span> Removing observations</a></li>
+<li><a class="nav-link" href="#imputation"><span class="header-section-number">3.3.2</span> Imputation</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">
@@ -180,7 +203,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-02-18.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-02-20.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
