@@ -28,5 +28,9 @@ reproducibility
 decision-making
 uncertain-qualification
 interpretability
+case-studies
+case-study-1
+case-study-2
+case-study-3
 appendix
 dos-and-donts
