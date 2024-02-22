@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 4 Evaluation | Machine Learning Guidelines for Natural Resource Management Practitioners</title>
 <meta name="author" content="Shih-Ni Prim and Natalie Nelson">
-<meta name="description" content="4.1 Training vs Testing We should first address the concepts of training and testing.  4.2 Metrics  4.2.1 Continuous Responses   4.2.2 Discrete Responses   4.3 Cross Validation One very standard...">
+<meta name="description" content="4.1 Training vs Testing We should first address the concepts of training and testing.  4.2 Metrics  4.2.1 Continuous Responses   4.2.2 Discrete Responses   4.3 Overfitting   4.4 Cross Validation...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="Chapter 4 Evaluation | Machine Learning Guidelines for Natural Resource Management Practitioners">
 <meta property="og:type" content="book">
-<meta property="og:description" content="4.1 Training vs Testing We should first address the concepts of training and testing.  4.2 Metrics  4.2.1 Continuous Responses   4.2.2 Discrete Responses   4.3 Cross Validation One very standard...">
+<meta property="og:description" content="4.1 Training vs Testing We should first address the concepts of training and testing.  4.2 Metrics  4.2.1 Continuous Responses   4.2.2 Discrete Responses   4.3 Overfitting   4.4 Cross Validation...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 4 Evaluation | Machine Learning Guidelines for Natural Resource Management Practitioners">
-<meta name="twitter:description" content="4.1 Training vs Testing We should first address the concepts of training and testing.  4.2 Metrics  4.2.1 Continuous Responses   4.2.2 Discrete Responses   4.3 Cross Validation One very standard...">
+<meta name="twitter:description" content="4.1 Training vs Testing We should first address the concepts of training and testing.  4.2 Metrics  4.2.1 Continuous Responses   4.2.2 Discrete Responses   4.3 Overfitting   4.4 Cross Validation...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -83,9 +83,14 @@
 </h3>
 </div>
 </div>
-<div id="cross-validation" class="section level2" number="4.3">
+<div id="overfitting" class="section level2" number="4.3">
 <h2>
-<span class="header-section-number">4.3</span> Cross Validation<a class="anchor" aria-label="anchor" href="#cross-validation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3</span> Overfitting<a class="anchor" aria-label="anchor" href="#overfitting"><i class="fas fa-link"></i></a>
+</h2>
+</div>
+<div id="cross-validation" class="section level2" number="4.4">
+<h2>
+<span class="header-section-number">4.4</span> Cross Validation<a class="anchor" aria-label="anchor" href="#cross-validation"><i class="fas fa-link"></i></a>
 </h2>
 <p>One very standard way of evaluation is <span class="math inline">\(k\)</span>-fold cross validation, commonly with <span class="math inline">\(k=5\)</span> or <span class="math inline">\(k=10\)</span>. The idea is simple. Divide the data into <span class="math inline">\(k\)</span> groups. Each time, choose <span class="math inline">\(k-1\)</span> groups for training, fit the model on the last group, which is the test data, and calculate the desired metrics, such as MSE.</p>
 <p>In this way, although less data is used for training, the metrics are more accurate, because now we are not using the same data points for training and testing. Using metrics from cross validation for model selection can ensure that your model does not overfit, which means the model does well with training data but does not generalize well on new data.</p>
@@ -112,7 +117,8 @@ Figure 4.1: Image Source: <a href="https://en.wikipedia.org/wiki/Cross-validatio
 <li><a class="nav-link" href="#discrete-responses"><span class="header-section-number">4.2.2</span> Discrete Responses</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#cross-validation"><span class="header-section-number">4.3</span> Cross Validation</a></li>
+<li><a class="nav-link" href="#overfitting"><span class="header-section-number">4.3</span> Overfitting</a></li>
+<li><a class="nav-link" href="#cross-validation"><span class="header-section-number">4.4</span> Cross Validation</a></li>
 </ul>
 
       <div class="book-extra">
@@ -129,7 +135,7 @@ Figure 4.1: Image Source: <a href="https://en.wikipedia.org/wiki/Cross-validatio
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-02-20.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-02-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 7 Ethical Considerations | Machine Learning Guidelines for Natural Resource Management Practitioners</title>
 <meta name="author" content="Shih-Ni Prim and Natalie Nelson">
-<meta name="description" content="7.1 Reproducibility To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to...">
+<meta name="description" content="Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible way. These concerns are not unique to ML models, but the complexity of ML...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="Chapter 7 Ethical Considerations | Machine Learning Guidelines for Natural Resource Management Practitioners">
 <meta property="og:type" content="book">
-<meta property="og:description" content="7.1 Reproducibility To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to...">
+<meta property="og:description" content="Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible way. These concerns are not unique to ML models, but the complexity of ML...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 7 Ethical Considerations | Machine Learning Guidelines for Natural Resource Management Practitioners">
-<meta name="twitter:description" content="7.1 Reproducibility To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to...">
+<meta name="twitter:description" content="Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible way. These concerns are not unique to ML models, but the complexity of ML...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -62,11 +62,14 @@
 <h1>
 <span class="header-section-number">7</span> Ethical Considerations<a class="anchor" aria-label="anchor" href="#ethical-considerations"><i class="fas fa-link"></i></a>
 </h1>
+<p>Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible way. These concerns are not unique to ML models, but the complexity of ML methods makes it ever more important to think about these issues.</p>
 <div id="reproducibility" class="section level2" number="7.1">
 <h2>
 <span class="header-section-number">7.1</span> Reproducibility<a class="anchor" aria-label="anchor" href="#reproducibility"><i class="fas fa-link"></i></a>
 </h2>
 <p>To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to have all the code and data available online in a repository. If parts or all of the data should not be shared publicly, it helps to provide a simulated data set.</p>
+<p>Another aspect of reproducibility might be surprising. Try to use programming scripts rather than drag-and-drop software. Starting from reading in the data, write a script to read, clean, and wrangle with the data. The scripts can preserve all the steps of data analysis. In the future, when you cannot remember how you changed the data or how you arrived at a p-value, the scripts can show all the details, but drag-and-drop software will not leave any trace.</p>
+<p>Note that the best practice is to read in the data into the programming environment and make any data cleaning and merging in the script. You can save the cleaned version in a different file, but don’t change the file with the raw data.</p>
 </div>
 <div id="decision-making" class="section level2" number="7.2">
 <h2>
@@ -118,7 +121,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-02-20.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-02-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

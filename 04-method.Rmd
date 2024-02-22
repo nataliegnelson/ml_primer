@@ -11,8 +11,13 @@ Tree-based methods are popular for their ease for interpretation. Essentially, t
 Decision trees are easy to use but not very accurate for complex data; however, we can go beyond one tree. If we use multiple trees and, for instance, take the average of the predictions of all the trees, we can improve the performance. This is the idea of ensemble methods. One of the ensemble methods, random forests, is commonly used, including in natural resources management, and quite accurate for many kinds of data. So next we'll dive into this one method.  
 
 
-### Random Forest  
+### Random Forests  
 
+For random forests, the algorithm randomly selects a smaller number, say $m$, of predictors from the total number, say $p$, each time a tree is being fit. This process is repeated many times, for example, $500$ times. The average (for continuous responses) or the majority votes (for discrete responses) of the predictions from the individual trees are used as final predictions. By randomly choosing a subset of predictors each time, random forests can avoid relying on the same variables every time and prevent overfitting.  
+
+Even though coefficients of each predictors are not available for random forests, you can easily get the important variables and at least know which variables are more important for predicting the response. You can also use random forests as a tool for variable selection and then use a different method to fit the model on a subset of predictors chosen by random forests.   
+
+[Need examples]  
 
 ### Other Ensemble Tree Methods  
 

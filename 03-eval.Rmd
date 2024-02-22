@@ -8,7 +8,9 @@ We should first address the concepts of training and testing.
 
 ### Continuous Responses  
 
-### Discrete Responses 
+### Discrete Responses  
+
+## Overfitting   
 
 ## Cross Validation  
 
@@ -34,6 +36,7 @@ show_fig <- function(f)
 ```{r, fig.cap="Image Source: https://en.wikipedia.org/wiki/Cross-validation_(statistics)", echo = FALSE}
 show_fig("images/K-fold_cross_validation_EN.svg")
 ```
+
 
 
 

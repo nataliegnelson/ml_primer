@@ -73,10 +73,13 @@
 </div>
 </div>
 <p>Decision trees are easy to use but not very accurate for complex data; however, we can go beyond one tree. If we use multiple trees and, for instance, take the average of the predictions of all the trees, we can improve the performance. This is the idea of ensemble methods. One of the ensemble methods, random forests, is commonly used, including in natural resources management, and quite accurate for many kinds of data. So next we’ll dive into this one method.</p>
-<div id="random-forest" class="section level3" number="5.1.1">
+<div id="random-forests" class="section level3" number="5.1.1">
 <h3>
-<span class="header-section-number">5.1.1</span> Random Forest<a class="anchor" aria-label="anchor" href="#random-forest"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.1.1</span> Random Forests<a class="anchor" aria-label="anchor" href="#random-forests"><i class="fas fa-link"></i></a>
 </h3>
+<p>For random forests, the algorithm randomly selects a smaller number, say <span class="math inline">\(m\)</span>, of predictors from the total number, say <span class="math inline">\(p\)</span>, each time a tree is being fit. This process is repeated many times, for example, <span class="math inline">\(500\)</span> times. The average (for continuous responses) or the majority votes (for discrete responses) of the predictions from the individual trees are used as final predictions. By randomly choosing a subset of predictors each time, random forests can avoid relying on the same variables every time and prevent overfitting.</p>
+<p>Even though coefficients of each predictors are not available for random forests, you can easily get the important variables and at least know which variables are more important for predicting the response. You can also use random forests as a tool for variable selection and then use a different method to fit the model on a subset of predictors chosen by random forests.</p>
+<p>[Need examples]</p>
 </div>
 <div id="other-ensemble-tree-methods" class="section level3" number="5.1.2">
 <h3>
@@ -96,7 +99,7 @@
 <li><a class="nav-link" href="#machine-learning-methods"><span class="header-section-number">5</span> Machine Learning Methods</a></li>
 <li>
 <a class="nav-link" href="#tree-based-methods"><span class="header-section-number">5.1</span> Tree-based Methods</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#random-forest"><span class="header-section-number">5.1.1</span> Random Forest</a></li>
+<li><a class="nav-link" href="#random-forests"><span class="header-section-number">5.1.1</span> Random Forests</a></li>
 <li><a class="nav-link" href="#other-ensemble-tree-methods"><span class="header-section-number">5.1.2</span> Other Ensemble Tree Methods</a></li>
 </ul>
 </li>
@@ -116,7 +119,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-02-20.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-02-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

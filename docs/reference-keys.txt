@@ -14,10 +14,11 @@ training-vs-testing
 metrics
 continuous-responses
 discrete-responses
+overfitting
 cross-validation
 machine-learning-methods
 tree-based-methods
-random-forest
+random-forests
 other-ensemble-tree-methods
 presentation
 table

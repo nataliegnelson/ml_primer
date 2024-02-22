@@ -127,7 +127,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-02-20}
+\date{2024-02-21}
 
 \begin{document}
 \maketitle
@@ -316,6 +316,9 @@ We should first address the concepts of training and testing.
 \hypertarget{discrete-responses}{%
 \subsection{Discrete Responses}\label{discrete-responses}}
 
+\hypertarget{overfitting}{%
+\section{Overfitting}\label{overfitting}}
+
 \hypertarget{cross-validation}{%
 \section{Cross Validation}\label{cross-validation}}
 
@@ -347,8 +350,14 @@ Tree-based methods are popular for their ease for interpretation. Essentially, t
 
 Decision trees are easy to use but not very accurate for complex data; however, we can go beyond one tree. If we use multiple trees and, for instance, take the average of the predictions of all the trees, we can improve the performance. This is the idea of ensemble methods. One of the ensemble methods, random forests, is commonly used, including in natural resources management, and quite accurate for many kinds of data. So next we'll dive into this one method.
 
-\hypertarget{random-forest}{%
-\subsection{Random Forest}\label{random-forest}}
+\hypertarget{random-forests}{%
+\subsection{Random Forests}\label{random-forests}}
+
+For random forests, the algorithm randomly selects a smaller number, say \(m\), of predictors from the total number, say \(p\), each time a tree is being fit. This process is repeated many times, for example, \(500\) times. The average (for continuous responses) or the majority votes (for discrete responses) of the predictions from the individual trees are used as final predictions. By randomly choosing a subset of predictors each time, random forests can avoid relying on the same variables every time and prevent overfitting.
+
+Even though coefficients of each predictors are not available for random forests, you can easily get the important variables and at least know which variables are more important for predicting the response. You can also use random forests as a tool for variable selection and then use a different method to fit the model on a subset of predictors chosen by random forests.
+
+{[}Need examples{]}
 
 \hypertarget{other-ensemble-tree-methods}{%
 \subsection{Other Ensemble Tree Methods}\label{other-ensemble-tree-methods}}
@@ -369,10 +378,16 @@ It is also important to present the results in a way that aids rather than imped
 \hypertarget{ethical-considerations}{%
 \chapter{Ethical Considerations}\label{ethical-considerations}}
 
+Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible way. These concerns are not unique to ML models, but the complexity of ML methods makes it ever more important to think about these issues.
+
 \hypertarget{reproducibility}{%
 \section{Reproducibility}\label{reproducibility}}
 
 To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to have all the code and data available online in a repository. If parts or all of the data should not be shared publicly, it helps to provide a simulated data set.
+
+Another aspect of reproducibility might be surprising. Try to use programming scripts rather than drag-and-drop software. Starting from reading in the data, write a script to read, clean, and wrangle with the data. The scripts can preserve all the steps of data analysis. In the future, when you cannot remember how you changed the data or how you arrived at a p-value, the scripts can show all the details, but drag-and-drop software will not leave any trace.
+
+Note that the best practice is to read in the data into the programming environment and make any data cleaning and merging in the script. You can save the cleaned version in a different file, but don't change the file with the raw data.
 
 \hypertarget{decision-making}{%
 \section{Decision making}\label{decision-making}}
