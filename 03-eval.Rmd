@@ -2,7 +2,7 @@
 
 ## Training vs Testing  
 
-We should first address the concepts of training and testing. 
+We should first address the concepts of training and testing. Instead of using the entire data, it is common to split the dataset into a training set and a test set. Typically people use percentages such as 70% vs 30% or 80% vs 20%. The idea is to use only, say, 80% of the data for training, which means to run the select model on this part of data. Then you have a model with some coefficients (you can think of them as slopes) and test such results on the test set to see how well the model performs. Since the part of the data for testing is not used in training, this way there is no double dipping. Sometimes people split the dataset into three sets: training, test, and validation. So the trained models are used on the test set for model selection. Then the validation set is used only once at the end to gauge how the model should perform if there's new data.  
 
 ## Metrics  
 
@@ -11,6 +11,8 @@ We should first address the concepts of training and testing.
 ### Discrete Responses  
 
 ## Overfitting   
+
+Overfitting means that the model can make good predictions with the available data, but it cannot generalize well on new data. It is kind of like if a student memorizes all the past exam questions without really studying the materials, then, on the exam, the student can do really well on questions coming from past exams but might do poorly on questions never seen before. Splitting data into training and testing is one strategy to avoid overfitting. Certain ML methods are less likely to overfit, such as neural networks. And there are some more stragegies, such as early stopping, that can be used. Our point here is to make you aware this potential pitfall of machine learning methods.  
 
 ## Cross Validation  
 
