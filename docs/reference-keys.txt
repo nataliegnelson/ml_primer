@@ -12,8 +12,8 @@ imputation
 evaluation
 training-vs-testing
 metrics
-continuous-responses
-discrete-responses
+numerical-responses
+categorical-responses
 overfitting
 cross-validation
 machine-learning-methods

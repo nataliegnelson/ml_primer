@@ -6,9 +6,29 @@ We should first address the concepts of training and testing. Instead of using t
 
 ## Metrics  
 
-### Continuous Responses  
+### Numerical Responses  
 
-### Discrete Responses  
+The most common metrics for numerical responses include mean squared errors (MSE), bias, and $R^2$ (or adjusted $R^2$).  The way to calculate MSE is: 
+$$MSE = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - y_i \bigg)^2.$$
+The metric shows, on average, the squared distance between predictions and true responses. Bias is calculated as 
+$$Bias = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - y \bigg).$$ 
+The two metrics seem similar, but they reveal different aspects of model performance. In general, bias shows if the predictions are centered around the truth, while the MSE shows how far the predictions are from the truth. If the bias is zero, it means that the mean prediction goes towards the truth as the sample size increases to infinity. This is naturally a desired property, but you might be surprised that sometimes we are willing to accept some bias to reduce the variance.  
+
+One important formula, 
+$$MSE = Bias^2 + Variance,$$
+where 
+$$Variance = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - E(\hat{y}) \bigg)^2$$
+and 
+$$E(\hat{y}) = \frac{1}{n} \sum_{i=1}^n \hat{y}_i.$$
+We skip the derivation here, but the interested readers can find the derivation readily online. The formula tells us that, if the MSE is large but the bias is small, this means the model has a large variance. This is to say, if you fit the model multiple times, it has quite different results every time. These formulas might seem too technical, but the message is important. There is a trade off between the bias and variance; in other words, there is no free lunch. A balance between bias and variance is where many methods strive to achieve.  
+
+### Categorical Responses  
+
+When the responses are categorical, a common way to measure the performance is a confusion matrix, which shows the numbers of predictions that are correct or incorrect.  
+
+[provide an example]  
+
+Other metrics include sensitivity, specificity, precision, recall, and other metrics that try to combine these metrics to present a one-number summary.  
 
 ## Overfitting   
 

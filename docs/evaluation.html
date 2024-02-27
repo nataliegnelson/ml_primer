@@ -73,15 +73,30 @@
 <h2>
 <span class="header-section-number">4.2</span> Metrics<a class="anchor" aria-label="anchor" href="#metrics"><i class="fas fa-link"></i></a>
 </h2>
-<div id="continuous-responses" class="section level3" number="4.2.1">
+<div id="numerical-responses" class="section level3" number="4.2.1">
 <h3>
-<span class="header-section-number">4.2.1</span> Continuous Responses<a class="anchor" aria-label="anchor" href="#continuous-responses"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2.1</span> Numerical Responses<a class="anchor" aria-label="anchor" href="#numerical-responses"><i class="fas fa-link"></i></a>
 </h3>
+<p>The most common metrics for numerical responses include mean squared errors (MSE), bias, and <span class="math inline">\(R^2\)</span> (or adjusted <span class="math inline">\(R^2\)</span>). The way to calculate MSE is:
+<span class="math display">\[MSE = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - y_i \bigg)^2.\]</span>
+The metric shows, on average, the squared distance between predictions and true responses. Bias is calculated as
+<span class="math display">\[Bias = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - y \bigg).\]</span>
+The two metrics seem similar, but they reveal different aspects of model performance. In general, bias shows if the predictions are centered around the truth, while the MSE shows how far the predictions are from the truth. If the bias is zero, it means that the mean prediction goes towards the truth as the sample size increases to infinity. This is naturally a desired property, but you might be surprised that sometimes we are willing to accept some bias to reduce the variance.</p>
+<p>One important formula,
+<span class="math display">\[MSE = Bias^2 + Variance,\]</span>
+where
+<span class="math display">\[Variance = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - E(\hat{y}) \bigg)^2\]</span>
+and
+<span class="math display">\[E(\hat{y}) = \frac{1}{n} \sum_{i=1}^n \hat{y}_i.\]</span>
+We skip the derivation here, but the interested readers can find the derivation readily online. The formula tells us that, if the MSE is large but the bias is small, this means the model has a large variance. This is to say, if you fit the model multiple times, it has quite different results every time. These formulas might seem too technical, but the message is important. There is a trade off between the bias and variance; in other words, there is no free lunch. A balance between bias and variance is where many methods strive to achieve.</p>
 </div>
-<div id="discrete-responses" class="section level3" number="4.2.2">
+<div id="categorical-responses" class="section level3" number="4.2.2">
 <h3>
-<span class="header-section-number">4.2.2</span> Discrete Responses<a class="anchor" aria-label="anchor" href="#discrete-responses"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2.2</span> Categorical Responses<a class="anchor" aria-label="anchor" href="#categorical-responses"><i class="fas fa-link"></i></a>
 </h3>
+<p>When the responses are categorical, a common way to measure the performance is a confusion matrix, which shows the numbers of predictions that are correct or incorrect.</p>
+<p>[provide an example]</p>
+<p>Other metrics include sensitivity, specificity, precision, recall, and other metrics that try to combine these metrics to present a one-number summary.</p>
 </div>
 </div>
 <div id="overfitting" class="section level2" number="4.3">
@@ -115,8 +130,8 @@ Figure 4.1: Image Source: <a href="https://en.wikipedia.org/wiki/Cross-validatio
 <li><a class="nav-link" href="#training-vs-testing"><span class="header-section-number">4.1</span> Training vs Testing</a></li>
 <li>
 <a class="nav-link" href="#metrics"><span class="header-section-number">4.2</span> Metrics</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#continuous-responses"><span class="header-section-number">4.2.1</span> Continuous Responses</a></li>
-<li><a class="nav-link" href="#discrete-responses"><span class="header-section-number">4.2.2</span> Discrete Responses</a></li>
+<li><a class="nav-link" href="#numerical-responses"><span class="header-section-number">4.2.1</span> Numerical Responses</a></li>
+<li><a class="nav-link" href="#categorical-responses"><span class="header-section-number">4.2.2</span> Categorical Responses</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#overfitting"><span class="header-section-number">4.3</span> Overfitting</a></li>
@@ -137,7 +152,7 @@ Figure 4.1: Image Source: <a href="https://en.wikipedia.org/wiki/Cross-validatio
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-02-23.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-02-26.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
