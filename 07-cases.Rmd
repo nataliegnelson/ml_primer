@@ -1,8 +1,12 @@
 # Case Studies    
 
-## Case Study 1  
+## Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes  
 
-## Case Study 2  
+The full paper can be accessed [here](https://www.sciencedirect.com/science/article/pii/S1364815223001445?dgcid=author). 
+
+## Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters  
+
+The full paper can be accessed [here](https://www.sciencedirect.com/science/article/pii/S0025326X24000304?via%3Dihub).  
 
 ## Case Study 3  
 
