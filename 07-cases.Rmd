@@ -1,5 +1,7 @@
 # Case Studies    
 
+Since ML models are easy to construct, they can at least be used to compare results or explore areas in which not much is known, so some basic hypothesis can be made and other process-based models can be used to confirm these results.  
+
 ## Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes  
 
 The full paper can be accessed [here](https://www.sciencedirect.com/science/article/pii/S1364815223001445?dgcid=author). 
