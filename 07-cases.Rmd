@@ -6,6 +6,19 @@ The full paper can be accessed [here](https://www.sciencedirect.com/science/arti
 
 ## Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters  
 
+This study's goal was to predict near-term (1-3 days) fecal contamination in coastal shellfish growing waters. For each of the five management areas, Chazal et al. constructed five random forest models to (1) use watershed characteristics as well as antecedent hydrologic and meteorologic observations to predict the level of fecal coliform (FC), (2) test whether forcasted rainfall can be useful for predictions, and (3) find important variables. Let's focus on goals (1) and (3) for this case study.  
+
+For their first goal, depending on the management areas, the $R^2$ value is between 0.40 and 0.74. According to Chazal et al, this performance is similar to previous studies. The other settings are typical of ML studies. They split the data into 80% training and 20% testing and use the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other.  
+
+For their goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind are high on the importance for prediction. These findings are consistent with the current understanding.  
+
+So far, it sounds like this study finds about the same result and performs at a similar level, so why is random forest necessary? This study serves as a nice case study because (1) it demonstrates that random forest does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have knowns. These reasons tell us that we can trust random forest models. Furthermore, random forest models are easy and cheap ton construct. The R package `caret` and function `rf`, used by Chazal et al., is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by `caret::rf`, helps greatly with interpretation. 
+
+In short, this study demonstrates the reliability and ease for construction and interpretation of random forest models.  
+
+[include some code and figures?]
+
+
 The full paper can be accessed [here](https://www.sciencedirect.com/science/article/pii/S0025326X24000304?via%3Dihub).  
 
 ## Case Study 3  
