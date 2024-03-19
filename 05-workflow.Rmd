@@ -1,0 +1,3 @@
+# Workflow Demonstration  
+
+In this section, we use a wine dataset to exemplify a typical workflow for constructing ML models. R code is included and several ML models are constructed.  
