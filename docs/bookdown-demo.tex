@@ -127,7 +127,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-03-20}
+\date{2024-03-21}
 
 \begin{document}
 \maketitle
@@ -399,34 +399,34 @@ Since ML models are easy to construct, they can at least be used to compare resu
 \hypertarget{case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes}{%
 \section{Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes}\label{case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes}}
 
-This study builds a random forest model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew's impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of random forest models for the modeling flood in ``low-lying and flat agricultural terrain,'' (3) find important predictors, and (4) ``generate pluvial flood time series.''
+\hypertarget{takeaway}{%
+\subsection{Takeaway}\label{takeaway}}
 
 With the remote sensed images as important data sources, the researchers had to do quite a lot of pre-processing. While pre-processing images might seem time consuming, once the workflow is established, studying flood in other areas becomes easier, as long as images are available. This is one of the strengths of ML models--the process can be at least partially automated, and data is more easily obtained than if measuring at each site is required.
 
-{[}include the figure of how the images were processed?{]}
+\hypertarget{summary}{%
+\subsection{Summary}\label{summary}}
 
-{[}how is the spatial component modeled in random forest?{]}
+This study builds a random forest model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew's impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of random forest models for the modeling flood in ``low-lying and flat agricultural terrain,'' (3) find important predictors, and (4) ``generate pluvial flood time series.''
 
-The outcome variable is binary in terms of flooding. Each pixel is treated as one data point. Non-flooded areas were covered by 5,875,480 pixels, and flooded areas by 678,010 pixels. Since there were many more non-flooded pixels than flooded pixels, overall accuracy alone would not be a good performance metric, since, if the model just always predict that a pixel is not flooded, the accuracy rate would be high. The researchers chose other metrics such as precision, recall, specificity, and F1 scores to reflect model performance in different scenarios. The model achieved an overall accuracy of 0.97 and an F1 score of 0.69. Considering that the no information rate (if the model predicts non-flooded all the time) is around 88.5\%, this performance seems satisfactory.
-
-{[}to be continued{]}
+The outcome variable is binary in terms of flooding. Each pixel is treated as one data point. Non-flooded areas were covered by 5,875,480 pixels, and flooded areas by 678,010 pixels. Since there were many more non-flooded pixels than flooded pixels, overall accuracy alone would not be a good performance metric, since, if the model just always predict that a pixel is not flooded, the accuracy rate would be high. The researchers chose other metrics such as precision, recall, specificity, and F1 scores to reflect model performance in different scenarios. The model achieved an overall accuracy of 0.97 and an F1 score of 0.69. Considering that the no information rate (if the model predicts non-flooded all the time) is around 88.5\%, this performance seems satisfactory. They found the important variables to be population density, distance to the nearest river, height above nearest drainage, and distance to the nearest road.
 
 The full paper can be accessed \href{https://www.sciencedirect.com/science/article/pii/S1364815223001445?dgcid=author}{here}.
 
 \hypertarget{case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters}{%
 \section{Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters}\label{case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters}}
 
-This study's goal was to predict near-term (1-3 days) fecal contamination in coastal shellfish growing waters. For each of the five management areas, Chazal et al.~constructed five random forest models to (1) use watershed characteristics as well as antecedent hydrologic and meteorologic observations to predict the level of fecal coliform (FC), (2) test whether forcasted rainfall can be useful for predictions, and (3) find important variables. Let's focus on goals (1) and (3) for this case study.
+\hypertarget{takeaway-1}{%
+\subsection{Takeaway}\label{takeaway-1}}
 
-For their first goal, depending on the management areas, the \(R^2\) value is between 0.40 and 0.74. According to Chazal et al, this performance is similar to previous studies. The other settings are typical of ML studies. They split the data into 80\% training and 20\% testing and use the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other.
+This study serves as a nice case study because (1) it demonstrates that random forest does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have knowns. These reasons tell us that we can trust random forest models. Furthermore, random forest models are easy and cheap ton construct. The R package \texttt{caret} and function \texttt{rf}, used by Chazal et al., is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by \texttt{caret::rf}, helps greatly with interpretation.
 
-For their goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind are high on the importance for prediction. These findings are consistent with the current understanding.
+\hypertarget{summary-1}{%
+\subsection{Summary}\label{summary-1}}
 
-So far, it sounds like this study finds about the same result and performs at a similar level, so why is random forest necessary? This study serves as a nice case study because (1) it demonstrates that random forest does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have knowns. These reasons tell us that we can trust random forest models. Furthermore, random forest models are easy and cheap ton construct. The R package \texttt{caret} and function \texttt{rf}, used by Chazal et al., is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by \texttt{caret::rf}, helps greatly with interpretation.
+This study's goal was to predict near-term (1-3 days) fecal contamination in coastal shellfish growing waters. For each of the five management areas, Chazal et al.~constructed five random forest models to (1) use watershed characteristics as well as antecedent hydrologic and meteorologic observations to predict the level of fecal coliform (FC), (2) test whether forecasted rainfall can be useful for predictions, and (3) find important variables. Let's focus on goals (1) and (3) for this case study.
 
-In short, this study demonstrates the reliability and ease for construction and interpretation of random forest models.
-
-{[}include some code and figures?{]}
+For their first goal, depending on the management areas, the \(R^2\) value is between 0.40 and 0.74. According to Chazal et al, this performance is similar to previous studies. The other settings are typical of ML studies. They split the data into 80\% training and 20\% testing and use the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other. For their third goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind are high on the importance for prediction. These findings are consistent with the current understanding. In short, this study demonstrates the reliability and ease for construction and interpretation of random forest models.
 
 The full paper can be accessed \href{https://www.sciencedirect.com/science/article/pii/S0025326X24000304?via\%3Dihub}{here}.
 
@@ -467,6 +467,40 @@ While some models, such as neural networks, are highly efficient, they are more 
 
 \hypertarget{dos-and-donts}{%
 \section{Do's and Don'ts}\label{dos-and-donts}}
+
+Below we provide some tips for what to do and what not to do when you build machine learning models.
+
+\hypertarget{dos}{%
+\subsection{Do's}\label{dos}}
+
+\begin{itemize}
+\tightlist
+\item
+  Document the process with reasonable details, so you or other researchers can reproduce the study if needed.
+\item
+  Along the same line, if you write script for your code, add comments along the way.
+\item
+  In the publication, explain what the result entails and the limitations of the model.
+\item
+  When possible, use interpretable and/or parsimonious models. Think Occam's razor.
+\item
+  Make data and code available to others if possible.
+\item
+\end{itemize}
+
+\hypertarget{donts}{%
+\subsection{Don'ts}\label{donts}}
+
+\begin{itemize}
+\tightlist
+\item
+  Don't jump into analysis without looking into summary statistics and making plots to understand you data.
+\item
+  Don't alter the raw data. Use a script to process data instead.
+\item
+  Don't over interpret the result. If the result shows correlation, don't claim causation.
+\item
+\end{itemize}
 
   \bibliography{book.bib,packages.bib}
 

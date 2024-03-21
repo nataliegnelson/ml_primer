@@ -68,25 +68,39 @@
 <h2>
 <span class="header-section-number">7.1</span> Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes<a class="anchor" aria-label="anchor" href="#case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes"><i class="fas fa-link"></i></a>
 </h2>
-<p>This study builds a random forest model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew’s impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of random forest models for the modeling flood in “low-lying and flat agricultural terrain,” (3) find important predictors, and (4) “generate pluvial flood time series.”</p>
+<div id="takeaway" class="section level3" number="7.1.1">
+<h3>
+<span class="header-section-number">7.1.1</span> Takeaway<a class="anchor" aria-label="anchor" href="#takeaway"><i class="fas fa-link"></i></a>
+</h3>
 <p>With the remote sensed images as important data sources, the researchers had to do quite a lot of pre-processing. While pre-processing images might seem time consuming, once the workflow is established, studying flood in other areas becomes easier, as long as images are available. This is one of the strengths of ML models–the process can be at least partially automated, and data is more easily obtained than if measuring at each site is required.</p>
-<p>[include the figure of how the images were processed?]</p>
-<p>[how is the spatial component modeled in random forest?]</p>
-<p>The outcome variable is binary in terms of flooding. Each pixel is treated as one data point. Non-flooded areas were covered by 5,875,480 pixels, and flooded areas by 678,010 pixels. Since there were many more non-flooded pixels than flooded pixels, overall accuracy alone would not be a good performance metric, since, if the model just always predict that a pixel is not flooded, the accuracy rate would be high. The researchers chose other metrics such as precision, recall, specificity, and F1 scores to reflect model performance in different scenarios. The model achieved an overall accuracy of 0.97 and an F1 score of 0.69. Considering that the no information rate (if the model predicts non-flooded all the time) is around 88.5%, this performance seems satisfactory.</p>
-<p>[to be continued]</p>
+</div>
+<div id="summary" class="section level3" number="7.1.2">
+<h3>
+<span class="header-section-number">7.1.2</span> Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
+</h3>
+<p>This study builds a random forest model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew’s impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of random forest models for the modeling flood in “low-lying and flat agricultural terrain,” (3) find important predictors, and (4) “generate pluvial flood time series.”</p>
+<p>The outcome variable is binary in terms of flooding. Each pixel is treated as one data point. Non-flooded areas were covered by 5,875,480 pixels, and flooded areas by 678,010 pixels. Since there were many more non-flooded pixels than flooded pixels, overall accuracy alone would not be a good performance metric, since, if the model just always predict that a pixel is not flooded, the accuracy rate would be high. The researchers chose other metrics such as precision, recall, specificity, and F1 scores to reflect model performance in different scenarios. The model achieved an overall accuracy of 0.97 and an F1 score of 0.69. Considering that the no information rate (if the model predicts non-flooded all the time) is around 88.5%, this performance seems satisfactory. They found the important variables to be population density, distance to the nearest river, height above nearest drainage, and distance to the nearest road.</p>
 <p>The full paper can be accessed <a href="https://www.sciencedirect.com/science/article/pii/S1364815223001445?dgcid=author">here</a>.</p>
+</div>
 </div>
 <div id="case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters" class="section level2" number="7.2">
 <h2>
 <span class="header-section-number">7.2</span> Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters<a class="anchor" aria-label="anchor" href="#case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters"><i class="fas fa-link"></i></a>
 </h2>
-<p>This study’s goal was to predict near-term (1-3 days) fecal contamination in coastal shellfish growing waters. For each of the five management areas, Chazal et al. constructed five random forest models to (1) use watershed characteristics as well as antecedent hydrologic and meteorologic observations to predict the level of fecal coliform (FC), (2) test whether forcasted rainfall can be useful for predictions, and (3) find important variables. Let’s focus on goals (1) and (3) for this case study.</p>
-<p>For their first goal, depending on the management areas, the <span class="math inline">\(R^2\)</span> value is between 0.40 and 0.74. According to Chazal et al, this performance is similar to previous studies. The other settings are typical of ML studies. They split the data into 80% training and 20% testing and use the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other.</p>
-<p>For their goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind are high on the importance for prediction. These findings are consistent with the current understanding.</p>
-<p>So far, it sounds like this study finds about the same result and performs at a similar level, so why is random forest necessary? This study serves as a nice case study because (1) it demonstrates that random forest does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have knowns. These reasons tell us that we can trust random forest models. Furthermore, random forest models are easy and cheap ton construct. The R package <code>caret</code> and function <code>rf</code>, used by Chazal et al., is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by <code>caret::rf</code>, helps greatly with interpretation.</p>
-<p>In short, this study demonstrates the reliability and ease for construction and interpretation of random forest models.</p>
-<p>[include some code and figures?]</p>
+<div id="takeaway-1" class="section level3" number="7.2.1">
+<h3>
+<span class="header-section-number">7.2.1</span> Takeaway<a class="anchor" aria-label="anchor" href="#takeaway-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>This study serves as a nice case study because (1) it demonstrates that random forest does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have knowns. These reasons tell us that we can trust random forest models. Furthermore, random forest models are easy and cheap ton construct. The R package <code>caret</code> and function <code>rf</code>, used by Chazal et al., is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by <code>caret::rf</code>, helps greatly with interpretation.</p>
+</div>
+<div id="summary-1" class="section level3" number="7.2.2">
+<h3>
+<span class="header-section-number">7.2.2</span> Summary<a class="anchor" aria-label="anchor" href="#summary-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>This study’s goal was to predict near-term (1-3 days) fecal contamination in coastal shellfish growing waters. For each of the five management areas, Chazal et al. constructed five random forest models to (1) use watershed characteristics as well as antecedent hydrologic and meteorologic observations to predict the level of fecal coliform (FC), (2) test whether forecasted rainfall can be useful for predictions, and (3) find important variables. Let’s focus on goals (1) and (3) for this case study.</p>
+<p>For their first goal, depending on the management areas, the <span class="math inline">\(R^2\)</span> value is between 0.40 and 0.74. According to Chazal et al, this performance is similar to previous studies. The other settings are typical of ML studies. They split the data into 80% training and 20% testing and use the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other. For their third goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind are high on the importance for prediction. These findings are consistent with the current understanding. In short, this study demonstrates the reliability and ease for construction and interpretation of random forest models.</p>
 <p>The full paper can be accessed <a href="https://www.sciencedirect.com/science/article/pii/S0025326X24000304?via%3Dihub">here</a>.</p>
+</div>
 </div>
 <div id="case-study-3" class="section level2" number="7.3">
 <h2>
@@ -102,8 +116,18 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#case-studies"><span class="header-section-number">7</span> Case Studies</a></li>
-<li><a class="nav-link" href="#case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes"><span class="header-section-number">7.1</span> Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes</a></li>
-<li><a class="nav-link" href="#case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters"><span class="header-section-number">7.2</span> Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters</a></li>
+<li>
+<a class="nav-link" href="#case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes"><span class="header-section-number">7.1</span> Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#takeaway"><span class="header-section-number">7.1.1</span> Takeaway</a></li>
+<li><a class="nav-link" href="#summary"><span class="header-section-number">7.1.2</span> Summary</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters"><span class="header-section-number">7.2</span> Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#takeaway-1"><span class="header-section-number">7.2.1</span> Takeaway</a></li>
+<li><a class="nav-link" href="#summary-1"><span class="header-section-number">7.2.2</span> Summary</a></li>
+</ul>
+</li>
 <li><a class="nav-link" href="#case-study-3"><span class="header-section-number">7.3</span> Case Study 3</a></li>
 </ul>
 
@@ -121,7 +145,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-03-20.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-03-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

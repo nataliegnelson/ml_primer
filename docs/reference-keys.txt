@@ -23,7 +23,11 @@ other-ensemble-tree-methods
 workflow-demonstration
 case-studies
 case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes
+takeaway
+summary
 case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters
+takeaway-1
+summary-1
 case-study-3
 ethical-considerations
 reproducibility
@@ -32,3 +36,5 @@ uncertain-qualification
 interpretability
 appendix
 dos-and-donts
+dos
+donts

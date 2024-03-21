@@ -1,3 +1,22 @@
 # Appendix    
 
 ## Do's and Don'ts  
+
+Below we provide some tips for what to do and what not to do when you build machine learning models.  
+
+### Do's  
+
+* Document the process with reasonable details, so you or other researchers can reproduce the study if needed. 
+* Along the same line, if you write script for your code, add comments along the way. 
+* In the publication, explain what the result entails and the limitations of the model. 
+* When possible, use interpretable and/or parsimonious models. Think Occam's razor. 
+* Make data and code available to others if possible. 
+* 
+
+
+### Don'ts  
+
+* Don't jump into analysis without looking into summary statistics and making plots to understand you data. 
+* Don't alter the raw data. Use a script to process data instead. 
+* Don't over interpret the result. If the result shows correlation, don't claim causation. 
+* 
