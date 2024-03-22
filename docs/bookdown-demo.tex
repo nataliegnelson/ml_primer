@@ -127,7 +127,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-03-21}
+\date{2024-03-22}
 
 \begin{document}
 \maketitle
@@ -476,6 +476,8 @@ Below we provide some tips for what to do and what not to do when you build mach
 \begin{itemize}
 \tightlist
 \item
+  Do data exploratory analysis before jumping into analysis. Look at summary statistics and make plots to familiarize yourself with the data.
+\item
   Document the process with reasonable details, so you or other researchers can reproduce the study if needed.
 \item
   Along the same line, if you write script for your code, add comments along the way.
@@ -494,13 +496,15 @@ Below we provide some tips for what to do and what not to do when you build mach
 \begin{itemize}
 \tightlist
 \item
-  Don't jump into analysis without looking into summary statistics and making plots to understand you data.
-\item
   Don't alter the raw data. Use a script to process data instead.
 \item
-  Don't over interpret the result. If the result shows correlation, don't claim causation.
+  Don't over interpret the result. For example, if the samples all come from one geographic area, you might not be able to generalize the result to other areas.\\
 \item
 \end{itemize}
+
+\hypertarget{references}{%
+\chapter*{References}\label{references}}
+\addcontentsline{toc}{chapter}{References}
 
   \bibliography{book.bib,packages.bib}
 
