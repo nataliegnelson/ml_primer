@@ -148,6 +148,8 @@ What is machine learning? Essentially, machine learning teaches computer models 
 
 Even though ML models are commonly considered black boxes, they are not necessarily so. Many ML methods lend easily to interpretation. Random forests, for example, is a powerful method that can offer a glimpse into what the important variables are, even if the straightforward explanation that can come from a linear model is not available. Below we introduce the two large branch of machine learning. Even though most of environmental studies probably fall into supervised learning, it is worth knowing that there is unsupervised learning, because it might help with some intermediate steps of studies.
 
+For those of you interested in learning more about machine learning, the book \emph{An Introduction to Statistical Learning} by \citet{james2013introduction} is a great resource!
+
 \hypertarget{supervised-learning}{%
 \section{Supervised Learning}\label{supervised-learning}}
 
@@ -407,7 +409,7 @@ With the remote sensed images as important data sources, the researchers had to 
 \hypertarget{summary}{%
 \subsection{Summary}\label{summary}}
 
-This study builds a random forest model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew's impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of random forest models for the modeling flood in ``low-lying and flat agricultural terrain,'' (3) find important predictors, and (4) ``generate pluvial flood time series.''
+In this study, \citet{fidan2023} build a random forest model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew's impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of random forest models for the modeling flood in ``low-lying and flat agricultural terrain,'' (3) find important predictors, and (4) ``generate pluvial flood time series.''
 
 The outcome variable is binary in terms of flooding. Each pixel is treated as one data point. Non-flooded areas were covered by 5,875,480 pixels, and flooded areas by 678,010 pixels. Since there were many more non-flooded pixels than flooded pixels, overall accuracy alone would not be a good performance metric, since, if the model just always predict that a pixel is not flooded, the accuracy rate would be high. The researchers chose other metrics such as precision, recall, specificity, and F1 scores to reflect model performance in different scenarios. The model achieved an overall accuracy of 0.97 and an F1 score of 0.69. Considering that the no information rate (if the model predicts non-flooded all the time) is around 88.5\%, this performance seems satisfactory. They found the important variables to be population density, distance to the nearest river, height above nearest drainage, and distance to the nearest road.
 
@@ -419,14 +421,14 @@ The full paper can be accessed \href{https://www.sciencedirect.com/science/artic
 \hypertarget{takeaway-1}{%
 \subsection{Takeaway}\label{takeaway-1}}
 
-This study serves as a nice case study because (1) it demonstrates that random forest does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have knowns. These reasons tell us that we can trust random forest models. Furthermore, random forest models are easy and cheap ton construct. The R package \texttt{caret} and function \texttt{rf}, used by Chazal et al., is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by \texttt{caret::rf}, helps greatly with interpretation.
+This study serves as a nice case study because (1) it demonstrates that random forest does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have knowns. These reasons tell us that we can trust random forest models. Furthermore, random forest models are easy and cheap ton construct. The R package \texttt{caret} and function \texttt{rf}, used by \citet{chazal2024}, is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by \texttt{caret::rf}, helps greatly with interpretation.
 
 \hypertarget{summary-1}{%
 \subsection{Summary}\label{summary-1}}
 
-This study's goal was to predict near-term (1-3 days) fecal contamination in coastal shellfish growing waters. For each of the five management areas, Chazal et al.~constructed five random forest models to (1) use watershed characteristics as well as antecedent hydrologic and meteorologic observations to predict the level of fecal coliform (FC), (2) test whether forecasted rainfall can be useful for predictions, and (3) find important variables. Let's focus on goals (1) and (3) for this case study.
+This study's goal was to predict near-term (1-3 days) fecal contamination in coastal shellfish growing waters. For each of the five management areas, \citet{chazal2024} constructed five random forest models to (1) use watershed characteristics as well as antecedent hydrologic and meteorologic observations to predict the level of fecal coliform (FC), (2) test whether forecasted rainfall can be useful for predictions, and (3) find important variables. Let's focus on goals (1) and (3) for this case study.
 
-For their first goal, depending on the management areas, the \(R^2\) value is between 0.40 and 0.74. According to Chazal et al, this performance is similar to previous studies. The other settings are typical of ML studies. They split the data into 80\% training and 20\% testing and use the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other. For their third goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind are high on the importance for prediction. These findings are consistent with the current understanding. In short, this study demonstrates the reliability and ease for construction and interpretation of random forest models.
+For their first goal, depending on the management areas, the \(R^2\) value is between 0.40 and 0.74. According to \citet{chazal2024}, this performance is similar to previous studies. The other settings are typical of ML studies. They split the data into 80\% training and 20\% testing and use the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other. For their third goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind are high on the importance for prediction. These findings are consistent with the current understanding. In short, this study demonstrates the reliability and ease for construction and interpretation of random forest models.
 
 The full paper can be accessed \href{https://www.sciencedirect.com/science/article/pii/S0025326X24000304?via\%3Dihub}{here}.
 
@@ -500,7 +502,6 @@ Below we provide some tips for what to do and what not to do when you build mach
 \item
   Don't over interpret the result. For example, if the samples all come from one geographic area, you might not be able to generalize the result to other areas.\\
 \item
-  \citet{xie2015}
 \end{itemize}
 
   \bibliography{book.bib,packages.bib}

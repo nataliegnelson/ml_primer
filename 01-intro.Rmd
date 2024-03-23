@@ -4,6 +4,8 @@ What is machine learning? Essentially, machine learning teaches computer models 
 
 Even though ML models are commonly considered black boxes, they are not necessarily so. Many ML methods lend easily to interpretation. Random forests, for example, is a powerful method that can offer a glimpse into what the important variables are, even if the straightforward explanation that can come from a linear model is not available. Below we introduce the two large branch of machine learning. Even though most of environmental studies probably fall into supervised learning, it is worth knowing that there is unsupervised learning, because it might help with some intermediate steps of studies.  
 
+For those of you interested in learning more about machine learning, the book *An Introduction to Statistical Learning* by @james2013introduction is a great resource! 
+
 ## Supervised Learning  
 
 Simply put, supervised learning is when there is a true answer for the model. For example, if we want to use environmental traits (temperature, precipitation, chemical composition) to predict algal growth. In a dataset that record such activities, there are growths that are the right answers. The model can then use the predictors to make predictions, and the comparison between the predictions and the truth can show how well the model performs.  
