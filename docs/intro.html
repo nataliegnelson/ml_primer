@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 2 Introduction | Machine Learning Guidelines for Natural Resource Management Practitioners</title>
 <meta name="author" content="Shih-Ni Prim and Natalie Nelson">
-<meta name="description" content="What is machine learning? Essentially, machine learning teaches computer models to look for patterns or make predictions. This might sound like magic or it might seem complicated, but you can...">
+<meta name="description" content="What is machine learning? Essentially, machine learning teaches computer models to look for patterns or make predictions. This might seem complicated, but you can think of machine learning models...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Introduction | Machine Learning Guidelines for Natural Resource Management Practitioners">
 <meta property="og:type" content="book">
-<meta property="og:description" content="What is machine learning? Essentially, machine learning teaches computer models to look for patterns or make predictions. This might sound like magic or it might seem complicated, but you can...">
+<meta property="og:description" content="What is machine learning? Essentially, machine learning teaches computer models to look for patterns or make predictions. This might seem complicated, but you can think of machine learning models...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 2 Introduction | Machine Learning Guidelines for Natural Resource Management Practitioners">
-<meta name="twitter:description" content="What is machine learning? Essentially, machine learning teaches computer models to look for patterns or make predictions. This might sound like magic or it might seem complicated, but you can...">
+<meta name="twitter:description" content="What is machine learning? Essentially, machine learning teaches computer models to look for patterns or make predictions. This might seem complicated, but you can think of machine learning models...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -85,9 +85,16 @@
 <h1>
 <span class="header-section-number">2</span> Introduction<a class="anchor" aria-label="anchor" href="#intro"><i class="fas fa-link"></i></a>
 </h1>
-<p>What is machine learning? Essentially, machine learning teaches computer models to look for patterns or make predictions. This might sound like magic or it might seem complicated, but you can think of machine learning models as finding underlying formulas that the data come from. To solve for such formula, many, many mathematical calculations are involved. As we human beings are prone to mistakes, as long as we can identify a framework, we can give the framework and data to a computer model. It is best at repeating meticulous calculations to find a best guess based on our believes of the system and the data we observed.</p>
-<p>Even though ML models are commonly considered black boxes, they are not necessarily so. Many ML methods lend easily to interpretation. Random forests, for example, is a powerful method that can offer a glimpse into what the important variables are, even if the straightforward explanation that can come from a linear model is not available. Below we introduce the two large branch of machine learning. Even though most of environmental studies probably fall into supervised learning, it is worth knowing that there is unsupervised learning, because it might help with some intermediate steps of studies.</p>
-<p>For those of you interested in learning more about machine learning, the book <em>An Introduction to Statistical Learning</em> by <span class="citation">James et al. (<a href="references.html#ref-james2013introduction">2013</a>)</span> is a great resource!</p>
+<p>What is machine learning? Essentially, machine learning teaches computer models to look for patterns or make predictions. This might seem complicated, but you can think of machine learning models as finding underlying formulas that the data come from. To solve for such formula, many, many mathematical calculations are involved. As we human beings are prone to mistakes for such kind of task. A more effective way to work with data is for us to identify a framework and give the framework and data to a computer model. The computer is best at repeating meticulous calculations to find a best guess based on our believes of the system and the data we observed.</p>
+<p>Even though ML models are commonly considered black boxes, they are not necessarily so. Many ML methods lend easily to interpretation. Random forests, for example, is a powerful method that can offer a glimpse into what the important variables are, even if the straightforward explanation that can come from a linear model is unavailable. Below we introduce the two large branch of machine learning.</p>
+<p>The book <em>An Introduction to Statistical Learning</em> by <span class="citation">James et al. (<a href="references.html#ref-james2013introduction">2013</a>)</span> is a great resource! This book provides a wealth of information about machine learning models; further, the authors do not assume that the readers are mainly interested in applying, rather than studying, ML models. The four premises offered by the authors, listed on pp 8-9 of the version about R, pointing to the practical focus of the book:</p>
+<ol style="list-style-type: decimal">
+<li>Many statistical learning methods are relevant and useful in a wide range of academic and non-academic disciplines, beyond just the statistical sciences.</li>
+<li>Statistical learning should not be viewed as a series of black boxes.</li>
+<li>While it is important to know what job is performed by each cog, it is not necessary to have the skills to construct the machine inside the box!</li>
+<li>We presume that the reader is interested in applying statistical learning methods to real-world problems.</li>
+</ol>
+<p>There are free PDF versions with applications in R and Python <a href="https://www.statlearning.com/">here</a>. Be sure to check it out if you are interested in learning more about machine learning models!</p>
 <div id="supervised-learning" class="section level2" number="2.1">
 <h2>
 <span class="header-section-number">2.1</span> Supervised Learning<a class="anchor" aria-label="anchor" href="#supervised-learning"><i class="fas fa-link"></i></a>
@@ -98,7 +105,7 @@
 <h2>
 <span class="header-section-number">2.2</span> Unsupervised Learning<a class="anchor" aria-label="anchor" href="#unsupervised-learning"><i class="fas fa-link"></i></a>
 </h2>
-<p>Unsupervised learning, on the other hand, performs tasks that do not have a correct answer. For example, for a group of chemicals, some might have more similar traits than the others. Unsupervised learning can perform clustering to find such groupings, but it is still unsupervised because the grouping depends on the context. One could imagine that clustering can be performed first, and the groupings are used as the predictors instead of the chemicals themselves. This way the dimension can be reduced, assuming that the number of groups is smaller than the number of chemicals.</p>
+<p>Unsupervised learning, on the other hand, performs tasks that do not have a correct/true answer. For example, for a group of chemicals, some might have more similar traits than the others. Unsupervised learning can perform clustering to find such groupings, but it is still unsupervised because the grouping depends on the context. One could imagine that clustering can be performed first, and the groupings are used as the predictors instead of the chemicals themselves. This way the dimension can be reduced, assuming that the number of groups is smaller than the number of chemicals.</p>
 
 </div>
 </div>
@@ -127,7 +134,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-03-22.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-03-26.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

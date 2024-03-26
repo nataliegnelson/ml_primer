@@ -127,7 +127,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-03-22}
+\date{2024-03-26}
 
 \begin{document}
 \maketitle
@@ -144,11 +144,26 @@ As machine learning (ML) has become a powerful tool, it is noted by some that ML
 \hypertarget{intro}{%
 \chapter{Introduction}\label{intro}}
 
-What is machine learning? Essentially, machine learning teaches computer models to look for patterns or make predictions. This might sound like magic or it might seem complicated, but you can think of machine learning models as finding underlying formulas that the data come from. To solve for such formula, many, many mathematical calculations are involved. As we human beings are prone to mistakes, as long as we can identify a framework, we can give the framework and data to a computer model. It is best at repeating meticulous calculations to find a best guess based on our believes of the system and the data we observed.
+What is machine learning? Essentially, machine learning teaches computer models to look for patterns or make predictions. This might seem complicated, but you can think of machine learning models as finding underlying formulas that the data come from. To solve for such formula, many, many mathematical calculations are involved. As we human beings are prone to mistakes for such kind of task. A more effective way to work with data is for us to identify a framework and give the framework and data to a computer model. The computer is best at repeating meticulous calculations to find a best guess based on our believes of the system and the data we observed.
 
-Even though ML models are commonly considered black boxes, they are not necessarily so. Many ML methods lend easily to interpretation. Random forests, for example, is a powerful method that can offer a glimpse into what the important variables are, even if the straightforward explanation that can come from a linear model is not available. Below we introduce the two large branch of machine learning. Even though most of environmental studies probably fall into supervised learning, it is worth knowing that there is unsupervised learning, because it might help with some intermediate steps of studies.
+Even though ML models are commonly considered black boxes, they are not necessarily so. Many ML methods lend easily to interpretation. Random forests, for example, is a powerful method that can offer a glimpse into what the important variables are, even if the straightforward explanation that can come from a linear model is unavailable. Below we introduce the two large branch of machine learning.
 
-For those of you interested in learning more about machine learning, the book \emph{An Introduction to Statistical Learning} by \citet{james2013introduction} is a great resource!
+The book \emph{An Introduction to Statistical Learning} by \citet{james2013introduction} is a great resource! This book provides a wealth of information about machine learning models; further, the authors do not assume that the readers are mainly interested in applying, rather than studying, ML models. The four premises offered by the authors, listed on pp 8-9 of the version about R, pointing to the practical focus of the book:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Many statistical learning methods are relevant and useful in a wide range of academic and non-academic disciplines, beyond just the statistical sciences.
+\item
+  Statistical learning should not be viewed as a series of black boxes.
+\item
+  While it is important to know what job is performed by each cog, it is not necessary to have the skills to construct the machine inside the box!
+\item
+  We presume that the reader is interested in applying statistical learning methods to real-world problems.
+\end{enumerate}
+
+There are free PDF versions with applications in R and Python \href{https://www.statlearning.com/}{here}. Be sure to check it out if you are interested in learning more about machine learning models!
 
 \hypertarget{supervised-learning}{%
 \section{Supervised Learning}\label{supervised-learning}}
@@ -158,7 +173,7 @@ Simply put, supervised learning is when there is a true answer for the model. Fo
 \hypertarget{unsupervised-learning}{%
 \section{Unsupervised Learning}\label{unsupervised-learning}}
 
-Unsupervised learning, on the other hand, performs tasks that do not have a correct answer. For example, for a group of chemicals, some might have more similar traits than the others. Unsupervised learning can perform clustering to find such groupings, but it is still unsupervised because the grouping depends on the context. One could imagine that clustering can be performed first, and the groupings are used as the predictors instead of the chemicals themselves. This way the dimension can be reduced, assuming that the number of groups is smaller than the number of chemicals.
+Unsupervised learning, on the other hand, performs tasks that do not have a correct/true answer. For example, for a group of chemicals, some might have more similar traits than the others. Unsupervised learning can perform clustering to find such groupings, but it is still unsupervised because the grouping depends on the context. One could imagine that clustering can be performed first, and the groupings are used as the predictors instead of the chemicals themselves. This way the dimension can be reduced, assuming that the number of groups is smaller than the number of chemicals.
 
 \hypertarget{data}{%
 \chapter{Data}\label{data}}
