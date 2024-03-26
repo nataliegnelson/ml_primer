@@ -20,6 +20,7 @@ machine-learning-methods
 tree-based-methods
 random-forests
 other-ensemble-tree-methods
+neural-network
 workflow-demonstration
 case-studies
 case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes
