@@ -1,6 +1,6 @@
 # Machine Learning Methods  
 
-Here we provide a list of commonly used machine learning methods and some brief discussion.  
+Here we discuss some machine learning methods you might find useful. Although linear regression models are commonly used, we skip it because it is well understood and many online resources can be easily located.   
 
 ## Tree-based Methods  
 
@@ -9,7 +9,6 @@ Tree-based methods are popular for their ease for interpretation. Essentially, t
 ![By Gilgoldm - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=90405437](images/Decision_Tree.jpg)
 
 Decision trees are easy to use but not very accurate for complex data; however, we can go beyond one tree. If we use multiple trees and, for instance, take the average of the predictions of all the trees, we can improve the performance. This is the idea of ensemble methods. One of the ensemble methods, random forests, is commonly used, including in natural resources management, and quite accurate for many kinds of data. So next we'll dive into this one method.  
-
 
 ### Random Forests  
 
@@ -25,6 +24,9 @@ Other ensemble tree methods include boosting and bagging. If you are interested,
 
 ## Neural Network  
 
+Neural network has been enjoying its popularity. A neural network model is composed of an input layer, some hidden layers, and an output layer, as seen below. There is only one hidden layer below. When there are enough hidden layers, the model is then called deep learning. 
+
 ![By Glosser.ca - Own work, Derivative of File: Artificial neural network.svg, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=24913461](images/Colored_neural_network.svg.png)
 
+So the input layer is the observed predictors, and each of the hidden layers has nodes that contain coefficients. You can think of these coefficients similar to those for linear models, except they do not have linear relationships with the observed predictors. These values are derived from finding the best fit between data and some kind of cost function; essentially, these values are meant to minimize the differences between observed outcome and predictions. When the values from one hidden layer are passed onto the next layer, a nonlinear activation function called [ReLU](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) is commonly used. If the task is classification, the layer right before output is often some kind of algorithm to turn the values into predicted class. While neural network is a powerful ML model, the values in the nodes in the hidden layers are not interpretable. So this indeed is a black-box method. For interested readers, check out **Chapter 10 Deep Learning** in @james2013introduction (*An Introduction to Statistical Learning*).  
 

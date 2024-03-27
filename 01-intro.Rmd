@@ -11,7 +11,7 @@ The book *An Introduction to Statistical Learning* by @james2013introduction is 
 3. While it is important to know what job is performed by each cog, it is not necessary to have the skills to construct the machine inside the box! 
 4. We presume that the reader is interested in applying statistical learning methods to real-world problems.
 
-There are free PDF versions with applications in R and Python [here](https://www.statlearning.com/). Be sure to check it out if you are interested in learning more about machine learning models!   
+There are free PDF versions with applications in R and Python [here](https://www.statlearning.com/). Be sure to check it out if you are interested in learning more about machine learning models!  
 
 ## Supervised Learning  
 

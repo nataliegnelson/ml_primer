@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 5 Machine Learning Methods | Machine Learning Guidelines for Natural Resource Management Practitioners</title>
 <meta name="author" content="Shih-Ni Prim and Natalie Nelson">
-<meta name="description" content="Here we provide a list of commonly used machine learning methods and some brief discussion.  5.1 Tree-based Methods Tree-based methods are popular for their ease for interpretation. Essentially,...">
+<meta name="description" content="Here we discuss some machine learning methods you might find useful. Although linear regression models are commonly used, we skip it because it is well understood and many online resources can be...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="Chapter 5 Machine Learning Methods | Machine Learning Guidelines for Natural Resource Management Practitioners">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Here we provide a list of commonly used machine learning methods and some brief discussion.  5.1 Tree-based Methods Tree-based methods are popular for their ease for interpretation. Essentially,...">
+<meta property="og:description" content="Here we discuss some machine learning methods you might find useful. Although linear regression models are commonly used, we skip it because it is well understood and many online resources can be...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 5 Machine Learning Methods | Machine Learning Guidelines for Natural Resource Management Practitioners">
-<meta name="twitter:description" content="Here we provide a list of commonly used machine learning methods and some brief discussion.  5.1 Tree-based Methods Tree-based methods are popular for their ease for interpretation. Essentially,...">
+<meta name="twitter:description" content="Here we discuss some machine learning methods you might find useful. Although linear regression models are commonly used, we skip it because it is well understood and many online resources can be...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -85,7 +85,7 @@
 <h1>
 <span class="header-section-number">5</span> Machine Learning Methods<a class="anchor" aria-label="anchor" href="#machine-learning-methods"><i class="fas fa-link"></i></a>
 </h1>
-<p>Here we provide a list of commonly used machine learning methods and some brief discussion.</p>
+<p>Here we discuss some machine learning methods you might find useful. Although linear regression models are commonly used, we skip it because it is well understood and many online resources can be easily located.</p>
 <div id="tree-based-methods" class="section level2" number="5.1">
 <h2>
 <span class="header-section-number">5.1</span> Tree-based Methods<a class="anchor" aria-label="anchor" href="#tree-based-methods"><i class="fas fa-link"></i></a>
@@ -115,10 +115,12 @@
 <h2>
 <span class="header-section-number">5.2</span> Neural Network<a class="anchor" aria-label="anchor" href="#neural-network"><i class="fas fa-link"></i></a>
 </h2>
+<p>Neural network has been enjoying its popularity. A neural network model is composed of an input layer, some hidden layers, and an output layer, as seen below. There is only one hidden layer below. When there are enough hidden layers, the model is then called deep learning.</p>
 <div class="float">
 <img src="images/Colored_neural_network.svg.png" alt="By Glosser.ca - Own work, Derivative of File: Artificial neural network.svg, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=24913461"><div class="figcaption">By Glosser.ca - Own work, Derivative of File: Artificial neural network.svg, CC BY-SA 3.0, <a href="https://commons.wikimedia.org/w/index.php?curid=24913461" class="uri">https://commons.wikimedia.org/w/index.php?curid=24913461</a>
 </div>
 </div>
+<p>So the input layer is the observed predictors, and each of the hidden layers has nodes that contain coefficients. You can think of these coefficients similar to those for linear models, except they do not have linear relationships with the observed predictors. These values are derived from finding the best fit between data and some kind of cost function; essentially, these values are meant to minimize the differences between observed outcome and predictions. When the values from one hidden layer are passed onto the next layer, a nonlinear activation function called <a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)">ReLU</a> is commonly used. If the task is classification, the layer right before output is often some kind of algorithm to turn the values into predicted class. While neural network is a powerful ML model, the values in the nodes in the hidden layers are not interpretable. So this indeed is a black-box method. For interested readers, check out <strong>Chapter 10 Deep Learning</strong> in <span class="citation">James et al. (<a href="references.html#ref-james2013introduction">2013</a>)</span> (<em>An Introduction to Statistical Learning</em>).</p>
 
 </div>
 </div>
@@ -152,7 +154,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-03-26.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-03-27.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
