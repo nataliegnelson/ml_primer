@@ -127,7 +127,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-03-27}
+\date{2024-04-02}
 
 \begin{document}
 \maketitle
@@ -144,7 +144,7 @@ As machine learning (ML) has become a powerful tool, it is noted by some that ML
 \hypertarget{intro}{%
 \chapter{Introduction}\label{intro}}
 
-What is machine learning? Essentially, machine learning teaches computer models to look for patterns or make predictions. This might seem complicated, but you can think of machine learning models as finding underlying formulas that the data come from. To solve for such formula, many, many mathematical calculations are involved. As we human beings are prone to mistakes for such kind of task. A more effective way to work with data is for us to identify a framework and give the framework and data to a computer model. The computer is best at repeating meticulous calculations to find a best guess based on our believes of the system and the data we observed.
+What is machine learning? Essentially, machine learning teaches computer models to look for patterns or make predictions. This might seem complicated, but you can think of machine learning models as finding underlying formulas that the data come from. To solve for such formula, many, many mathematical calculations are involved. As we human beings are prone to mistakes for such kind of task, a more effective way to work with data is for us to identify a framework and give the framework and data to a computer model. The computer is best at repeating meticulous calculations to find a best guess based on our believes of the system and the data we observed.
 
 Even though ML models are commonly considered black boxes, they are not necessarily so. Many ML methods lend easily to interpretation. Random forests, for example, is a powerful method that can offer a glimpse into what the important variables are, even if the straightforward explanation that can come from a linear model is unavailable. Below we introduce the two large branch of machine learning.
 
@@ -415,6 +415,13 @@ Neural network has been enjoying its popularity. A neural network model is compo
 \end{figure}
 
 So the input layer is the observed predictors, and each of the hidden layers has nodes that contain coefficients. You can think of these coefficients similar to those for linear models, except they do not have linear relationships with the observed predictors. These values are derived from finding the best fit between data and some kind of cost function; essentially, these values are meant to minimize the differences between observed outcome and predictions. When the values from one hidden layer are passed onto the next layer, a nonlinear activation function called \href{https://en.wikipedia.org/wiki/Rectifier_(neural_networks)}{ReLU} is commonly used. If the task is classification, the layer right before output is often some kind of algorithm to turn the values into predicted class. While neural network is a powerful ML model, the values in the nodes in the hidden layers are not interpretable. So this indeed is a black-box method. For interested readers, check out \textbf{Chapter 10 Deep Learning} in \citet{james2013introduction} (\emph{An Introduction to Statistical Learning}).
+
+\hypertarget{gaussian-process}{%
+\section{Gaussian Process}\label{gaussian-process}}
+
+Another powerful ML method that could be useful for natural resource management type of research is Gaussian Process. This method, commonly called kriging in spatial statistics, is commonly used for spatial data.
+
+Chapter 5 of the book \emph{Surrogates} by \citet{gramacy2020surrogates} is a great resource if you are interested in learning more about Gaussian process!
 
 \hypertarget{workflow-demonstration}{%
 \chapter{Workflow Demonstration}\label{workflow-demonstration}}
