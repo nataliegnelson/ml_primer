@@ -127,7 +127,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-04-02}
+\date{2024-04-10}
 
 \begin{document}
 \maketitle
@@ -416,12 +416,12 @@ Neural network has been enjoying its popularity. A neural network model is compo
 
 So the input layer is the observed predictors, and each of the hidden layers has nodes that contain coefficients. You can think of these coefficients similar to those for linear models, except they do not have linear relationships with the observed predictors. These values are derived from finding the best fit between data and some kind of cost function; essentially, these values are meant to minimize the differences between observed outcome and predictions. When the values from one hidden layer are passed onto the next layer, a nonlinear activation function called \href{https://en.wikipedia.org/wiki/Rectifier_(neural_networks)}{ReLU} is commonly used. If the task is classification, the layer right before output is often some kind of algorithm to turn the values into predicted class. While neural network is a powerful ML model, the values in the nodes in the hidden layers are not interpretable. So this indeed is a black-box method. For interested readers, check out \textbf{Chapter 10 Deep Learning} in \citet{james2013introduction} (\emph{An Introduction to Statistical Learning}).
 
-\hypertarget{gaussian-process}{%
-\section{Gaussian Process}\label{gaussian-process}}
+\hypertarget{gaussian-process-gp}{%
+\section{Gaussian Process (GP)}\label{gaussian-process-gp}}
 
-Another powerful ML method that could be useful for natural resource management type of research is Gaussian Process. This method, commonly called kriging in spatial statistics, is commonly used for spatial data.
+Another powerful ML method that could be useful for natural resource management type of research is Gaussian Process. This method, commonly called kriging in spatial statistics, is non-parametric, which sounds like there are no parameters in the model but in fact means there can be an infinite number of parameters. (Of course in any real model we'll have finite parameters, but that's the idea.) The fact that the parameters can increase towards infinity tells us that this is a flexible model. Essentially, for a GP model, and here I quote from Chapter 5 of Gramacy's \emph{Surrogates}, ``any finite collection of realizations (i.e.~\(n\) observations) is modeled as having a multivariate normal (MVN) distribution.'' In other words, the model tries to learn information from similar items, judging from some kind of distance from each other. MVN has some great properties. And, when there is a new data point, all the observed data points can be used to make prediction for it.
 
-Chapter 5 of the book \emph{Surrogates} by \citet{gramacy2020surrogates} is a great resource if you are interested in learning more about Gaussian process!
+GP is widely used in the machine learning, computer experiments, and spatial statistics communities. There are ready-made R packages, such as \texttt{GpGp} and \texttt{deepgp}. It's also easy to use in Python. Chapter 5 (``Gaussian Process Regression'') of the book \emph{Surrogates} by \citet{gramacy2020surrogates} is a great resource if you are interested in learning more about Gaussian process!
 
 \hypertarget{workflow-demonstration}{%
 \chapter{Workflow Demonstration}\label{workflow-demonstration}}
