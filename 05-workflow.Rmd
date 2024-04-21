@@ -1,3 +1,71 @@
 # Workflow Demonstration  
 
 In this section, we use a wine dataset to exemplify a typical workflow for constructing ML models. R code is included and several ML models are constructed.  
+
+```{r}
+knitr::opts_chunk$set(echo = FALSE, eval = TRUE, cache = TRUE)
+library(tree)
+library(tidyverse)
+library(caret)
+library(rattle)
+library(randomForest)
+```
+
+
+```{r}
+wine <- read_delim("winequality-red.csv", delim = ';')
+# shorten variable names
+fa <- wine$`fixed acidity`
+va <- as.numeric(wine$`volatile acidity`)
+ca <- as.numeric(wine$`citric acid`)
+rs <- wine$`residual sugar`
+ch <- as.numeric(wine$chlorides)
+fsd <- wine$`free sulfur dioxide`
+tsd <- wine$`total sulfur dioxide`
+den <- as.numeric(wine$density)
+ph <- wine$pH
+sul <- as.numeric(wine$sulphates)
+al <- wine$alcohol
+qual <- wine$quality
+winez <- data.frame(fa, va, ca, rs, ch, fsd, tsd, den, ph, sul, al, qual)
+# collapse qual into 2 labels
+winez$qual2 <- as.factor(ifelse(winez$qual < 6, "low", "high"))
+# collapse qual into 3 labels
+winez$qual3 <- as.factor(ifelse(winez$qual < 5, "L", ifelse(winez$qual < 7, "M", "H")))
+table(qual)
+table(winez$qual2)
+table(winez$qual3)
+# separate data into a training set and a test set 
+set.seed(2)
+train <- sample(nrow(winez), nrow(winez)*.8)
+winez_train <- winez[train,]
+winez_test <- winez[-train,]
+```
+
+```{r rf}
+# random forest
+rfGrid <- expand.grid(mtry = 2:8)
+# 2-level variable
+rf_tree2 <- train(qual2 ~ fa + va + ca + rs + ch + fsd + tsd + den + ph + sul + al, data = winez_train, method = "rf", preProcess = c("center", "scale"), trControl = trainControl(method = "cv", number = 10), tuneGrid = rfGrid)
+rf2_pred <- predict(rf_tree2, newdata = winez_test)
+rfMatrix2 <- table(rf2_pred, winez_test$qual2)
+rf2_test <- mean(rf2_pred == winez_test$qual2)
+plot(varImp(rf_tree2))
+confusionMatrix(rf2_pred, winez_test$qual2)
+# 3-level variable
+rf_tree3 <- train(qual3 ~ fa + va + ca + rs + ch + fsd + tsd + den + ph + sul + al, data = winez_train, method = "rf", preProcess = c("center", "scale"), trControl = trainControl(method = "cv", number = 10), tuneGrid = rfGrid)
+rf3_pred <- predict(rf_tree3, newdata = winez_test)
+rfMatrix3 <- table(rf3_pred, winez_test$qual3)
+rf3_test <- mean(rf3_pred == winez_test$qual3)
+plot(varImp(rf_tree3))
+confusionMatrix(rf3_pred, winez_test$qual3)
+```
+
+
+```{r rfplots, fig.cap = "Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)", out.width = "40%", out.height = "40%", fig.align = "center", regfloat = TRUE}
+# random forest plot: accuracy rates vs number of predictors
+rfplot1 <- plot(rf_tree2)
+rfplot2 <- plot(rf_tree3)
+gridExtra::grid.arrange(rfplot1, rfplot2, nrow = 1, ncol = 2)
+```
+

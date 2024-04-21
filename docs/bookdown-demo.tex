@@ -127,7 +127,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-04-10}
+\date{2024-04-21}
 
 \begin{document}
 \maketitle
@@ -427,6 +427,208 @@ GP is widely used in the machine learning, computer experiments, and spatial sta
 \chapter{Workflow Demonstration}\label{workflow-demonstration}}
 
 In this section, we use a wine dataset to exemplify a typical workflow for constructing ML models. R code is included and several ML models are constructed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{echo =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{eval =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(tree)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'tree' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(caret)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'caret' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'lattice' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'caret'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:purrr':
+## 
+##     lift
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rattle)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'rattle' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Loading required package: bitops
+\end{verbatim}
+
+\begin{verbatim}
+## Rattle: A free graphical interface for data science with R.
+## Version 5.5.1 Copyright (c) 2006-2021 Togaware Pty Ltd.
+## Type 'rattle()' to shake, rattle, and roll your data.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(randomForest)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## randomForest 4.7-1.1
+\end{verbatim}
+
+\begin{verbatim}
+## Type rfNews() to see new features/changes/bug fixes.
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'randomForest'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:rattle':
+## 
+##     importance
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:dplyr':
+## 
+##     combine
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:ggplot2':
+## 
+##     margin
+\end{verbatim}
+
+\begin{verbatim}
+## Rows: 1599 Columns: 12
+## -- Column specification --------------------------------------------------------
+## Delimiter: ";"
+## dbl (12): fixed acidity, volatile acidity, citric acid, residual sugar, chlo...
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{verbatim}
+## qual
+##   3   4   5   6   7   8 
+##  10  53 681 638 199  18
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## high  low 
+##  855  744
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##    H    L    M 
+##  217   63 1319
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/rf-1.pdf}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction high low
+##       high  138  25
+##       low    45 112
+##                                           
+##                Accuracy : 0.7812          
+##                  95% CI : (0.7319, 0.8253)
+##     No Information Rate : 0.5719          
+##     P-Value [Acc > NIR] : 2.968e-15       
+##                                           
+##                   Kappa : 0.5613          
+##                                           
+##  Mcnemar's Test P-Value : 0.02315         
+##                                           
+##             Sensitivity : 0.7541          
+##             Specificity : 0.8175          
+##          Pos Pred Value : 0.8466          
+##          Neg Pred Value : 0.7134          
+##              Prevalence : 0.5719          
+##          Detection Rate : 0.4313          
+##    Detection Prevalence : 0.5094          
+##       Balanced Accuracy : 0.7858          
+##                                           
+##        'Positive' Class : high            
+## 
+\end{verbatim}
+
+\includegraphics{bookdown-demo_files/figure-latex/rf-2.pdf}
+
+\begin{verbatim}
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   H   L   M
+##          H  25   0   5
+##          L   0   0   1
+##          M  18   8 263
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9             
+##                  95% CI : (0.8618, 0.9306)
+##     No Information Rate : 0.8406          
+##     P-Value [Acc > NIR] : 0.001473        
+##                                           
+##                   Kappa : 0.5617          
+##                                           
+##  Mcnemar's Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: H Class: L Class: M
+## Sensitivity           0.58140 0.000000   0.9777
+## Specificity           0.98195 0.996795   0.4902
+## Pos Pred Value        0.83333 0.000000   0.9100
+## Neg Pred Value        0.93793 0.974922   0.8065
+## Prevalence            0.13437 0.025000   0.8406
+## Detection Rate        0.07812 0.000000   0.8219
+## Detection Prevalence  0.09375 0.003125   0.9031
+## Balanced Accuracy     0.78167 0.498397   0.7339
+\end{verbatim}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{bookdown-demo_files/figure-latex/rfplots-1} 
+
+}
+
+\caption{Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)}\label{fig:rfplots}
+\end{figure}
 
 \hypertarget{case-studies}{%
 \chapter{Case Studies}\label{case-studies}}
