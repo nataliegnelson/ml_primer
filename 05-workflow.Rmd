@@ -1,16 +1,16 @@
 # Workflow Demonstration  
 
-In this section, we use a wine dataset to exemplify a typical workflow for constructing ML models. R code is included and several ML models are constructed.  
+In this section, we use a wine dataset to exemplify a typical workflow for constructing ML models. R code is included and several ML models are constructed. The dataset can be found [here](https://www.kaggle.com/datasets/yasserh/wine-quality-dataset).  
+ 
 
 ```{r}
-knitr::opts_chunk$set(echo = FALSE, eval = TRUE, cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE, cache = TRUE, warning = FALSE, message = FALSE)
 library(tree)
 library(tidyverse)
 library(caret)
 library(rattle)
 library(randomForest)
 ```
-
 
 ```{r}
 wine <- read_delim("winequality-red.csv", delim = ';')
@@ -62,10 +62,35 @@ confusionMatrix(rf3_pred, winez_test$qual3)
 ```
 
 
-```{r rfplots, fig.cap = "Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)", out.width = "40%", out.height = "40%", fig.align = "center", regfloat = TRUE}
+```{r rfplots, fig.cap = "Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)", out.width = "100%", out.height = "100%", fig.align = "center", regfloat = TRUE}
 # random forest plot: accuracy rates vs number of predictors
 rfplot1 <- plot(rf_tree2)
 rfplot2 <- plot(rf_tree3)
 gridExtra::grid.arrange(rfplot1, rfplot2, nrow = 1, ncol = 2)
+```
+
+
+```{r}
+# randomforests, mtry = sqrt(11)
+rf.def.Wine <- randomForest(qual ~ fa + va + ca + rs + ch + fsd + tsd + den + ph + sul + al, data = winez_train, importance = TRUE)
+yhat.rf.Wine <- predict(rf.def.Wine, newdata = winez_test)
+rf.mtry3.testMSE <- mean((yhat.rf.Wine - winez_test$qual)^2)
+plot(rf.def.Wine)
+print(rf.mtry3.testMSE)
+
+# mtry = 4
+rf.fit <- randomForest(qual ~ fa + va + ca + rs + ch + fsd + tsd + den + ph + sul + al, data = winez_train, mtry = 4, importance = TRUE)
+rf.pred <- predict(rf.fit, newdata = winez_test)
+rf.mtry4.testMSE <- mean((rf.pred - winez_test$qual)^2)
+plot(rf.fit)
+print(rf.mtry4.testMSE)
+      
+# mtry = 7
+rf.def.Wine <- randomForest(qual ~ fa + va + ca + rs + ch + fsd + tsd + den + ph + sul + al, data = winez_train, mtry = 7, importance = TRUE)
+yhat.rf.Wine <- predict(rf.def.Wine, newdata = winez_test)
+rf.mtry7.testMSE <- mean((yhat.rf.Wine - winez_test$qual)^2)
+plot(rf.def.Wine)
+print(rf.mtry7.testMSE)
+
 ```
 

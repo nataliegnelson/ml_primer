@@ -426,11 +426,11 @@ GP is widely used in the machine learning, computer experiments, and spatial sta
 \hypertarget{workflow-demonstration}{%
 \chapter{Workflow Demonstration}\label{workflow-demonstration}}
 
-In this section, we use a wine dataset to exemplify a typical workflow for constructing ML models. R code is included and several ML models are constructed.
+In this section, we use a wine dataset to exemplify a typical workflow for constructing ML models. R code is included and several ML models are constructed. The dataset can be found \href{https://www.kaggle.com/datasets/yasserh/wine-quality-dataset}{here}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{echo =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{eval =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{echo =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{eval =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{warning =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{message =} \ConstantTok{FALSE}\NormalTok{)}
 \FunctionTok{library}\NormalTok{(tree)}
 \end{Highlighting}
 \end{Shaded}
@@ -526,15 +526,30 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 ##     margin
 \end{verbatim}
 
-\begin{verbatim}
-## Rows: 1599 Columns: 12
-## -- Column specification --------------------------------------------------------
-## Delimiter: ";"
-## dbl (12): fixed acidity, volatile acidity, citric acid, residual sugar, chlo...
-## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wine }\OtherTok{\textless{}{-}} \FunctionTok{read\_delim}\NormalTok{(}\StringTok{"winequality{-}red.csv"}\NormalTok{, }\AttributeTok{delim =} \StringTok{\textquotesingle{};\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# shorten variable names}
+\NormalTok{fa }\OtherTok{\textless{}{-}}\NormalTok{ wine}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{fixed acidity}\StringTok{\textasciigrave{}}
+\NormalTok{va }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(wine}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{volatile acidity}\StringTok{\textasciigrave{}}\NormalTok{)}
+\NormalTok{ca }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(wine}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{citric acid}\StringTok{\textasciigrave{}}\NormalTok{)}
+\NormalTok{rs }\OtherTok{\textless{}{-}}\NormalTok{ wine}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{residual sugar}\StringTok{\textasciigrave{}}
+\NormalTok{ch }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(wine}\SpecialCharTok{$}\NormalTok{chlorides)}
+\NormalTok{fsd }\OtherTok{\textless{}{-}}\NormalTok{ wine}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{free sulfur dioxide}\StringTok{\textasciigrave{}}
+\NormalTok{tsd }\OtherTok{\textless{}{-}}\NormalTok{ wine}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{total sulfur dioxide}\StringTok{\textasciigrave{}}
+\NormalTok{den }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(wine}\SpecialCharTok{$}\NormalTok{density)}
+\NormalTok{ph }\OtherTok{\textless{}{-}}\NormalTok{ wine}\SpecialCharTok{$}\NormalTok{pH}
+\NormalTok{sul }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(wine}\SpecialCharTok{$}\NormalTok{sulphates)}
+\NormalTok{al }\OtherTok{\textless{}{-}}\NormalTok{ wine}\SpecialCharTok{$}\NormalTok{alcohol}
+\NormalTok{qual }\OtherTok{\textless{}{-}}\NormalTok{ wine}\SpecialCharTok{$}\NormalTok{quality}
+\NormalTok{winez }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(fa, va, ca, rs, ch, fsd, tsd, den, ph, sul, al, qual)}
+\CommentTok{\# collapse qual into 2 labels}
+\NormalTok{winez}\SpecialCharTok{$}\NormalTok{qual2 }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(winez}\SpecialCharTok{$}\NormalTok{qual }\SpecialCharTok{\textless{}} \DecValTok{6}\NormalTok{, }\StringTok{"low"}\NormalTok{, }\StringTok{"high"}\NormalTok{))}
+\CommentTok{\# collapse qual into 3 labels}
+\NormalTok{winez}\SpecialCharTok{$}\NormalTok{qual3 }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(winez}\SpecialCharTok{$}\NormalTok{qual }\SpecialCharTok{\textless{}} \DecValTok{5}\NormalTok{, }\StringTok{"L"}\NormalTok{, }\FunctionTok{ifelse}\NormalTok{(winez}\SpecialCharTok{$}\NormalTok{qual }\SpecialCharTok{\textless{}} \DecValTok{7}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"H"}\NormalTok{)))}
+\FunctionTok{table}\NormalTok{(qual)}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{verbatim}
 ## qual
@@ -542,11 +557,23 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 ##  10  53 681 638 199  18
 \end{verbatim}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(winez}\SpecialCharTok{$}\NormalTok{qual2)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{verbatim}
 ## 
 ## high  low 
 ##  855  744
 \end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(winez}\SpecialCharTok{$}\NormalTok{qual3)}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{verbatim}
 ## 
@@ -554,7 +581,36 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 ##  217   63 1319
 \end{verbatim}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# separate data into a training set and a test set }
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{train }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(winez), }\FunctionTok{nrow}\NormalTok{(winez)}\SpecialCharTok{*}\NormalTok{.}\DecValTok{8}\NormalTok{)}
+\NormalTok{winez\_train }\OtherTok{\textless{}{-}}\NormalTok{ winez[train,]}
+\NormalTok{winez\_test }\OtherTok{\textless{}{-}}\NormalTok{ winez[}\SpecialCharTok{{-}}\NormalTok{train,]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# random forest}
+\NormalTok{rfGrid }\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(}\AttributeTok{mtry =} \DecValTok{2}\SpecialCharTok{:}\DecValTok{8}\NormalTok{)}
+\CommentTok{\# 2{-}level variable}
+\NormalTok{rf\_tree2 }\OtherTok{\textless{}{-}} \FunctionTok{train}\NormalTok{(qual2 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ fa }\SpecialCharTok{+}\NormalTok{ va }\SpecialCharTok{+}\NormalTok{ ca }\SpecialCharTok{+}\NormalTok{ rs }\SpecialCharTok{+}\NormalTok{ ch }\SpecialCharTok{+}\NormalTok{ fsd }\SpecialCharTok{+}\NormalTok{ tsd }\SpecialCharTok{+}\NormalTok{ den }\SpecialCharTok{+}\NormalTok{ ph }\SpecialCharTok{+}\NormalTok{ sul }\SpecialCharTok{+}\NormalTok{ al, }\AttributeTok{data =}\NormalTok{ winez\_train, }\AttributeTok{method =} \StringTok{"rf"}\NormalTok{, }\AttributeTok{preProcess =} \FunctionTok{c}\NormalTok{(}\StringTok{"center"}\NormalTok{, }\StringTok{"scale"}\NormalTok{), }\AttributeTok{trControl =} \FunctionTok{trainControl}\NormalTok{(}\AttributeTok{method =} \StringTok{"cv"}\NormalTok{, }\AttributeTok{number =} \DecValTok{10}\NormalTok{), }\AttributeTok{tuneGrid =}\NormalTok{ rfGrid)}
+\NormalTok{rf2\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf\_tree2, }\AttributeTok{newdata =}\NormalTok{ winez\_test)}
+\NormalTok{rfMatrix2 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(rf2\_pred, winez\_test}\SpecialCharTok{$}\NormalTok{qual2)}
+\NormalTok{rf2\_test }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(rf2\_pred }\SpecialCharTok{==}\NormalTok{ winez\_test}\SpecialCharTok{$}\NormalTok{qual2)}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{varImp}\NormalTok{(rf\_tree2))}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{bookdown-demo_files/figure-latex/rf-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{confusionMatrix}\NormalTok{(rf2\_pred, winez\_test}\SpecialCharTok{$}\NormalTok{qual2)}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{verbatim}
 ## Confusion Matrix and Statistics
@@ -586,7 +642,24 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 ## 
 \end{verbatim}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 3{-}level variable}
+\NormalTok{rf\_tree3 }\OtherTok{\textless{}{-}} \FunctionTok{train}\NormalTok{(qual3 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ fa }\SpecialCharTok{+}\NormalTok{ va }\SpecialCharTok{+}\NormalTok{ ca }\SpecialCharTok{+}\NormalTok{ rs }\SpecialCharTok{+}\NormalTok{ ch }\SpecialCharTok{+}\NormalTok{ fsd }\SpecialCharTok{+}\NormalTok{ tsd }\SpecialCharTok{+}\NormalTok{ den }\SpecialCharTok{+}\NormalTok{ ph }\SpecialCharTok{+}\NormalTok{ sul }\SpecialCharTok{+}\NormalTok{ al, }\AttributeTok{data =}\NormalTok{ winez\_train, }\AttributeTok{method =} \StringTok{"rf"}\NormalTok{, }\AttributeTok{preProcess =} \FunctionTok{c}\NormalTok{(}\StringTok{"center"}\NormalTok{, }\StringTok{"scale"}\NormalTok{), }\AttributeTok{trControl =} \FunctionTok{trainControl}\NormalTok{(}\AttributeTok{method =} \StringTok{"cv"}\NormalTok{, }\AttributeTok{number =} \DecValTok{10}\NormalTok{), }\AttributeTok{tuneGrid =}\NormalTok{ rfGrid)}
+\NormalTok{rf3\_pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf\_tree3, }\AttributeTok{newdata =}\NormalTok{ winez\_test)}
+\NormalTok{rfMatrix3 }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(rf3\_pred, winez\_test}\SpecialCharTok{$}\NormalTok{qual3)}
+\NormalTok{rf3\_test }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(rf3\_pred }\SpecialCharTok{==}\NormalTok{ winez\_test}\SpecialCharTok{$}\NormalTok{qual3)}
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{varImp}\NormalTok{(rf\_tree3))}
+\end{Highlighting}
+\end{Shaded}
+
 \includegraphics{bookdown-demo_files/figure-latex/rf-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{confusionMatrix}\NormalTok{(rf3\_pred, winez\_test}\SpecialCharTok{$}\NormalTok{qual3)}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{verbatim}
 ## Confusion Matrix and Statistics
@@ -621,14 +694,89 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 ## Balanced Accuracy     0.78167 0.498397   0.7339
 \end{verbatim}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# random forest plot: accuracy rates vs number of predictors}
+\NormalTok{rfplot1 }\OtherTok{\textless{}{-}} \FunctionTok{plot}\NormalTok{(rf\_tree2)}
+\NormalTok{rfplot2 }\OtherTok{\textless{}{-}} \FunctionTok{plot}\NormalTok{(rf\_tree3)}
+\NormalTok{gridExtra}\SpecialCharTok{::}\FunctionTok{grid.arrange}\NormalTok{(rfplot1, rfplot2, }\AttributeTok{nrow =} \DecValTok{1}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{figure}
 
-{\centering \includegraphics[width=0.4\linewidth,height=0.4\textheight]{bookdown-demo_files/figure-latex/rfplots-1} 
+{\centering \includegraphics[width=1\linewidth,height=1\textheight]{bookdown-demo_files/figure-latex/rfplots-1} 
 
 }
 
 \caption{Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)}\label{fig:rfplots}
 \end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# randomforests, mtry = sqrt(11)}
+\NormalTok{rf.def.Wine }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(qual }\SpecialCharTok{\textasciitilde{}}\NormalTok{ fa }\SpecialCharTok{+}\NormalTok{ va }\SpecialCharTok{+}\NormalTok{ ca }\SpecialCharTok{+}\NormalTok{ rs }\SpecialCharTok{+}\NormalTok{ ch }\SpecialCharTok{+}\NormalTok{ fsd }\SpecialCharTok{+}\NormalTok{ tsd }\SpecialCharTok{+}\NormalTok{ den }\SpecialCharTok{+}\NormalTok{ ph }\SpecialCharTok{+}\NormalTok{ sul }\SpecialCharTok{+}\NormalTok{ al, }\AttributeTok{data =}\NormalTok{ winez\_train, }\AttributeTok{importance =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{yhat.rf.Wine }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf.def.Wine, }\AttributeTok{newdata =}\NormalTok{ winez\_test)}
+\NormalTok{rf.mtry3.testMSE }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((yhat.rf.Wine }\SpecialCharTok{{-}}\NormalTok{ winez\_test}\SpecialCharTok{$}\NormalTok{qual)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(rf.def.Wine)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(rf.mtry3.testMSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.289515
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# mtry = 4}
+\NormalTok{rf.fit }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(qual }\SpecialCharTok{\textasciitilde{}}\NormalTok{ fa }\SpecialCharTok{+}\NormalTok{ va }\SpecialCharTok{+}\NormalTok{ ca }\SpecialCharTok{+}\NormalTok{ rs }\SpecialCharTok{+}\NormalTok{ ch }\SpecialCharTok{+}\NormalTok{ fsd }\SpecialCharTok{+}\NormalTok{ tsd }\SpecialCharTok{+}\NormalTok{ den }\SpecialCharTok{+}\NormalTok{ ph }\SpecialCharTok{+}\NormalTok{ sul }\SpecialCharTok{+}\NormalTok{ al, }\AttributeTok{data =}\NormalTok{ winez\_train, }\AttributeTok{mtry =} \DecValTok{4}\NormalTok{, }\AttributeTok{importance =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{rf.pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf.fit, }\AttributeTok{newdata =}\NormalTok{ winez\_test)}
+\NormalTok{rf.mtry4.testMSE }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((rf.pred }\SpecialCharTok{{-}}\NormalTok{ winez\_test}\SpecialCharTok{$}\NormalTok{qual)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(rf.fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-13-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(rf.mtry4.testMSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2907887
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# mtry = 7}
+\NormalTok{rf.def.Wine }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(qual }\SpecialCharTok{\textasciitilde{}}\NormalTok{ fa }\SpecialCharTok{+}\NormalTok{ va }\SpecialCharTok{+}\NormalTok{ ca }\SpecialCharTok{+}\NormalTok{ rs }\SpecialCharTok{+}\NormalTok{ ch }\SpecialCharTok{+}\NormalTok{ fsd }\SpecialCharTok{+}\NormalTok{ tsd }\SpecialCharTok{+}\NormalTok{ den }\SpecialCharTok{+}\NormalTok{ ph }\SpecialCharTok{+}\NormalTok{ sul }\SpecialCharTok{+}\NormalTok{ al, }\AttributeTok{data =}\NormalTok{ winez\_train, }\AttributeTok{mtry =} \DecValTok{7}\NormalTok{, }\AttributeTok{importance =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{yhat.rf.Wine }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf.def.Wine, }\AttributeTok{newdata =}\NormalTok{ winez\_test)}
+\NormalTok{rf.mtry7.testMSE }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((yhat.rf.Wine }\SpecialCharTok{{-}}\NormalTok{ winez\_test}\SpecialCharTok{$}\NormalTok{qual)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(rf.def.Wine)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-13-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(rf.mtry7.testMSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.292777
+\end{verbatim}
 
 \hypertarget{case-studies}{%
 \chapter{Case Studies}\label{case-studies}}
