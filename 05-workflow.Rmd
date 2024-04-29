@@ -1,16 +1,18 @@
 # Workflow Demonstration  
 
-In this section, we use a wine dataset to exemplify a typical workflow for constructing ML models. R code is included and several ML models are constructed. The dataset can be found [here](https://www.kaggle.com/datasets/yasserh/wine-quality-dataset).  
+In this section, we use a wine dataset to exemplify a typical workflow for constructing ML models. R code is included and several ML models are constructed. Here we use a dataset that contains wine quality and traits, and our goal is to predict the quality of wine using the traits. The dataset can be found [here](https://www.kaggle.com/datasets/yasserh/wine-quality-dataset).  
  
 
-```{r}
-knitr::opts_chunk$set(echo = TRUE, eval = TRUE, cache = TRUE, warning = FALSE, message = FALSE)
+```{r, warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE, cache = TRUE)
 library(tree)
 library(tidyverse)
 library(caret)
 library(rattle)
 library(randomForest)
 ```
+
+We first read in the data and rename the variables, so coding is easier. 
 
 ```{r}
 wine <- read_delim("winequality-red.csv", delim = ';')
@@ -28,6 +30,11 @@ sul <- as.numeric(wine$sulphates)
 al <- wine$alcohol
 qual <- wine$quality
 winez <- data.frame(fa, va, ca, rs, ch, fsd, tsd, den, ph, sul, al, qual)
+```
+
+To demonstrate how to run random forest with continuous and discrete outcomes, we also transform the continuous variable wine quality, our response variable, into two discrete variables. One has two levels: high vs low, and one has three levels: H, M, and L. 
+
+```{r}
 # collapse qual into 2 labels
 winez$qual2 <- as.factor(ifelse(winez$qual < 6, "low", "high"))
 # collapse qual into 3 labels
@@ -35,6 +42,11 @@ winez$qual3 <- as.factor(ifelse(winez$qual < 5, "L", ifelse(winez$qual < 7, "M",
 table(qual)
 table(winez$qual2)
 table(winez$qual3)
+```
+
+Next we separate the dataset into a training set (80%) and a testing set (20%). A seed is set so that the result can be reproduced. 
+
+```{r}
 # separate data into a training set and a test set 
 set.seed(2)
 train <- sample(nrow(winez), nrow(winez)*.8)
@@ -42,7 +54,9 @@ winez_train <- winez[train,]
 winez_test <- winez[-train,]
 ```
 
-```{r rf}
+Now we run random forest with the two-level response. After the model is run, we calculate the predictions using the `predict` function. A plot for the important predictors are provided, and a confusion matrix is created. 
+
+```{r rf, cache = TRUE}
 # random forest
 rfGrid <- expand.grid(mtry = 2:8)
 # 2-level variable
@@ -52,6 +66,11 @@ rfMatrix2 <- table(rf2_pred, winez_test$qual2)
 rf2_test <- mean(rf2_pred == winez_test$qual2)
 plot(varImp(rf_tree2))
 confusionMatrix(rf2_pred, winez_test$qual2)
+```
+
+Next we create a model with the three-level outcome variable. Again, important predictors are plotted and a confusion matrix is included below.  
+
+```{r, cache = TRUE}
 # 3-level variable
 rf_tree3 <- train(qual3 ~ fa + va + ca + rs + ch + fsd + tsd + den + ph + sul + al, data = winez_train, method = "rf", preProcess = c("center", "scale"), trControl = trainControl(method = "cv", number = 10), tuneGrid = rfGrid)
 rf3_pred <- predict(rf_tree3, newdata = winez_test)
@@ -61,6 +80,7 @@ plot(varImp(rf_tree3))
 confusionMatrix(rf3_pred, winez_test$qual3)
 ```
 
+From the confusion matrices, three-level model works better. The plot below shows how the accuracy rate changes with the number of randomly selected variables in each tree (denoted as $M$).  
 
 ```{r rfplots, fig.cap = "Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)", out.width = "100%", out.height = "100%", fig.align = "center", regfloat = TRUE}
 # random forest plot: accuracy rates vs number of predictors
@@ -69,6 +89,7 @@ rfplot2 <- plot(rf_tree3)
 gridExtra::grid.arrange(rfplot1, rfplot2, nrow = 1, ncol = 2)
 ```
 
+Next we run another random forest model with the continuous outcome variable. We first set $M$ as the square root of the number of predictors, as this is commonly recommended. Confusion matrices cannot be provided for continuous responses, but we provide a plot for important variables. 
 
 ```{r}
 # randomforests, mtry = sqrt(11)
@@ -76,21 +97,31 @@ rf.def.Wine <- randomForest(qual ~ fa + va + ca + rs + ch + fsd + tsd + den + ph
 yhat.rf.Wine <- predict(rf.def.Wine, newdata = winez_test)
 rf.mtry3.testMSE <- mean((yhat.rf.Wine - winez_test$qual)^2)
 plot(rf.def.Wine)
-print(rf.mtry3.testMSE)
+# print(rf.mtry3.testMSE)
+```
 
+We try several different numbers for the number of variable included in each tree and compare the MSEs from these models.   
+
+```{r}
 # mtry = 4
 rf.fit <- randomForest(qual ~ fa + va + ca + rs + ch + fsd + tsd + den + ph + sul + al, data = winez_train, mtry = 4, importance = TRUE)
 rf.pred <- predict(rf.fit, newdata = winez_test)
 rf.mtry4.testMSE <- mean((rf.pred - winez_test$qual)^2)
 plot(rf.fit)
-print(rf.mtry4.testMSE)
+# print(rf.mtry4.testMSE)
       
 # mtry = 7
 rf.def.Wine <- randomForest(qual ~ fa + va + ca + rs + ch + fsd + tsd + den + ph + sul + al, data = winez_train, mtry = 7, importance = TRUE)
 yhat.rf.Wine <- predict(rf.def.Wine, newdata = winez_test)
 rf.mtry7.testMSE <- mean((yhat.rf.Wine - winez_test$qual)^2)
 plot(rf.def.Wine)
-print(rf.mtry7.testMSE)
+# print(rf.mtry7.testMSE)
+```
 
+```{r}
+res <- data.frame(rf.mtry3.testMSE, rf.mtry4.testMSE, rf.mtry7.testMSE)
+colnames(res) <- c("squre root of p", "4", "7")
+rownames(res) <- c("MSE")
+knitr::kable(res)
 ```
 

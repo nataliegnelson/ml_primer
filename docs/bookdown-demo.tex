@@ -127,7 +127,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-04-21}
+\date{2024-04-29}
 
 \begin{document}
 \maketitle
@@ -426,109 +426,39 @@ GP is widely used in the machine learning, computer experiments, and spatial sta
 \hypertarget{workflow-demonstration}{%
 \chapter{Workflow Demonstration}\label{workflow-demonstration}}
 
-In this section, we use a wine dataset to exemplify a typical workflow for constructing ML models. R code is included and several ML models are constructed. The dataset can be found \href{https://www.kaggle.com/datasets/yasserh/wine-quality-dataset}{here}.
+In this section, we use a wine dataset to exemplify a typical workflow for constructing ML models. R code is included and several ML models are constructed. Here we use a dataset that contains wine quality and traits, and our goal is to predict the quality of wine using the traits. The dataset can be found \href{https://www.kaggle.com/datasets/yasserh/wine-quality-dataset}{here}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{echo =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{eval =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{warning =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{message =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{echo =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{eval =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{cache =} \ConstantTok{TRUE}\NormalTok{)}
 \FunctionTok{library}\NormalTok{(tree)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: package 'tree' was built under R version 4.2.3
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
 \FunctionTok{library}\NormalTok{(caret)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: package 'caret' was built under R version 4.2.3
-\end{verbatim}
-
-\begin{verbatim}
-## Loading required package: lattice
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'lattice' was built under R version 4.2.3
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'caret'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:purrr':
-## 
-##     lift
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(rattle)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: package 'rattle' was built under R version 4.2.3
-\end{verbatim}
-
-\begin{verbatim}
-## Loading required package: bitops
-\end{verbatim}
-
-\begin{verbatim}
-## Rattle: A free graphical interface for data science with R.
-## Version 5.5.1 Copyright (c) 2006-2021 Togaware Pty Ltd.
-## Type 'rattle()' to shake, rattle, and roll your data.
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(randomForest)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## randomForest 4.7-1.1
-\end{verbatim}
-
-\begin{verbatim}
-## Type rfNews() to see new features/changes/bug fixes.
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'randomForest'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:rattle':
-## 
-##     importance
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:dplyr':
-## 
-##     combine
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:ggplot2':
-## 
-##     margin
-\end{verbatim}
+We first read in the data and rename the variables, so coding is easier.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{wine }\OtherTok{\textless{}{-}} \FunctionTok{read\_delim}\NormalTok{(}\StringTok{"winequality{-}red.csv"}\NormalTok{, }\AttributeTok{delim =} \StringTok{\textquotesingle{};\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 1599 Columns: 12
+## -- Column specification --------------------------------------------------------
+## Delimiter: ";"
+## dbl (12): fixed acidity, volatile acidity, citric acid, residual sugar, chlo...
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \CommentTok{\# shorten variable names}
 \NormalTok{fa }\OtherTok{\textless{}{-}}\NormalTok{ wine}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{fixed acidity}\StringTok{\textasciigrave{}}
 \NormalTok{va }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(wine}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{volatile acidity}\StringTok{\textasciigrave{}}\NormalTok{)}
@@ -543,6 +473,13 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 \NormalTok{al }\OtherTok{\textless{}{-}}\NormalTok{ wine}\SpecialCharTok{$}\NormalTok{alcohol}
 \NormalTok{qual }\OtherTok{\textless{}{-}}\NormalTok{ wine}\SpecialCharTok{$}\NormalTok{quality}
 \NormalTok{winez }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(fa, va, ca, rs, ch, fsd, tsd, den, ph, sul, al, qual)}
+\end{Highlighting}
+\end{Shaded}
+
+To demonstrate how to run random forest with continuous and discrete outcomes, we also transform the continuous variable wine quality, our response variable, into two discrete variables. One has two levels: high vs low, and one has three levels: H, M, and L.
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \CommentTok{\# collapse qual into 2 labels}
 \NormalTok{winez}\SpecialCharTok{$}\NormalTok{qual2 }\OtherTok{\textless{}{-}} \FunctionTok{as.factor}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(winez}\SpecialCharTok{$}\NormalTok{qual }\SpecialCharTok{\textless{}} \DecValTok{6}\NormalTok{, }\StringTok{"low"}\NormalTok{, }\StringTok{"high"}\NormalTok{))}
 \CommentTok{\# collapse qual into 3 labels}
@@ -581,6 +518,8 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 ##  217   63 1319
 \end{verbatim}
 
+Next we separate the dataset into a training set (80\%) and a testing set (20\%). A seed is set so that the result can be reproduced.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# separate data into a training set and a test set }
@@ -590,6 +529,8 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 \NormalTok{winez\_test }\OtherTok{\textless{}{-}}\NormalTok{ winez[}\SpecialCharTok{{-}}\NormalTok{train,]}
 \end{Highlighting}
 \end{Shaded}
+
+Now we run random forest with the two-level response. After the model is run, we calculate the predictions using the \texttt{predict} function. A plot for the important predictors are provided, and a confusion matrix is created.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -642,6 +583,8 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 ## 
 \end{verbatim}
 
+Next we create a model with the three-level outcome variable. Again, important predictors are plotted and a confusion matrix is included below.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# 3{-}level variable}
@@ -653,7 +596,7 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/rf-2.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-15-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -694,6 +637,8 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 ## Balanced Accuracy     0.78167 0.498397   0.7339
 \end{verbatim}
 
+From the confusion matrices, three-level model works better. The plot below shows how the accuracy rate changes with the number of randomly selected variables in each tree (denoted as \(M\)).
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# random forest plot: accuracy rates vs number of predictors}
@@ -712,6 +657,8 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 \caption{Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)}\label{fig:rfplots}
 \end{figure}
 
+Next we run another random forest model with the continuous outcome variable. We first set \(M\) as the square root of the number of predictors, as this is commonly recommended. Confusion matrices cannot be provided for continuous responses, but we provide a plot for important variables.
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# randomforests, mtry = sqrt(11)}
@@ -722,17 +669,15 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-13-1.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-16-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{print}\NormalTok{(rf.mtry3.testMSE)}
+\CommentTok{\# print(rf.mtry3.testMSE)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## [1] 0.289515
-\end{verbatim}
+We try several different numbers for the number of variable included in each tree and compare the MSEs from these models.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -744,20 +689,12 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-13-2.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-17-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{print}\NormalTok{(rf.mtry4.testMSE)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 0.2907887
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
+\CommentTok{\# print(rf.mtry4.testMSE)}
+      
 \CommentTok{\# mtry = 7}
 \NormalTok{rf.def.Wine }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(qual }\SpecialCharTok{\textasciitilde{}}\NormalTok{ fa }\SpecialCharTok{+}\NormalTok{ va }\SpecialCharTok{+}\NormalTok{ ca }\SpecialCharTok{+}\NormalTok{ rs }\SpecialCharTok{+}\NormalTok{ ch }\SpecialCharTok{+}\NormalTok{ fsd }\SpecialCharTok{+}\NormalTok{ tsd }\SpecialCharTok{+}\NormalTok{ den }\SpecialCharTok{+}\NormalTok{ ph }\SpecialCharTok{+}\NormalTok{ sul }\SpecialCharTok{+}\NormalTok{ al, }\AttributeTok{data =}\NormalTok{ winez\_train, }\AttributeTok{mtry =} \DecValTok{7}\NormalTok{, }\AttributeTok{importance =} \ConstantTok{TRUE}\NormalTok{)}
 \NormalTok{yhat.rf.Wine }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf.def.Wine, }\AttributeTok{newdata =}\NormalTok{ winez\_test)}
@@ -766,17 +703,30 @@ In this section, we use a wine dataset to exemplify a typical workflow for const
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-13-3.pdf}
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-17-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{print}\NormalTok{(rf.mtry7.testMSE)}
+\CommentTok{\# print(rf.mtry7.testMSE)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## [1] 0.292777
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(rf.mtry3.testMSE, rf.mtry4.testMSE, rf.mtry7.testMSE)}
+\FunctionTok{colnames}\NormalTok{(res) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"squre root of p"}\NormalTok{, }\StringTok{"4"}\NormalTok{, }\StringTok{"7"}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(res) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"MSE"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(res)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r|r|r}
+\hline
+  & squre root of p & 4 & 7\\
+\hline
+MSE & 0.289515 & 0.2907887 & 0.292777\\
+\hline
+\end{tabular}
 
 \hypertarget{case-studies}{%
 \chapter{Case Studies}\label{case-studies}}
