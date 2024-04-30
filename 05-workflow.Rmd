@@ -12,6 +12,8 @@ library(rattle)
 library(randomForest)
 ```
 
+## Prepare Data  
+
 We first read in the data and rename the variables, so coding is easier. 
 
 ```{r}
@@ -54,6 +56,8 @@ winez_train <- winez[train,]
 winez_test <- winez[-train,]
 ```
 
+## Classification Models  
+
 Now we run random forest with the two-level response. After the model is run, we calculate the predictions using the `predict` function. A plot for the important predictors are provided, and a confusion matrix is created. 
 
 ```{r rf, cache = TRUE}
@@ -88,6 +92,8 @@ rfplot1 <- plot(rf_tree2)
 rfplot2 <- plot(rf_tree3)
 gridExtra::grid.arrange(rfplot1, rfplot2, nrow = 1, ncol = 2)
 ```
+
+## Prediction Models  
 
 Next we run another random forest model with the continuous outcome variable. We first set $m$ as the square root of the number of predictors, as this is commonly recommended. Confusion matrices cannot be provided for continuous responses, but we provide a plot for important variables. 
 

@@ -93,6 +93,10 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rattle.togaware.com/">rattle</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests/">randomForest</a></span><span class="op">)</span></span></code></pre></div>
+<div id="prepare-data" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Prepare Data<a class="anchor" aria-label="anchor" href="#prepare-data"><i class="fas fa-link"></i></a>
+</h2>
 <p>We first read in the data and rename the variables, so coding is easier.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">wine</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim</a></span><span class="op">(</span><span class="st">"winequality-red.csv"</span>, delim <span class="op">=</span> <span class="st">';'</span><span class="op">)</span></span></code></pre></div>
@@ -145,6 +149,11 @@
 <span><span class="va">train</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">winez</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">winez</span><span class="op">)</span><span class="op">*</span><span class="fl">.8</span><span class="op">)</span></span>
 <span><span class="va">winez_train</span> <span class="op">&lt;-</span> <span class="va">winez</span><span class="op">[</span><span class="va">train</span>,<span class="op">]</span></span>
 <span><span class="va">winez_test</span> <span class="op">&lt;-</span> <span class="va">winez</span><span class="op">[</span><span class="op">-</span><span class="va">train</span>,<span class="op">]</span></span></code></pre></div>
+</div>
+<div id="classification-models" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Classification Models<a class="anchor" aria-label="anchor" href="#classification-models"><i class="fas fa-link"></i></a>
+</h2>
 <p>Now we run random forest with the two-level response. After the model is run, we calculate the predictions using the <code>predict</code> function. A plot for the important predictors are provided, and a confusion matrix is created.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># random forest</span></span>
@@ -238,6 +247,11 @@
 Figure 6.1: Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)
 </p>
 </div>
+</div>
+<div id="prediction-models" class="section level2" number="6.3">
+<h2>
+<span class="header-section-number">6.3</span> Prediction Models<a class="anchor" aria-label="anchor" href="#prediction-models"><i class="fas fa-link"></i></a>
+</h2>
 <p>Next we run another random forest model with the continuous outcome variable. We first set <span class="math inline">\(m\)</span> as the square root of the number of predictors, as this is commonly recommended. Confusion matrices cannot be provided for continuous responses, but we provide a plot for important variables.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># randomforests, mtry = sqrt(11)</span></span>
@@ -287,12 +301,18 @@ Figure 6.1: Accuracy Rates vs Number of Predictors Used for 2-level Variable (le
 </tr></tbody>
 </table></div>
 </div>
+</div>
   <div class="chapter-nav">
 <div class="prev"><a href="machine-learning-methods.html"><span class="header-section-number">5</span> Machine Learning Methods</a></div>
 <div class="next"><a href="case-studies.html"><span class="header-section-number">7</span> Case Studies</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#workflow-demonstration"><span class="header-section-number">6</span> Workflow Demonstration</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#workflow-demonstration"><span class="header-section-number">6</span> Workflow Demonstration</a></li>
+<li><a class="nav-link" href="#prepare-data"><span class="header-section-number">6.1</span> Prepare Data</a></li>
+<li><a class="nav-link" href="#classification-models"><span class="header-section-number">6.2</span> Classification Models</a></li>
+<li><a class="nav-link" href="#prediction-models"><span class="header-section-number">6.3</span> Prediction Models</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">

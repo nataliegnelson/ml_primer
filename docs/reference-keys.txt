@@ -25,6 +25,9 @@ other-ensemble-tree-methods
 neural-network
 gaussian-process-gp
 workflow-demonstration
+prepare-data
+classification-models
+prediction-models
 case-studies
 case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes
 takeaway

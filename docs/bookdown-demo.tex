@@ -440,6 +440,9 @@ In this section, we use a dataset to exemplify a typical workflow for constructi
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{prepare-data}{%
+\section{Prepare Data}\label{prepare-data}}
+
 We first read in the data and rename the variables, so coding is easier.
 
 \begin{Shaded}
@@ -530,6 +533,9 @@ Next we separate the dataset into a training set (80\%) and a testing set (20\%)
 \NormalTok{winez\_test }\OtherTok{\textless{}{-}}\NormalTok{ winez[}\SpecialCharTok{{-}}\NormalTok{train,]}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{classification-models}{%
+\section{Classification Models}\label{classification-models}}
 
 Now we run random forest with the two-level response. After the model is run, we calculate the predictions using the \texttt{predict} function. A plot for the important predictors are provided, and a confusion matrix is created.
 
@@ -657,6 +663,9 @@ From the confusion matrices, three-level model works better. The plot below show
 
 \caption{Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)}\label{fig:rfplots}
 \end{figure}
+
+\hypertarget{prediction-models}{%
+\section{Prediction Models}\label{prediction-models}}
 
 Next we run another random forest model with the continuous outcome variable. We first set \(m\) as the square root of the number of predictors, as this is commonly recommended. Confusion matrices cannot be provided for continuous responses, but we provide a plot for important variables.
 
