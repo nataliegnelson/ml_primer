@@ -95,20 +95,20 @@
 <img src="images/Decision_Tree.jpg" alt="By Gilgoldm - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=90405437"><div class="figcaption">By Gilgoldm - Own work, CC BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=90405437" class="uri">https://commons.wikimedia.org/w/index.php?curid=90405437</a>
 </div>
 </div>
-<p>Decision trees are easy to use but not very accurate for complex data; however, we can go beyond one tree. If we use multiple trees and, for instance, take the average of the predictions of all the trees, we can improve the performance. This is the idea of ensemble methods. One of the ensemble methods, random forests, is commonly used, including in natural resources management, and quite accurate for many kinds of data. So next we’ll dive into this one method.</p>
+<p>Decision trees are easy to use but not very accurate for complex data; however, we can go beyond one tree. If we use multiple trees and, for instance, take the average of the predictions of all the trees, we can improve the performance. This is the idea of ensemble methods. One of the ensemble methods, Random Forests, is commonly used, including in natural resources management, and quite accurate for many kinds of data. So next we’ll dive into this one method.</p>
 <div id="random-forests" class="section level3" number="5.1.1">
 <h3>
 <span class="header-section-number">5.1.1</span> Random Forests<a class="anchor" aria-label="anchor" href="#random-forests"><i class="fas fa-link"></i></a>
 </h3>
-<p>For random forests, the algorithm randomly selects a smaller number, say <span class="math inline">\(m\)</span>, of predictors from the total number, say <span class="math inline">\(p\)</span>, each time a tree is being fit. This process is repeated many times, for example, <span class="math inline">\(500\)</span> times. The average (for continuous responses) or the majority votes (for discrete responses) of the predictions from the individual trees are used as final predictions. By randomly choosing a subset of predictors each time, random forests can avoid relying on the same variables every time and prevent overfitting.</p>
-<p>Even though coefficients of each predictors are not available for random forests, you can easily get the important variables and at least know which variables are more important for predicting the response. You can also use random forests as a tool for variable selection and then use a different method to fit the model on a subset of predictors chosen by random forests.</p>
-<p>[Need examples]</p>
+<p>For Random Forests, the algorithm randomly selects a smaller number, say <span class="math inline">\(m\)</span>, of predictors from the total number, say <span class="math inline">\(p\)</span>, each time a tree is being fit. This process is repeated many times, for example, <span class="math inline">\(500\)</span> times. The average (for continuous responses) or the majority votes (for discrete responses) of the predictions from the individual trees are used as final predictions. By randomly choosing a subset of predictors each time, random forests can avoid relying on the same variables every time and prevent overfitting.</p>
+<p>Even though coefficients of each predictors are not available for random forests, you can easily get the important variables and at least know which variables are more important for predicting the response. You can also use Random Forests as a tool for variable selection and then use a different method to fit the model on a subset of predictors chosen by Random Forests.</p>
+<p>See <a href="workflow-demonstration.html#workflow-demonstration">Workflow Demonstration</a> for examples of Random Forests models.</p>
 </div>
 <div id="other-ensemble-tree-methods" class="section level3" number="5.1.2">
 <h3>
 <span class="header-section-number">5.1.2</span> Other Ensemble Tree Methods<a class="anchor" aria-label="anchor" href="#other-ensemble-tree-methods"><i class="fas fa-link"></i></a>
 </h3>
-<p>Other ensemble tree methods include boosting and bagging. If you are interested, take a look at [a source].</p>
+<p>Other ensemble tree methods include boosting and bagging. If you are interested, take a look at Chapter 8 (Tree-Based Methods) of <em>An Introduction to Statistical Learning</em> by <span class="citation">James et al. (<a href="references.html#ref-james2013introduction">2013</a>)</span>.</p>
 </div>
 </div>
 <div id="neural-network" class="section level2" number="5.2">
@@ -162,7 +162,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-04-29.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-04-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

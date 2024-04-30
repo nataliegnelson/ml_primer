@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 3 Data | Machine Learning Guidelines for Natural Resource Management Practitioners</title>
 <meta name="author" content="Shih-Ni Prim and Natalie Nelson">
-<meta name="description" content="When you have data, don’t feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road.  3.1 Data Exploratoary...">
+<meta name="description" content="When you have data, don’t feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road. Here we demonstrate...">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="Chapter 3 Data | Machine Learning Guidelines for Natural Resource Management Practitioners">
 <meta property="og:type" content="book">
-<meta property="og:description" content="When you have data, don’t feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road.  3.1 Data Exploratoary...">
+<meta property="og:description" content="When you have data, don’t feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road. Here we demonstrate...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 3 Data | Machine Learning Guidelines for Natural Resource Management Practitioners">
-<meta name="twitter:description" content="When you have data, don’t feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road.  3.1 Data Exploratoary...">
+<meta name="twitter:description" content="When you have data, don’t feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road. Here we demonstrate...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -85,7 +85,7 @@
 <h1>
 <span class="header-section-number">3</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
 </h1>
-<p>When you have data, don’t feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road.</p>
+<p>When you have data, don’t feel so rushed to jump into data analysis yet. Some steps can help you know your data better and, more than often, avoid problems down the road. Here we demonstrate typical steps for exploring data.</p>
 <div id="data-exploratoary-analysis" class="section level2" number="3.1">
 <h2>
 <span class="header-section-number">3.1</span> Data Exploratoary Analysis<a class="anchor" aria-label="anchor" href="#data-exploratoary-analysis"><i class="fas fa-link"></i></a>
@@ -175,6 +175,7 @@
 <h2>
 <span class="header-section-number">3.2</span> Data Requirement<a class="anchor" aria-label="anchor" href="#data-requirement"><i class="fas fa-link"></i></a>
 </h2>
+<p>It is difficult to talk about data requirement in a general sense. A few considerations are offered here. The data should be appropriate to the research questions. For example, if you want to know causal relationships, clinical trial data is the gold standard. Further, make sure that the sample size is large enough for what you want to study. If you would like to know the behavior of mice, repeatedly recording the behavior of one, or even five, mice will not be sufficient. Further, consistency in measurement should be consistent. Any major changes in the data collection methods should be taken into consideration. Sometimes adjustment can be made. The best practice is to consider how the data is collected and ensure that there is sufficient information in the data to answer the research questions.</p>
 </div>
 <div id="strategies-for-missing-data" class="section level2" number="3.3">
 <h2>
@@ -190,7 +191,7 @@
 <h3>
 <span class="header-section-number">3.3.2</span> Imputation<a class="anchor" aria-label="anchor" href="#imputation"><i class="fas fa-link"></i></a>
 </h3>
-<p>Imputation is a commonly used method for missing data. If linearity is plausible, you can use linear imputation. If some response variables are missing, some Bayesian method can fill in the values using posterior draws. (In other words, in the process of running the analysis, the algorithm can predict what the response variable should be and fill it in.) Imputation is a big tool set that, if needed, you should consult a more comprehensive resource. [provide suggestions]</p>
+<p>Imputation is a commonly used method for missing data. If linearity is plausible, you can use linear imputation. If some response variables are missing, some Bayesian method can fill in the values using posterior draws. (In other words, in the process of running the analysis, the algorithm can predict what the response variable should be according to the assumed model and fill it in.) Typically imputation is done multiple times and the mean imputated values are used.</p>
 
 </div>
 </div>
@@ -226,7 +227,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-04-29.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-04-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -1,6 +1,6 @@
 # Case Studies    
 
-Since ML models are easy to construct, they can at least be used to compare results or explore areas in which not much is known, so some basic hypothesis can be made and other process-based models can be used to confirm these results.  
+Since ML models are easy to construct, they can at least be used to compare results or explore areas in which not much is known, so some basic hypothesis can be made and other process-based models can be used to confirm these results. Here we provide overviews of three case studies to demonstrate how ML models can be beneficial for environmental and natural resource management studies.    
 
 ## Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes  
 
@@ -10,7 +10,7 @@ With the remote sensed images as important data sources, the researchers had to 
 
 ### Summary  
 
-In this study, @fidan2023 build a random forest model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew's impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of random forest models for the modeling flood in "low-lying and flat agricultural terrain," (3) find important predictors, and (4) "generate pluvial flood time series."  
+In this study, @fidan2023 build a Random Forests model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew's impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of random forest models for the modeling flood in "low-lying and flat agricultural terrain," (3) find important predictors, and (4) "generate pluvial flood time series."  
 
 The outcome variable is binary in terms of flooding. Each pixel is treated as one data point. Non-flooded areas were covered by 5,875,480 pixels, and flooded areas by 678,010 pixels. Since there were many more non-flooded pixels than flooded pixels, overall accuracy alone would not be a good performance metric, since, if the model just always predict that a pixel is not flooded, the accuracy rate would be high. The researchers chose other metrics such as precision, recall, specificity, and F1 scores to reflect model performance in different scenarios. The model achieved an overall accuracy of 0.97 and an F1 score of 0.69. Considering that the no information rate (if the model predicts non-flooded all the time) is around 88.5%, this performance seems satisfactory. They found the important variables to be population density, distance to the nearest river, height above nearest drainage, and distance to the nearest road.    
 
@@ -18,10 +18,9 @@ The full paper can be accessed [here](https://www.sciencedirect.com/science/arti
 
 ## Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters  
 
-
 ### Takeaway  
 
-This study serves as a nice case study because (1) it demonstrates that random forest does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have knowns. These reasons tell us that we can trust random forest models. Furthermore, random forest models are easy and cheap ton construct. The R package `caret` and function `rf`, used by @chazal2024, is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by `caret::rf`, helps greatly with interpretation.  
+This study serves as a nice case study because (1) it demonstrates that random forest does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have known. These reasons tell us that we can trust random forest models. Furthermore, random forest models are easy and cheap ton construct. The R package `caret` and function `rf`, used by @chazal2024, is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by `caret::rf`, helps greatly with interpretation.  
 
 ### Summary  
 
@@ -33,4 +32,4 @@ The full paper can be accessed [here](https://www.sciencedirect.com/science/arti
 
 ## Case Study 3  
 
-
+Forthcoming. 

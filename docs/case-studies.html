@@ -85,7 +85,7 @@
 <h1>
 <span class="header-section-number">7</span> Case Studies<a class="anchor" aria-label="anchor" href="#case-studies"><i class="fas fa-link"></i></a>
 </h1>
-<p>Since ML models are easy to construct, they can at least be used to compare results or explore areas in which not much is known, so some basic hypothesis can be made and other process-based models can be used to confirm these results.</p>
+<p>Since ML models are easy to construct, they can at least be used to compare results or explore areas in which not much is known, so some basic hypothesis can be made and other process-based models can be used to confirm these results. Here we provide overviews of three case studies to demonstrate how ML models can be beneficial for environmental and natural resource management studies.</p>
 <div id="case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes" class="section level2" number="7.1">
 <h2>
 <span class="header-section-number">7.1</span> Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes<a class="anchor" aria-label="anchor" href="#case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes"><i class="fas fa-link"></i></a>
@@ -100,7 +100,7 @@
 <h3>
 <span class="header-section-number">7.1.2</span> Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
 </h3>
-<p>In this study, <span class="citation">Fidan et al. (<a href="references.html#ref-fidan2023">2023</a>)</span> build a random forest model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew’s impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of random forest models for the modeling flood in “low-lying and flat agricultural terrain,” (3) find important predictors, and (4) “generate pluvial flood time series.”</p>
+<p>In this study, <span class="citation">Fidan et al. (<a href="references.html#ref-fidan2023">2023</a>)</span> build a Random Forests model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew’s impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of random forest models for the modeling flood in “low-lying and flat agricultural terrain,” (3) find important predictors, and (4) “generate pluvial flood time series.”</p>
 <p>The outcome variable is binary in terms of flooding. Each pixel is treated as one data point. Non-flooded areas were covered by 5,875,480 pixels, and flooded areas by 678,010 pixels. Since there were many more non-flooded pixels than flooded pixels, overall accuracy alone would not be a good performance metric, since, if the model just always predict that a pixel is not flooded, the accuracy rate would be high. The researchers chose other metrics such as precision, recall, specificity, and F1 scores to reflect model performance in different scenarios. The model achieved an overall accuracy of 0.97 and an F1 score of 0.69. Considering that the no information rate (if the model predicts non-flooded all the time) is around 88.5%, this performance seems satisfactory. They found the important variables to be population density, distance to the nearest river, height above nearest drainage, and distance to the nearest road.</p>
 <p>The full paper can be accessed <a href="https://www.sciencedirect.com/science/article/pii/S1364815223001445?dgcid=author">here</a>.</p>
 </div>
@@ -113,7 +113,7 @@
 <h3>
 <span class="header-section-number">7.2.1</span> Takeaway<a class="anchor" aria-label="anchor" href="#takeaway-1"><i class="fas fa-link"></i></a>
 </h3>
-<p>This study serves as a nice case study because (1) it demonstrates that random forest does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have knowns. These reasons tell us that we can trust random forest models. Furthermore, random forest models are easy and cheap ton construct. The R package <code>caret</code> and function <code>rf</code>, used by <span class="citation">Chazal et al. (<a href="references.html#ref-chazal2024">2024</a>)</span>, is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by <code>caret::rf</code>, helps greatly with interpretation.</p>
+<p>This study serves as a nice case study because (1) it demonstrates that random forest does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have known. These reasons tell us that we can trust random forest models. Furthermore, random forest models are easy and cheap ton construct. The R package <code>caret</code> and function <code>rf</code>, used by <span class="citation">Chazal et al. (<a href="references.html#ref-chazal2024">2024</a>)</span>, is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by <code>caret::rf</code>, helps greatly with interpretation.</p>
 </div>
 <div id="summary-1" class="section level3" number="7.2.2">
 <h3>
@@ -128,6 +128,7 @@
 <h2>
 <span class="header-section-number">7.3</span> Case Study 3<a class="anchor" aria-label="anchor" href="#case-study-3"><i class="fas fa-link"></i></a>
 </h2>
+<p>Forthcoming.</p>
 
 </div>
 </div>
@@ -167,7 +168,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-04-29.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-04-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

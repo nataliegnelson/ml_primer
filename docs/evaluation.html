@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 4 Evaluation | Machine Learning Guidelines for Natural Resource Management Practitioners</title>
 <meta name="author" content="Shih-Ni Prim and Natalie Nelson">
-<meta name="description" content="4.1 Training vs Testing We should first address the concepts of training and testing. Instead of using the entire data, it is common to split the dataset into a training set and a test set....">
+<meta name="description" content="4.1 Training vs Testing We should first address the concepts of training and testing. Instead of using the entire data, it is common to split the dataset into a training set and a testing set....">
 <meta name="generator" content="bookdown 0.37 with bs4_book()">
 <meta property="og:title" content="Chapter 4 Evaluation | Machine Learning Guidelines for Natural Resource Management Practitioners">
 <meta property="og:type" content="book">
-<meta property="og:description" content="4.1 Training vs Testing We should first address the concepts of training and testing. Instead of using the entire data, it is common to split the dataset into a training set and a test set....">
+<meta property="og:description" content="4.1 Training vs Testing We should first address the concepts of training and testing. Instead of using the entire data, it is common to split the dataset into a training set and a testing set....">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 4 Evaluation | Machine Learning Guidelines for Natural Resource Management Practitioners">
-<meta name="twitter:description" content="4.1 Training vs Testing We should first address the concepts of training and testing. Instead of using the entire data, it is common to split the dataset into a training set and a test set....">
+<meta name="twitter:description" content="4.1 Training vs Testing We should first address the concepts of training and testing. Instead of using the entire data, it is common to split the dataset into a training set and a testing set....">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.6.1/transition.js"></script><script src="libs/bs3compat-0.6.1/tabs.js"></script><script src="libs/bs3compat-0.6.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -89,7 +89,7 @@
 <h2>
 <span class="header-section-number">4.1</span> Training vs Testing<a class="anchor" aria-label="anchor" href="#training-vs-testing"><i class="fas fa-link"></i></a>
 </h2>
-<p>We should first address the concepts of training and testing. Instead of using the entire data, it is common to split the dataset into a training set and a test set. Typically people use percentages such as 70% vs 30% or 80% vs 20%. The idea is to use only, say, 80% of the data for training, which means to run the select model on this part of data. Then you have a model with some coefficients (you can think of them as slopes) and test such results on the test set to see how well the model performs. Since the part of the data for testing is not used in training, this way there is no double dipping. Sometimes people split the dataset into three sets: training, test, and validation. So the trained models are used on the test set for model selection. Then the validation set is used only once at the end to gauge how the model should perform if there’s new data.</p>
+<p>We should first address the concepts of training and testing. Instead of using the entire data, it is common to split the dataset into a training set and a testing set. Typically people use percentages such as 70% vs 30% or 80% vs 20%. The idea is to use only, say, 80% of the data for training, which means to run the select model on this part of data. Then you have a model with some coefficients (you can think of them as slopes) and test such results on the testing set to see how well the model performs. Since the part of the data for testing is not used in training, there is no double dipping. Sometimes people split the dataset into three sets: training, testing, and validation. So the trained models are used on the testing set for model selection. Then the validation set is used only once at the end to gauge how the model should perform if there’s new data.</p>
 </div>
 <div id="metrics" class="section level2" number="4.2">
 <h2>
@@ -100,10 +100,10 @@
 <span class="header-section-number">4.2.1</span> Numerical Responses<a class="anchor" aria-label="anchor" href="#numerical-responses"><i class="fas fa-link"></i></a>
 </h3>
 <p>The most common metrics for numerical responses include mean squared errors (MSE), bias, and <span class="math inline">\(R^2\)</span> (or adjusted <span class="math inline">\(R^2\)</span>). The way to calculate MSE is:
-<span class="math display">\[MSE = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - y_i \bigg)^2.\]</span>
-The metric shows, on average, the squared distance between predictions and true responses. Bias is calculated as
+<span class="math display">\[MSE = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - y_i \bigg)^2,\]</span>
+where <span class="math inline">\(\hat{y}_i\)</span> is the predicted outcome of the <span class="math inline">\(i^{th}\)</span> observation and <span class="math inline">\(y_i\)</span> is the <span class="math inline">\(i^{th}\)</span> observed outcome. The metric shows, on average, the squared distance between predictions and true responses. Bias is calculated as
 <span class="math display">\[Bias = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - y \bigg).\]</span>
-The two metrics seem similar, but they reveal different aspects of model performance. In general, bias shows if the predictions are centered around the truth, while the MSE shows how far the predictions are from the truth. If the bias is zero, it means that the mean prediction goes towards the truth as the sample size increases to infinity. This is naturally a desired property, but you might be surprised that sometimes we are willing to accept some bias to reduce the variance.</p>
+The two metrics seem similar, but they reveal different aspects of model performance. In general, bias shows if the predictions are centered around the truth, while the MSE shows whether the predictions are centered around the truth <em>and</em> how far the predictions are from the truth. If the bias is zero, it means that the mean prediction goes towards the truth as the sample size increases to infinity. This is naturally a desired property, but you might be surprised that sometimes we are willing to accept some bias to reduce the variance.</p>
 <p>One important formula,
 <span class="math display">\[MSE = Bias^2 + Variance,\]</span>
 where
@@ -116,23 +116,21 @@ We skip the derivation here, but the interested readers can find the derivation 
 <h3>
 <span class="header-section-number">4.2.2</span> Categorical Responses<a class="anchor" aria-label="anchor" href="#categorical-responses"><i class="fas fa-link"></i></a>
 </h3>
-<p>When the responses are categorical, a common way to measure the performance is a confusion matrix, which shows the numbers of predictions that are correct or incorrect.</p>
-<p>[provide an example]</p>
-<p>Other metrics include sensitivity, specificity, precision, recall, and other metrics that try to combine these metrics to present a one-number summary.</p>
+<p>When the responses are categorical, a common way to measure the performance is a confusion matrix, which shows the numbers of predictions that are correct or incorrect. See some examples in <a href="workflow-demonstration.html#workflow-demonstration">Workflow Demonstration</a>. Other metrics include sensitivity, specificity, precision, recall, and other metrics that try to combine these metrics to present a one-number summary.</p>
 </div>
 </div>
 <div id="overfitting" class="section level2" number="4.3">
 <h2>
 <span class="header-section-number">4.3</span> Overfitting<a class="anchor" aria-label="anchor" href="#overfitting"><i class="fas fa-link"></i></a>
 </h2>
-<p>Overfitting means that the model can make good predictions with the available data, but it cannot generalize well on new data. It is kind of like if a student memorizes all the past exam questions without really studying the materials, then, on the exam, the student can do really well on questions coming from past exams but might do poorly on questions never seen before. Splitting data into training and testing is one strategy to avoid overfitting. Certain ML methods are less likely to overfit, such as neural networks. And there are some more stragegies, such as early stopping, that can be used. Our point here is to make you aware this potential pitfall of machine learning methods.</p>
+<p>Overfitting means that the model can make good predictions with the available data, but it cannot generalize well on new data. It is like if a student memorizes all the past exam questions without really studying the materials, then, on the exam, the student can do really well on questions coming from past exams but might do poorly on questions never seen before. Splitting data into training and testing is one strategy to avoid overfitting. Certain ML methods are less likely to overfit, such as neural networks. And there are some more strategies, such as early stopping, that can be used. Our point here is to be aware of this potential pitfall of machine learning methods.</p>
 </div>
 <div id="cross-validation" class="section level2" number="4.4">
 <h2>
 <span class="header-section-number">4.4</span> Cross Validation<a class="anchor" aria-label="anchor" href="#cross-validation"><i class="fas fa-link"></i></a>
 </h2>
 <p>One very standard way of evaluation is <span class="math inline">\(k\)</span>-fold cross validation, commonly with <span class="math inline">\(k=5\)</span> or <span class="math inline">\(k=10\)</span>. The idea is simple. Divide the data into <span class="math inline">\(k\)</span> groups. Each time, choose <span class="math inline">\(k-1\)</span> groups for training, fit the model on the last group, which is the test data, and calculate the desired metrics, such as MSE.</p>
-<p>In this way, although less data is used for training, the metrics are more accurate, because now we are not using the same data points for training and testing. Using metrics from cross validation for model selection can ensure that your model does not overfit, which means the model does well with training data but does not generalize well on new data.</p>
+<p>This way, although less data is used for training, the metrics are more accurate, because now we are not using the same data points for training and testing. Using metrics from cross validation for model selection can ensure that your model does not overfit.</p>
 <div class="figure">
 <span style="display:block;" id="fig:unnamed-chunk-8"></span>
 <img src="images/K-fold_cross_validation_EN.svg" alt="Image Source: https://en.wikipedia.org/wiki/Cross-validation_(statistics)"><p class="caption">
@@ -174,7 +172,7 @@ Figure 4.1: Image Source: <a href="https://en.wikipedia.org/wiki/Cross-validatio
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-04-29.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-04-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

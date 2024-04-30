@@ -1,6 +1,6 @@
-# Workflow Demonstration  
+# Workflow Demonstration 
 
-In this section, we use a wine dataset to exemplify a typical workflow for constructing ML models. R code is included and several ML models are constructed. Here we use a dataset that contains wine quality and traits, and our goal is to predict the quality of wine using the traits. The dataset can be found [here](https://www.kaggle.com/datasets/yasserh/wine-quality-dataset).  
+In this section, we use a dataset to exemplify a typical workflow for constructing ML models. We skip exploratory data analysis, since we have already addressed that aspect in [Data]. The dataset contains wine quality and traits, and our goal is to predict the quality of wine using the traits. The dataset can be found [here](https://www.kaggle.com/datasets/yasserh/wine-quality-dataset).  
  
 
 ```{r, warning = FALSE, message = FALSE}
@@ -80,7 +80,7 @@ plot(varImp(rf_tree3))
 confusionMatrix(rf3_pred, winez_test$qual3)
 ```
 
-From the confusion matrices, three-level model works better. The plot below shows how the accuracy rate changes with the number of randomly selected variables in each tree (denoted as $M$).  
+From the confusion matrices, three-level model works better. The plot below shows how the accuracy rate changes with the number of randomly selected variables in each tree (denoted as $m$).  
 
 ```{r rfplots, fig.cap = "Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)", out.width = "100%", out.height = "100%", fig.align = "center", regfloat = TRUE}
 # random forest plot: accuracy rates vs number of predictors
@@ -89,7 +89,7 @@ rfplot2 <- plot(rf_tree3)
 gridExtra::grid.arrange(rfplot1, rfplot2, nrow = 1, ncol = 2)
 ```
 
-Next we run another random forest model with the continuous outcome variable. We first set $M$ as the square root of the number of predictors, as this is commonly recommended. Confusion matrices cannot be provided for continuous responses, but we provide a plot for important variables. 
+Next we run another random forest model with the continuous outcome variable. We first set $m$ as the square root of the number of predictors, as this is commonly recommended. Confusion matrices cannot be provided for continuous responses, but we provide a plot for important variables. 
 
 ```{r}
 # randomforests, mtry = sqrt(11)

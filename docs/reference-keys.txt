@@ -4,6 +4,7 @@ motivation
 intro
 supervised-learning
 unsupervised-learning
+further-reading
 data
 data-exploratoary-analysis
 data-requirement
@@ -35,7 +36,7 @@ case-study-3
 ethical-considerations
 reproducibility
 decision-making
-uncertain-qualification
+uncertainty-qualification
 interpretability
 appendix
 dos-and-donts
