@@ -122,7 +122,7 @@
 <span><span class="va">al</span> <span class="op">&lt;-</span> <span class="va">wine</span><span class="op">$</span><span class="va">alcohol</span></span>
 <span><span class="va">qual</span> <span class="op">&lt;-</span> <span class="va">wine</span><span class="op">$</span><span class="va">quality</span></span>
 <span><span class="va">winez</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">fa</span>, <span class="va">va</span>, <span class="va">ca</span>, <span class="va">rs</span>, <span class="va">ch</span>, <span class="va">fsd</span>, <span class="va">tsd</span>, <span class="va">den</span>, <span class="va">ph</span>, <span class="va">sul</span>, <span class="va">al</span>, <span class="va">qual</span><span class="op">)</span></span></code></pre></div>
-<p>To demonstrate how to run random forest with continuous and discrete outcomes, we also transform the continuous variable wine quality, our response variable, into two discrete variables. One has two levels: high vs low, and one has three levels: H, M, and L.</p>
+<p>To demonstrate how to construct Random Forests models with continuous and discrete outcomes, we also transform the continuous variable wine quality, our response variable, into two discrete variables. One has two levels: high vs low, and one has three levels: H, M, and L. The thresholds are decided rather arbitrarily, and you can use your domain knowledge to gauge how to set the thresholds.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># collapse qual into 2 labels</span></span>
 <span><span class="va">winez</span><span class="op">$</span><span class="va">qual2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">winez</span><span class="op">$</span><span class="va">qual</span> <span class="op">&lt;</span> <span class="fl">6</span>, <span class="st">"low"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span></span>
@@ -154,7 +154,7 @@
 <h2>
 <span class="header-section-number">6.2</span> Classification Models<a class="anchor" aria-label="anchor" href="#classification-models"><i class="fas fa-link"></i></a>
 </h2>
-<p>Now we run random forest with the two-level response. After the model is run, we calculate the predictions using the <code>predict</code> function. A plot for the important predictors are provided, and a confusion matrix is created.</p>
+<p>Now we construct a Random Forests model with the two-level response. After the model is run, we calculate the predictions using the <code>predict</code> function. A plot for the important predictors are provided. We can see that <code>alcohol</code>, <code>sulphates</code>, and <code>volatile acidity</code> are three most important predictors for the outcome variable. A confusion matrix is created, and you can different metrics such as overall accuracy rate, sensitivity, specificity, etc.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># random forest</span></span>
 <span><span class="va">rfGrid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span>mtry <span class="op">=</span> <span class="fl">2</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span></span>
@@ -194,7 +194,7 @@
 ##                                           
 ##        'Positive' Class : high            
 ## </code></pre>
-<p>Next we create a model with the three-level outcome variable. Again, important predictors are plotted and a confusion matrix is included below.</p>
+<p>Next we create a model with the three-level outcome variable. Again, important predictors are plotted and a confusion matrix is included below. <code>alcohol</code>, <code>volatile acidity</code>, and <code>sulphates</code> are again the three most important predictors, but the order changed. The overall accuracy is higher here than the two-level model.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 3-level variable</span></span>
 <span><span class="va">rf_tree3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/caret/man/train.html">train</a></span><span class="op">(</span><span class="va">qual3</span> <span class="op">~</span> <span class="va">fa</span> <span class="op">+</span> <span class="va">va</span> <span class="op">+</span> <span class="va">ca</span> <span class="op">+</span> <span class="va">rs</span> <span class="op">+</span> <span class="va">ch</span> <span class="op">+</span> <span class="va">fsd</span> <span class="op">+</span> <span class="va">tsd</span> <span class="op">+</span> <span class="va">den</span> <span class="op">+</span> <span class="va">ph</span> <span class="op">+</span> <span class="va">sul</span> <span class="op">+</span> <span class="va">al</span>, data <span class="op">=</span> <span class="va">winez_train</span>, method <span class="op">=</span> <span class="st">"rf"</span>, preProcess <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"center"</span>, <span class="st">"scale"</span><span class="op">)</span>, trControl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/caret/man/trainControl.html">trainControl</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"cv"</span>, number <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>, tuneGrid <span class="op">=</span> <span class="va">rfGrid</span><span class="op">)</span></span>
@@ -235,7 +235,7 @@
 ## Detection Rate        0.07812 0.000000   0.8219
 ## Detection Prevalence  0.09375 0.003125   0.9031
 ## Balanced Accuracy     0.78167 0.498397   0.7339</code></pre>
-<p>From the confusion matrices, three-level model works better. The plot below shows how the accuracy rate changes with the number of randomly selected variables in each tree (denoted as <span class="math inline">\(m\)</span>).</p>
+<p>The plot below shows how the accuracy rate changes with the number of randomly selected variables in each tree (denoted as <span class="math inline">\(m\)</span>).</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># random forest plot: accuracy rates vs number of predictors</span></span>
 <span><span class="va">rfplot1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">rf_tree2</span><span class="op">)</span></span>
@@ -252,36 +252,72 @@ Figure 6.1: Accuracy Rates vs Number of Predictors Used for 2-level Variable (le
 <h2>
 <span class="header-section-number">6.3</span> Prediction Models<a class="anchor" aria-label="anchor" href="#prediction-models"><i class="fas fa-link"></i></a>
 </h2>
-<p>Next we run another random forest model with the continuous outcome variable. We first set <span class="math inline">\(m\)</span> as the square root of the number of predictors, as this is commonly recommended. Confusion matrices cannot be provided for continuous responses, but we provide a plot for important variables.</p>
+<p>Next we construct Random Forests models with the continuous outcome variable. We first set <span class="math inline">\(m\)</span> as the square root of the number of predictors, as this is commonly recommended. Confusion matrices cannot be provided for continuous responses, but we can calculate MSEs, find important variables, and show how the error decreases with the number of trees constructed. The three most important variables are again <code>alcohol</code>, <code>sulphates</code>, and <code>volatile acidity</code>.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># randomforests, mtry = sqrt(11)</span></span>
 <span><span class="va">rf.def.Wine</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span><span class="op">(</span><span class="va">qual</span> <span class="op">~</span> <span class="va">fa</span> <span class="op">+</span> <span class="va">va</span> <span class="op">+</span> <span class="va">ca</span> <span class="op">+</span> <span class="va">rs</span> <span class="op">+</span> <span class="va">ch</span> <span class="op">+</span> <span class="va">fsd</span> <span class="op">+</span> <span class="va">tsd</span> <span class="op">+</span> <span class="va">den</span> <span class="op">+</span> <span class="va">ph</span> <span class="op">+</span> <span class="va">sul</span> <span class="op">+</span> <span class="va">al</span>, data <span class="op">=</span> <span class="va">winez_train</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">yhat.rf.Wine</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">rf.def.Wine</span>, newdata <span class="op">=</span> <span class="va">winez_test</span><span class="op">)</span></span>
 <span><span class="va">rf.mtry3.testMSE</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">yhat.rf.Wine</span> <span class="op">-</span> <span class="va">winez_test</span><span class="op">$</span><span class="va">qual</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">rf.def.Wine</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># print(rf.mtry3.testMSE)</span></span></code></pre></div>
-<p>We try several different numbers for the number of variable included in each tree and compare the MSEs from these models.</p>
+<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/varImp.html">varImp</a></span><span class="op">(</span><span class="va">rf.def.Wine</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##      Overall
+## fa  22.11429
+## va  37.04878
+## ca  23.74687
+## rs  18.55913
+## ch  24.96786
+## fsd 21.65164
+## tsd 32.28444
+## den 27.19701
+## ph  22.36903
+## sul 43.52900
+## al  54.53284</code></pre>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># mtry = 4</span></span>
-<span><span class="va">rf.fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span><span class="op">(</span><span class="va">qual</span> <span class="op">~</span> <span class="va">fa</span> <span class="op">+</span> <span class="va">va</span> <span class="op">+</span> <span class="va">ca</span> <span class="op">+</span> <span class="va">rs</span> <span class="op">+</span> <span class="va">ch</span> <span class="op">+</span> <span class="va">fsd</span> <span class="op">+</span> <span class="va">tsd</span> <span class="op">+</span> <span class="va">den</span> <span class="op">+</span> <span class="va">ph</span> <span class="op">+</span> <span class="va">sul</span> <span class="op">+</span> <span class="va">al</span>, data <span class="op">=</span> <span class="va">winez_train</span>, mtry <span class="op">=</span> <span class="fl">4</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">rf.pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">rf.fit</span>, newdata <span class="op">=</span> <span class="va">winez_test</span><span class="op">)</span></span>
-<span><span class="va">rf.mtry4.testMSE</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">rf.pred</span> <span class="op">-</span> <span class="va">winez_test</span><span class="op">$</span><span class="va">qual</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">rf.fit</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">rf.def.Wine</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
+<p>We try several different numbers for the number of variable included in each tree. <code>alcohol</code>, <code>sulphates</code>, and <code>volatile acidity</code> remain the three most important predictors. Two plots are provided to show how the error decreases with the number of trees.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># print(rf.mtry4.testMSE)</span></span>
-<span>      </span>
-<span><span class="co"># mtry = 7</span></span>
-<span><span class="va">rf.def.Wine</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span><span class="op">(</span><span class="va">qual</span> <span class="op">~</span> <span class="va">fa</span> <span class="op">+</span> <span class="va">va</span> <span class="op">+</span> <span class="va">ca</span> <span class="op">+</span> <span class="va">rs</span> <span class="op">+</span> <span class="va">ch</span> <span class="op">+</span> <span class="va">fsd</span> <span class="op">+</span> <span class="va">tsd</span> <span class="op">+</span> <span class="va">den</span> <span class="op">+</span> <span class="va">ph</span> <span class="op">+</span> <span class="va">sul</span> <span class="op">+</span> <span class="va">al</span>, data <span class="op">=</span> <span class="va">winez_train</span>, mtry <span class="op">=</span> <span class="fl">7</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="va">yhat.rf.Wine</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">rf.def.Wine</span>, newdata <span class="op">=</span> <span class="va">winez_test</span><span class="op">)</span></span>
-<span><span class="va">rf.mtry7.testMSE</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">yhat.rf.Wine</span> <span class="op">-</span> <span class="va">winez_test</span><span class="op">$</span><span class="va">qual</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">rf.def.Wine</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-2.png" width="672"></div>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># print(rf.mtry7.testMSE)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># mtry = 4</span></span>
+<span><span class="va">rf.def.Wine.m4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span><span class="op">(</span><span class="va">qual</span> <span class="op">~</span> <span class="va">fa</span> <span class="op">+</span> <span class="va">va</span> <span class="op">+</span> <span class="va">ca</span> <span class="op">+</span> <span class="va">rs</span> <span class="op">+</span> <span class="va">ch</span> <span class="op">+</span> <span class="va">fsd</span> <span class="op">+</span> <span class="va">tsd</span> <span class="op">+</span> <span class="va">den</span> <span class="op">+</span> <span class="va">ph</span> <span class="op">+</span> <span class="va">sul</span> <span class="op">+</span> <span class="va">al</span>, data <span class="op">=</span> <span class="va">winez_train</span>, mtry <span class="op">=</span> <span class="fl">4</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">rf.pred.m4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">rf.def.Wine.m4</span>, newdata <span class="op">=</span> <span class="va">winez_test</span><span class="op">)</span></span>
+<span><span class="va">rf.mtry4.testMSE</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">rf.pred.m4</span> <span class="op">-</span> <span class="va">winez_test</span><span class="op">$</span><span class="va">qual</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/varImp.html">varImp</a></span><span class="op">(</span><span class="va">rf.def.Wine.m4</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##      Overall
+## fa  22.78226
+## va  39.40868
+## ca  22.22551
+## rs  16.27685
+## ch  25.12775
+## fsd 21.58168
+## tsd 30.36789
+## den 27.20655
+## ph  20.22223
+## sul 47.59070
+## al  60.54909</code></pre>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># mtry = 7</span></span>
+<span><span class="va">rf.def.Wine.m7</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span><span class="op">(</span><span class="va">qual</span> <span class="op">~</span> <span class="va">fa</span> <span class="op">+</span> <span class="va">va</span> <span class="op">+</span> <span class="va">ca</span> <span class="op">+</span> <span class="va">rs</span> <span class="op">+</span> <span class="va">ch</span> <span class="op">+</span> <span class="va">fsd</span> <span class="op">+</span> <span class="va">tsd</span> <span class="op">+</span> <span class="va">den</span> <span class="op">+</span> <span class="va">ph</span> <span class="op">+</span> <span class="va">sul</span> <span class="op">+</span> <span class="va">al</span>, data <span class="op">=</span> <span class="va">winez_train</span>, mtry <span class="op">=</span> <span class="fl">7</span>, importance <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">rf.pred.m7</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">rf.def.Wine.m7</span>, newdata <span class="op">=</span> <span class="va">winez_test</span><span class="op">)</span></span>
+<span><span class="va">rf.mtry7.testMSE</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">rf.pred.m7</span> <span class="op">-</span> <span class="va">winez_test</span><span class="op">$</span><span class="va">qual</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/varImp.html">varImp</a></span><span class="op">(</span><span class="va">rf.def.Wine.m7</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##      Overall
+## fa  22.31197
+## va  43.85162
+## ca  22.34412
+## rs  15.79913
+## ch  26.89172
+## fsd 22.86225
+## tsd 35.73985
+## den 28.37794
+## ph  24.39275
+## sul 55.85386
+## al  71.99840</code></pre>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">rf.def.Wine.m4</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">rf.def.Wine.m7</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="bookdown-demo_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
+<p>Lastly, we put the MSEs from these models together. The differences are very small, but the model that uses <span class="math inline">\(m=\sqrt{p}\)</span> has a slightly lower MSE.</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">rf.mtry3.testMSE</span>, <span class="va">rf.mtry4.testMSE</span>, <span class="va">rf.mtry7.testMSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"squre root of p"</span>, <span class="st">"4"</span>, <span class="st">"7"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"MSE"</span><span class="op">)</span></span>
@@ -328,7 +364,7 @@ Figure 6.1: Accuracy Rates vs Number of Predictors Used for 2-level Variable (le
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-04-30.</p>
+    <p>"<strong>Machine Learning Guidelines for Natural Resource Management Practitioners</strong>" was written by Shih-Ni Prim and Natalie Nelson. It was last built on 2024-05-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

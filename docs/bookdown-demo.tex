@@ -127,7 +127,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-04-30}
+\date{2024-05-01}
 
 \begin{document}
 \maketitle
@@ -480,7 +480,7 @@ We first read in the data and rename the variables, so coding is easier.
 \end{Highlighting}
 \end{Shaded}
 
-To demonstrate how to run random forest with continuous and discrete outcomes, we also transform the continuous variable wine quality, our response variable, into two discrete variables. One has two levels: high vs low, and one has three levels: H, M, and L.
+To demonstrate how to construct Random Forests models with continuous and discrete outcomes, we also transform the continuous variable wine quality, our response variable, into two discrete variables. One has two levels: high vs low, and one has three levels: H, M, and L. The thresholds are decided rather arbitrarily, and you can use your domain knowledge to gauge how to set the thresholds.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -537,7 +537,7 @@ Next we separate the dataset into a training set (80\%) and a testing set (20\%)
 \hypertarget{classification-models}{%
 \section{Classification Models}\label{classification-models}}
 
-Now we run random forest with the two-level response. After the model is run, we calculate the predictions using the \texttt{predict} function. A plot for the important predictors are provided, and a confusion matrix is created.
+Now we construct a Random Forests model with the two-level response. After the model is run, we calculate the predictions using the \texttt{predict} function. A plot for the important predictors are provided. We can see that \texttt{alcohol}, \texttt{sulphates}, and \texttt{volatile\ acidity} are three most important predictors for the outcome variable. A confusion matrix is created, and you can different metrics such as overall accuracy rate, sensitivity, specificity, etc.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -590,7 +590,7 @@ Now we run random forest with the two-level response. After the model is run, we
 ## 
 \end{verbatim}
 
-Next we create a model with the three-level outcome variable. Again, important predictors are plotted and a confusion matrix is included below.
+Next we create a model with the three-level outcome variable. Again, important predictors are plotted and a confusion matrix is included below. \texttt{alcohol}, \texttt{volatile\ acidity}, and \texttt{sulphates} are again the three most important predictors, but the order changed. The overall accuracy is higher here than the two-level model.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -644,7 +644,7 @@ Next we create a model with the three-level outcome variable. Again, important p
 ## Balanced Accuracy     0.78167 0.498397   0.7339
 \end{verbatim}
 
-From the confusion matrices, three-level model works better. The plot below shows how the accuracy rate changes with the number of randomly selected variables in each tree (denoted as \(m\)).
+The plot below shows how the accuracy rate changes with the number of randomly selected variables in each tree (denoted as \(m\)).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -667,7 +667,7 @@ From the confusion matrices, three-level model works better. The plot below show
 \hypertarget{prediction-models}{%
 \section{Prediction Models}\label{prediction-models}}
 
-Next we run another random forest model with the continuous outcome variable. We first set \(m\) as the square root of the number of predictors, as this is commonly recommended. Confusion matrices cannot be provided for continuous responses, but we provide a plot for important variables.
+Next we construct Random Forests models with the continuous outcome variable. We first set \(m\) as the square root of the number of predictors, as this is commonly recommended. Confusion matrices cannot be provided for continuous responses, but we can calculate MSEs, find important variables, and show how the error decreases with the number of trees constructed. The three most important variables are again \texttt{alcohol}, \texttt{sulphates}, and \texttt{volatile\ acidity}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -675,51 +675,96 @@ Next we run another random forest model with the continuous outcome variable. We
 \NormalTok{rf.def.Wine }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(qual }\SpecialCharTok{\textasciitilde{}}\NormalTok{ fa }\SpecialCharTok{+}\NormalTok{ va }\SpecialCharTok{+}\NormalTok{ ca }\SpecialCharTok{+}\NormalTok{ rs }\SpecialCharTok{+}\NormalTok{ ch }\SpecialCharTok{+}\NormalTok{ fsd }\SpecialCharTok{+}\NormalTok{ tsd }\SpecialCharTok{+}\NormalTok{ den }\SpecialCharTok{+}\NormalTok{ ph }\SpecialCharTok{+}\NormalTok{ sul }\SpecialCharTok{+}\NormalTok{ al, }\AttributeTok{data =}\NormalTok{ winez\_train, }\AttributeTok{importance =} \ConstantTok{TRUE}\NormalTok{)}
 \NormalTok{yhat.rf.Wine }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf.def.Wine, }\AttributeTok{newdata =}\NormalTok{ winez\_test)}
 \NormalTok{rf.mtry3.testMSE }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((yhat.rf.Wine }\SpecialCharTok{{-}}\NormalTok{ winez\_test}\SpecialCharTok{$}\NormalTok{qual)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\FunctionTok{varImp}\NormalTok{(rf.def.Wine)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Overall
+## fa  22.11429
+## va  37.04878
+## ca  23.74687
+## rs  18.55913
+## ch  24.96786
+## fsd 21.65164
+## tsd 32.28444
+## den 27.19701
+## ph  22.36903
+## sul 43.52900
+## al  54.53284
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{plot}\NormalTok{(rf.def.Wine)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-16-1.pdf}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# print(rf.mtry3.testMSE)}
-\end{Highlighting}
-\end{Shaded}
-
-We try several different numbers for the number of variable included in each tree and compare the MSEs from these models.
+We try several different numbers for the number of variable included in each tree. \texttt{alcohol}, \texttt{sulphates}, and \texttt{volatile\ acidity} remain the three most important predictors. Two plots are provided to show how the error decreases with the number of trees.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# mtry = 4}
-\NormalTok{rf.fit }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(qual }\SpecialCharTok{\textasciitilde{}}\NormalTok{ fa }\SpecialCharTok{+}\NormalTok{ va }\SpecialCharTok{+}\NormalTok{ ca }\SpecialCharTok{+}\NormalTok{ rs }\SpecialCharTok{+}\NormalTok{ ch }\SpecialCharTok{+}\NormalTok{ fsd }\SpecialCharTok{+}\NormalTok{ tsd }\SpecialCharTok{+}\NormalTok{ den }\SpecialCharTok{+}\NormalTok{ ph }\SpecialCharTok{+}\NormalTok{ sul }\SpecialCharTok{+}\NormalTok{ al, }\AttributeTok{data =}\NormalTok{ winez\_train, }\AttributeTok{mtry =} \DecValTok{4}\NormalTok{, }\AttributeTok{importance =} \ConstantTok{TRUE}\NormalTok{)}
-\NormalTok{rf.pred }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf.fit, }\AttributeTok{newdata =}\NormalTok{ winez\_test)}
-\NormalTok{rf.mtry4.testMSE }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((rf.pred }\SpecialCharTok{{-}}\NormalTok{ winez\_test}\SpecialCharTok{$}\NormalTok{qual)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
-\FunctionTok{plot}\NormalTok{(rf.fit)}
+\NormalTok{rf.def.Wine.m4 }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(qual }\SpecialCharTok{\textasciitilde{}}\NormalTok{ fa }\SpecialCharTok{+}\NormalTok{ va }\SpecialCharTok{+}\NormalTok{ ca }\SpecialCharTok{+}\NormalTok{ rs }\SpecialCharTok{+}\NormalTok{ ch }\SpecialCharTok{+}\NormalTok{ fsd }\SpecialCharTok{+}\NormalTok{ tsd }\SpecialCharTok{+}\NormalTok{ den }\SpecialCharTok{+}\NormalTok{ ph }\SpecialCharTok{+}\NormalTok{ sul }\SpecialCharTok{+}\NormalTok{ al, }\AttributeTok{data =}\NormalTok{ winez\_train, }\AttributeTok{mtry =} \DecValTok{4}\NormalTok{, }\AttributeTok{importance =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{rf.pred.m4 }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf.def.Wine.m4, }\AttributeTok{newdata =}\NormalTok{ winez\_test)}
+\NormalTok{rf.mtry4.testMSE }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((rf.pred.m4 }\SpecialCharTok{{-}}\NormalTok{ winez\_test}\SpecialCharTok{$}\NormalTok{qual)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\FunctionTok{varImp}\NormalTok{(rf.def.Wine.m4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Overall
+## fa  22.78226
+## va  39.40868
+## ca  22.22551
+## rs  16.27685
+## ch  25.12775
+## fsd 21.58168
+## tsd 30.36789
+## den 27.20655
+## ph  20.22223
+## sul 47.59070
+## al  60.54909
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# mtry = 7}
+\NormalTok{rf.def.Wine.m7 }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(qual }\SpecialCharTok{\textasciitilde{}}\NormalTok{ fa }\SpecialCharTok{+}\NormalTok{ va }\SpecialCharTok{+}\NormalTok{ ca }\SpecialCharTok{+}\NormalTok{ rs }\SpecialCharTok{+}\NormalTok{ ch }\SpecialCharTok{+}\NormalTok{ fsd }\SpecialCharTok{+}\NormalTok{ tsd }\SpecialCharTok{+}\NormalTok{ den }\SpecialCharTok{+}\NormalTok{ ph }\SpecialCharTok{+}\NormalTok{ sul }\SpecialCharTok{+}\NormalTok{ al, }\AttributeTok{data =}\NormalTok{ winez\_train, }\AttributeTok{mtry =} \DecValTok{7}\NormalTok{, }\AttributeTok{importance =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{rf.pred.m7 }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf.def.Wine.m7, }\AttributeTok{newdata =}\NormalTok{ winez\_test)}
+\NormalTok{rf.mtry7.testMSE }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((rf.pred.m7 }\SpecialCharTok{{-}}\NormalTok{ winez\_test}\SpecialCharTok{$}\NormalTok{qual)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\FunctionTok{varImp}\NormalTok{(rf.def.Wine.m7)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      Overall
+## fa  22.31197
+## va  43.85162
+## ca  22.34412
+## rs  15.79913
+## ch  26.89172
+## fsd 22.86225
+## tsd 35.73985
+## den 28.37794
+## ph  24.39275
+## sul 55.85386
+## al  71.99840
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(rf.def.Wine.m4)}
+\FunctionTok{plot}\NormalTok{(rf.def.Wine.m7)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-17-1.pdf}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# print(rf.mtry4.testMSE)}
-      
-\CommentTok{\# mtry = 7}
-\NormalTok{rf.def.Wine }\OtherTok{\textless{}{-}} \FunctionTok{randomForest}\NormalTok{(qual }\SpecialCharTok{\textasciitilde{}}\NormalTok{ fa }\SpecialCharTok{+}\NormalTok{ va }\SpecialCharTok{+}\NormalTok{ ca }\SpecialCharTok{+}\NormalTok{ rs }\SpecialCharTok{+}\NormalTok{ ch }\SpecialCharTok{+}\NormalTok{ fsd }\SpecialCharTok{+}\NormalTok{ tsd }\SpecialCharTok{+}\NormalTok{ den }\SpecialCharTok{+}\NormalTok{ ph }\SpecialCharTok{+}\NormalTok{ sul }\SpecialCharTok{+}\NormalTok{ al, }\AttributeTok{data =}\NormalTok{ winez\_train, }\AttributeTok{mtry =} \DecValTok{7}\NormalTok{, }\AttributeTok{importance =} \ConstantTok{TRUE}\NormalTok{)}
-\NormalTok{yhat.rf.Wine }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf.def.Wine, }\AttributeTok{newdata =}\NormalTok{ winez\_test)}
-\NormalTok{rf.mtry7.testMSE }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((yhat.rf.Wine }\SpecialCharTok{{-}}\NormalTok{ winez\_test}\SpecialCharTok{$}\NormalTok{qual)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
-\FunctionTok{plot}\NormalTok{(rf.def.Wine)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-17-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# print(rf.mtry7.testMSE)}
-\end{Highlighting}
-\end{Shaded}
+Lastly, we put the MSEs from these models together. The differences are very small, but the model that uses \(m=\sqrt{p}\) has a slightly lower MSE.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -741,7 +786,7 @@ MSE & 0.289515 & 0.2907887 & 0.292777\\
 \hypertarget{case-studies}{%
 \chapter{Case Studies}\label{case-studies}}
 
-Since ML models are easy to construct, they can at least be used to compare results or explore areas in which not much is known, so some basic hypothesis can be made and other process-based models can be used to confirm these results. Here we provide overviews of three case studies to demonstrate how ML models can be beneficial for environmental and natural resource management studies.
+Since ML models are relatively easy to construct, they can at least be used to compare results or explore areas in which not much is known, so hypotheses can be made to help guide the directions of process-based models. Here we provide overviews of three case studies to demonstrate how ML models can be beneficial for environmental and natural resource management studies.
 
 \hypertarget{case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes}{%
 \section{Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes}\label{case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes}}
@@ -749,14 +794,14 @@ Since ML models are easy to construct, they can at least be used to compare resu
 \hypertarget{takeaway}{%
 \subsection{Takeaway}\label{takeaway}}
 
-With the remote sensed images as important data sources, the researchers had to do quite a lot of pre-processing. While pre-processing images might seem time consuming, once the workflow is established, studying flood in other areas becomes easier, as long as images are available. This is one of the strengths of ML models--the process can be at least partially automated, and data is more easily obtained than if measuring at each site is required.
+With the remote sensed images as important data sources, the researchers had to do a lot of pre-processing. While pre-processing images might seem time consuming, once the workflow is established, studying flood in other areas becomes easier, as long as images are available. This is one of the strengths of ML models--the process can be at least partially automated, and data is more easily obtained than if measuring at each site is required.
 
 \hypertarget{summary}{%
 \subsection{Summary}\label{summary}}
 
-In this study, \citet{fidan2023} build a Random Forests model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew's impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of random forest models for the modeling flood in ``low-lying and flat agricultural terrain,'' (3) find important predictors, and (4) ``generate pluvial flood time series.''
+In this study, \citet{fidan2023} build a Random Forests model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew's impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of Random Forests models for the modeling flood in ``low-lying and flat agricultural terrain,'' (3) find important predictors, and (4) ``generate pluvial flood time series.''
 
-The outcome variable is binary in terms of flooding. Each pixel is treated as one data point. Non-flooded areas were covered by 5,875,480 pixels, and flooded areas by 678,010 pixels. Since there were many more non-flooded pixels than flooded pixels, overall accuracy alone would not be a good performance metric, since, if the model just always predict that a pixel is not flooded, the accuracy rate would be high. The researchers chose other metrics such as precision, recall, specificity, and F1 scores to reflect model performance in different scenarios. The model achieved an overall accuracy of 0.97 and an F1 score of 0.69. Considering that the no information rate (if the model predicts non-flooded all the time) is around 88.5\%, this performance seems satisfactory. They found the important variables to be population density, distance to the nearest river, height above nearest drainage, and distance to the nearest road.
+The outcome variable is binary in terms of flooding. Each pixel is treated as one data point. Non-flooded areas were covered by 5,875,480 pixels, and flooded areas by 678,010 pixels. Since there were many more non-flooded pixels than flooded pixels, overall accuracy alone would not be a good performance metric, since, if the model always predicts that a pixel is not flooded, the accuracy rate would be high. The researchers chose other metrics such as precision, recall, specificity, and F1 scores to reflect model performance in different scenarios. The model achieved an overall accuracy of 0.97 and an F1 score of 0.69. Considering that the no information rate (if the model predicts non-flooded all the time) is around 88.5\%, this performance seems satisfactory. They found the important variables to be population density, distance to the nearest river, height above nearest drainage, and distance to the nearest road.
 
 The full paper can be accessed \href{https://www.sciencedirect.com/science/article/pii/S1364815223001445?dgcid=author}{here}.
 
@@ -766,14 +811,14 @@ The full paper can be accessed \href{https://www.sciencedirect.com/science/artic
 \hypertarget{takeaway-1}{%
 \subsection{Takeaway}\label{takeaway-1}}
 
-This study serves as a nice case study because (1) it demonstrates that random forest does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have known. These reasons tell us that we can trust random forest models. Furthermore, random forest models are easy and cheap ton construct. The R package \texttt{caret} and function \texttt{rf}, used by \citet{chazal2024}, is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by \texttt{caret::rf}, helps greatly with interpretation.
+This study serves as a nice case study because (1) it demonstrates that Random Forests does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have known. These reasons help us establish trust in Random Forests models. Furthermore, Random Forests models are easy and cheap ton construct. The R package \texttt{caret} and function \texttt{rf}, used by \citet{chazal2024}, is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by \texttt{caret::rf}, help greatly with interpretation.
 
 \hypertarget{summary-1}{%
 \subsection{Summary}\label{summary-1}}
 
-This study's goal was to predict near-term (1-3 days) fecal contamination in coastal shellfish growing waters. For each of the five management areas, \citet{chazal2024} constructed five random forest models to (1) use watershed characteristics as well as antecedent hydrologic and meteorologic observations to predict the level of fecal coliform (FC), (2) test whether forecasted rainfall can be useful for predictions, and (3) find important variables. Let's focus on goals (1) and (3) for this case study.
+This study's goal was to predict near-term (1-3 days) fecal contamination in coastal shellfish growing waters. For each of the five management areas, \citet{chazal2024} constructed five Random Forests models to (1) use watershed characteristics as well as antecedent hydrologic and meteorologic observations to predict the level of fecal coliform (FC), (2) test whether forecasted rainfall can be useful for predictions, and (3) find important variables. Let's focus on goals (1) and (3) for this case study.
 
-For their first goal, depending on the management areas, the \(R^2\) value is between 0.40 and 0.74. According to \citet{chazal2024}, this performance is similar to previous studies. The other settings are typical of ML studies. They split the data into 80\% training and 20\% testing and use the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other. For their third goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind are high on the importance for prediction. These findings are consistent with the current understanding. In short, this study demonstrates the reliability and ease for construction and interpretation of random forest models.
+For their first goal, depending on the management areas, the \(R^2\) value is between 0.40 and 0.74. According to \citet{chazal2024}, this performance is similar to previous studies. The other settings are typical of ML studies. They split the data into 80\% training and 20\% testing and used the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other. For their third goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind are high on the importance for prediction. These findings are consistent with the current understanding. In short, this study demonstrates the reliability and ease for construction and interpretation of random forest models.
 
 The full paper can be accessed \href{https://www.sciencedirect.com/science/article/pii/S0025326X24000304?via\%3Dihub}{here}.
 
