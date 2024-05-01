@@ -818,7 +818,7 @@ This study serves as a nice case study because (1) it demonstrates that Random F
 
 This study's goal was to predict near-term (1-3 days) fecal contamination in coastal shellfish growing waters. For each of the five management areas, \citet{chazal2024} constructed five Random Forests models to (1) use watershed characteristics as well as antecedent hydrologic and meteorologic observations to predict the level of fecal coliform (FC), (2) test whether forecasted rainfall can be useful for predictions, and (3) find important variables. Let's focus on goals (1) and (3) for this case study.
 
-For their first goal, depending on the management areas, the \(R^2\) value is between 0.40 and 0.74. According to \citet{chazal2024}, this performance is similar to previous studies. The other settings are typical of ML studies. They split the data into 80\% training and 20\% testing and used the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other. For their third goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind are high on the importance for prediction. These findings are consistent with the current understanding. In short, this study demonstrates the reliability and ease for construction and interpretation of random forest models.
+For their first goal, depending on the management areas, the \(R^2\) value is between 0.40 and 0.74. According to \citet{chazal2024}, this performance is similar to that of previous studies. The other settings are typical of ML studies. They split the data into 80\% training and 20\% testing and used the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other. For their third goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind are high on the importance for prediction. These findings are consistent with the current understanding. In short, this study demonstrates the reliability and ease for construction and interpretation of random forest models.
 
 The full paper can be accessed \href{https://www.sciencedirect.com/science/article/pii/S0025326X24000304?via\%3Dihub}{here}.
 
@@ -832,12 +832,17 @@ Forthcoming.
 
 Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible way. These concerns are not unique to ML models, but the complexity of ML methods makes it ever more important to think about these issues.
 
+\hypertarget{rigor}{%
+\section{Rigor}\label{rigor}}
+
+As researchers, we are responsible for our findings. Constructing ML models is similar to using statistical methods. If one goes through all combinations of predictors and fits a method many, many times, one of the models are bound to have a ``statistical significant'' result. It is thus important to report all models constructed and use multiple testing when applicable (see Chapter 13 ``Multiple Testing'' in \emph{An Introduction to Statistical Learning} by \citet{james2013introduction}).
+
 \hypertarget{reproducibility}{%
 \section{Reproducibility}\label{reproducibility}}
 
 To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to have all the code and data available online in a repository. If parts or all of the data should not be shared publicly, it helps to provide a simulated data set.
 
-Another aspect of reproducibility might be surprising. Try to use programming scripts rather than drag-and-drop software. Starting from reading in the data, write a script to read, clean, and wrangle with the data. The scripts can preserve all the steps of data analysis. In the future, when you cannot remember how you changed the data or how you arrived at a p-value, the scripts can show all the details, but drag-and-drop software will not leave any trace.
+Another aspect of reproducibility is might be surprising. Try to use programming scripts rather than drag-and-drop software. Starting from reading in the data, write a script to read, clean, and wrangle with the data. The scripts can preserve all the steps of data analysis. In the future, when you cannot remember how you changed the data or how you arrived at a p-value, the scripts can show all the details, but drag-and-drop software will not leave any trace.
 
 Note that the best practice is to read in the data into the programming environment and make any data cleaning and merging in the script. You can save the cleaned version in a different file, but don't change the original file with the raw data.
 

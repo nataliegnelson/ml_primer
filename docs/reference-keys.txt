@@ -37,6 +37,7 @@ takeaway-1
 summary-1
 case-study-3
 ethical-considerations
+rigor
 reproducibility
 decision-making
 uncertainty-qualification

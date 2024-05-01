@@ -2,11 +2,15 @@
 
 Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible way. These concerns are not unique to ML models, but the complexity of ML methods makes it ever more important to think about these issues.  
 
+## Rigor  
+
+As researchers, we are responsible for our findings. Constructing ML models is similar to using statistical methods. If one goes through all combinations of predictors and fits a method many, many times, one of the models are bound to have a "statistical significant" result. It is thus important to report all models constructed and use multiple testing when applicable (see Chapter 13 "Multiple Testing" in *An Introduction to Statistical Learning* by @james2013introduction). 
+
 ## Reproducibility  
 
 To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to have all the code and data available online in a repository. If parts or all of the data should not be shared publicly, it helps to provide a simulated data set.  
 
-Another aspect of reproducibility might be surprising. Try to use programming scripts rather than drag-and-drop software. Starting from reading in the data, write a script to read, clean, and wrangle with the data. The scripts can preserve all the steps of data analysis. In the future, when you cannot remember how you changed the data or how you arrived at a p-value, the scripts can show all the details, but drag-and-drop software will not leave any trace.  
+Another aspect of reproducibility is might be surprising. Try to use programming scripts rather than drag-and-drop software. Starting from reading in the data, write a script to read, clean, and wrangle with the data. The scripts can preserve all the steps of data analysis. In the future, when you cannot remember how you changed the data or how you arrived at a p-value, the scripts can show all the details, but drag-and-drop software will not leave any trace.
 
 Note that the best practice is to read in the data into the programming environment and make any data cleaning and merging in the script. You can save the cleaned version in a different file, but don't change the original file with the raw data.  
 
