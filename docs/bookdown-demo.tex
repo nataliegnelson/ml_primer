@@ -835,10 +835,22 @@ For their first goal, depending on the management areas, the \(R^2\) value is be
 
 The full paper can be accessed \href{https://www.sciencedirect.com/science/article/pii/S0025326X24000304?via\%3Dihub}{here}.
 
-\hypertarget{case-study-3}{%
-\section{Case Study 3}\label{case-study-3}}
+\hypertarget{case-study-3-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning}{%
+\section{Case Study 3: In-season Sweetpotato Yield Forecasting using Multitemporal Remote Sensing Environmental Observations and Machine Learning}\label{case-study-3-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning}}
 
-Forthcoming.
+\hypertarget{takeaway-2}{%
+\subsection{Takeaway}\label{takeaway-2}}
+
+Although the results are considered moderate, this study demonstrates how ML models can be used to help with decision making and planning. As \citet{carbajal-carrasco2024} state, ``Even though ML models are unable to explain underlying processes, they can surpass the predictive accuracy of process-based models, making ML algorithms particularly useful for yield forecasting at scales that are often computationally prohibitive for process-based models.'' Using remote sensing data and considering a multitude of predictor sets, this study is able to test out how to find the best combination of predictors, the best aggregation periods, and the optimal timing of constructing model. It is promising that they find that the end of the mid-season is an optimal time for constructing models, leaving 4-8 weeks for preparation for planning. One can assume that with further examination and inclusion of other predictors, some models can give reliable forecasting in advance. One could also imagine that such models are highly applicable in other fields to help with policy making, process planning, and even disaster preparedness.
+
+\hypertarget{summary-2}{%
+\subsection{Summary}\label{summary-2}}
+
+Using stationary and temporal predictors from multi-temporal remote sensing data to make early yield forecasting, \citet{carbajal-carrasco2024} use four ML methods--Random Forest Regression (RFR), Artificial Neural Networks (ANN), Support Vector Machine (SVM), and Extreme Gradient Boosting (XGB)--to construct sweetpotato yield models at the county level in and around the Coastal Plain in North Carolina from 2008 to 2022. Besides the primary goal to predict yield, the authors also aim to (1) identify key predictors through variable selection, (2) implement the four ML methods, (3) determine the optimal aggregation periods for temporal variables, and (4) evaluate how early in the season the models can reliably predict end-of-season yields. The predictors considered include topography and soil traits (elevation, slope, aspect, sand, clay, pH, cation exchange capacity, bulk density, nitrogen, soil organic carbon), weather (maximum and minimum temperature around planting, precipitation) and vegetation greenness (NDVI). They tested out 16- and 32-days as the time frames to aggregate data as well as comparing model performance of early, mid, and late models. They used the Boruta method for variable selection.
+
+The authors chose the Random Forest Regression algorithm with 16-day composite predictors using early- to mid-growing season as the best model. The \(R^2\) value is \(0.44\) and RMSE (root mean squared error) as \(3.53 t.ha^{-1}\). The authors describe the two above metrics as acceptable for forecasting. Elevation was found to be the most important predictor. They also conclude that the best time to run the model is before the end of the mid-season, approximately four to eight weeks before harvest. The authors cite the small sample size (95 records from 17 counties) as a major limitation and propose other predictors (e.g.~solar-induced chlorophyll fluorescence) and ML models (e.g.~Deep Learning) that could improve the performance.
+
+The full paper can be accessed \href{https://essopenarchive.org/users/716273/articles/870897-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning}{here}.
 
 \hypertarget{ethical-considerations}{%
 \chapter{Ethical Considerations}\label{ethical-considerations}}

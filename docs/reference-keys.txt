@@ -36,7 +36,9 @@ summary
 case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters
 takeaway-1
 summary-1
-case-study-3
+case-study-3-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning
+takeaway-2
+summary-2
 ethical-considerations
 rigor
 reproducibility
