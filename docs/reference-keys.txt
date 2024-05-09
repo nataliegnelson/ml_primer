@@ -4,6 +4,7 @@ motivation
 intro
 supervised-learning
 unsupervised-learning
+online-resources
 further-reading
 data
 data-exploratoary-analysis
