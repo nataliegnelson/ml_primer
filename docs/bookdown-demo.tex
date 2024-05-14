@@ -127,7 +127,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-05-09}
+\date{2024-05-14}
 
 \begin{document}
 \maketitle
@@ -428,7 +428,7 @@ Neural network has been enjoying its popularity. A neural network model is compo
 \caption{By Glosser.ca - Own work, Derivative of File: Artificial neural network.svg, CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=24913461}}
 \end{figure}
 
-So the input layer is the observed predictors, and each of the hidden layers has nodes that contain coefficients. You can think of these coefficients similar to those for linear models, except they do not have linear relationships with the observed predictors. These values are derived from finding the best fit between data and some kind of cost function; essentially, these values are meant to minimize the differences between observed outcome and predictions. When the values from one hidden layer are passed onto the next layer, a nonlinear activation function called \href{https://en.wikipedia.org/wiki/Rectifier_(neural_networks)}{ReLU} is commonly used. If the task is classification, the layer right before output is often some kind of algorithm to turn the values into predicted class. While neural network is a powerful ML model, the values in the nodes in the hidden layers are not interpretable. So this indeed is a black-box method. For interested readers, check out \textbf{Chapter 10 Deep Learning} in \citet{james2013introduction} (\emph{An Introduction to Statistical Learning}).
+So the input layer is the observed predictors, and each of the hidden layers has nodes that contain coefficients. You can think of these coefficients similar to those for linear models, except they do not have linear relationships with the observed predictors. These values are derived from finding the best fit between data and some kind of cost function; essentially, these values are meant to minimize the differences between observed outcome and predictions. When the values from one hidden layer are passed onto the next layer, a nonlinear activation function called \href{https://en.wikipedia.org/wiki/Rectifier_(neural_networks)}{ReLU} is commonly used. If the task is classification, the layer right before output is often some kind of algorithm to turn the values into predicted class. While neural network is a powerful ML model, the values in the nodes in the hidden layers are not interpretable. So this indeed is a black-box method. For interested readers, check out Chapter 10 Deep Learning in \citet{james2013introduction} (\emph{An Introduction to Statistical Learning}).
 
 \hypertarget{gaussian-process-gp}{%
 \section{Gaussian Process (GP)}\label{gaussian-process-gp}}
@@ -460,7 +460,7 @@ We first read in the data and rename the variables, so coding is easier.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{wine }\OtherTok{\textless{}{-}} \FunctionTok{read\_delim}\NormalTok{(}\StringTok{"winequality{-}red.csv"}\NormalTok{, }\AttributeTok{delim =} \StringTok{\textquotesingle{};\textquotesingle{}}\NormalTok{)}
+\NormalTok{wine }\OtherTok{\textless{}{-}} \FunctionTok{read\_delim}\NormalTok{(}\StringTok{"materials/winequality{-}red.csv"}\NormalTok{, }\AttributeTok{delim =} \StringTok{\textquotesingle{};\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -493,7 +493,7 @@ We first read in the data and rename the variables, so coding is easier.
 \end{Highlighting}
 \end{Shaded}
 
-To demonstrate how to construct Random Forests models with continuous and discrete outcomes, we also transform the continuous variable wine quality, our response variable, into two discrete variables. One has two levels: high vs low, and one has three levels: H, M, and L. The thresholds are decided rather arbitrarily, and you can use your domain knowledge to gauge how to set the thresholds.
+To demonstrate how to construct Random Forests models with continuous and discrete outcomes, we also transform the continuous variable, wine quality, our response variable, into two discrete variables. One has two levels: high vs low, and one has three levels: H, M, and L. The thresholds are decided rather arbitrarily, and you can use your domain knowledge to gauge how to set the thresholds.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -535,7 +535,7 @@ To demonstrate how to construct Random Forests models with continuous and discre
 ##  217   63 1319
 \end{verbatim}
 
-Next we separate the dataset into a training set (80\%) and a testing set (20\%). A seed is set so that the result can be reproduced.
+Next we randomly separate the dataset into a training set (80\% of the rows) and a testing set (20\% of the rows). A seed is set so that the result can be reproduced.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -550,7 +550,7 @@ Next we separate the dataset into a training set (80\%) and a testing set (20\%)
 \hypertarget{classification-models}{%
 \section{Classification Models}\label{classification-models}}
 
-Now we construct a Random Forests model with the two-level response. After the model is run, we calculate the predictions using the \texttt{predict} function. A plot for the important predictors are provided. We can see that \texttt{alcohol}, \texttt{sulphates}, and \texttt{volatile\ acidity} are three most important predictors for the outcome variable. A confusion matrix is created, and you can different metrics such as overall accuracy rate, sensitivity, specificity, etc.
+Now we construct a Random Forests model with the two-level response. After the model is run, we calculate the predictions using the \texttt{predict} function. A plot for the important predictors are provided. We can see that \texttt{alcohol}, \texttt{sulphates}, and \texttt{volatile\ acidity} are three most important predictors for the outcome variable. A confusion matrix is created, which shows different metrics such as overall accuracy rate, sensitivity, specificity, etc.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -841,12 +841,12 @@ The full paper can be accessed \href{https://www.sciencedirect.com/science/artic
 \hypertarget{takeaway-2}{%
 \subsection{Takeaway}\label{takeaway-2}}
 
-Although the results are considered moderate, this study demonstrates how ML models can be used to help with decision making and planning. As \citet{carbajal-carrasco2024} state, ``Even though ML models are unable to explain underlying processes, they can surpass the predictive accuracy of process-based models, making ML algorithms particularly useful for yield forecasting at scales that are often computationally prohibitive for process-based models.'' Using remote sensing data and considering a multitude of predictor sets, this study is able to test out how to find the best combination of predictors, the best aggregation periods, and the optimal timing of constructing model. It is promising that they find that the end of the mid-season is an optimal time for constructing models, leaving 4-8 weeks for preparation for planning. One can assume that with further examination and inclusion of other predictors, some models can give reliable forecasting in advance. One could also imagine that such models are highly applicable in other fields to help with policy making, process planning, and even disaster preparedness.
+Although its results are considered moderate, this study demonstrates how ML models can be used to help with decision making and planning. As \citet{carbajal-carrasco2024} state, ``Even though ML models are unable to explain underlying processes, they can surpass the predictive accuracy of process-based models, making ML algorithms particularly useful for yield forecasting at scales that are often computationally prohibitive for process-based models.'' Using remote sensing data and considering a multitude of predictor sets, this study is able to test out how to find the best combination of predictors, the best aggregation periods, and the optimal timing of constructing models. It is promising that they find that the end of the mid-season is an optimal time for constructing models, leaving four to eight weeks for planning. One can assume that with further examination and inclusion of other predictors, some models can give reliable forecasting in advance. Such models are highly applicable in other fields to help with policy making, process planning, and even disaster preparedness.
 
 \hypertarget{summary-2}{%
 \subsection{Summary}\label{summary-2}}
 
-Using stationary and temporal predictors from multi-temporal remote sensing data to make early yield forecasting, \citet{carbajal-carrasco2024} use four ML methods--Random Forest Regression (RFR), Artificial Neural Networks (ANN), Support Vector Machine (SVM), and Extreme Gradient Boosting (XGB)--to construct sweetpotato yield models at the county level in and around the Coastal Plain in North Carolina from 2008 to 2022. Besides the primary goal to predict yield, the authors also aim to (1) identify key predictors through variable selection, (2) implement the four ML methods, (3) determine the optimal aggregation periods for temporal variables, and (4) evaluate how early in the season the models can reliably predict end-of-season yields. The predictors considered include topography and soil traits (elevation, slope, aspect, sand, clay, pH, cation exchange capacity, bulk density, nitrogen, soil organic carbon), weather (maximum and minimum temperature around planting, precipitation) and vegetation greenness (NDVI). They tested out 16- and 32-days as the time frames to aggregate data as well as comparing model performance of early, mid, and late models. They used the Boruta method for variable selection.
+Using stationary and temporal predictors from multi-temporal remote sensing data to make early yield forecasting, \citet{carbajal-carrasco2024} use four ML methods--Random Forest Regression (RFR), Artificial Neural Networks (ANN), Support Vector Machine (SVM), and Extreme Gradient Boosting (XGB)--to construct sweetpotato yield models at the county level in and around the Coastal Plain in North Carolina from 2008 to 2022. Besides the primary goal to predict yield, the authors also aim to (1) identify key predictors through variable selection, (2) implement the four ML methods, (3) determine the optimal aggregation periods for temporal variables, and (4) evaluate how early in the season the models can reliably predict end-of-season yields. The predictors considered include topography and soil traits (elevation, slope, aspect, sand, clay, pH, cation exchange capacity, bulk density, nitrogen, soil organic carbon), weather (maximum and minimum temperature around planting, precipitation) and vegetation greenness (NDVI). They considered 16- and 32-days as the time frames to aggregate data as well as comparing model performance of early, mid, and late models. They used the Boruta method for variable selection.
 
 The authors chose the Random Forest Regression algorithm with 16-day composite predictors using early- to mid-growing season as the best model. The \(R^2\) value is \(0.44\) and RMSE (root mean squared error) as \(3.53 t.ha^{-1}\). The authors describe the two above metrics as acceptable for forecasting. Elevation was found to be the most important predictor. They also conclude that the best time to run the model is before the end of the mid-season, approximately four to eight weeks before harvest. The authors cite the small sample size (95 records from 17 counties) as a major limitation and propose other predictors (e.g.~solar-induced chlorophyll fluorescence) and ML models (e.g.~Deep Learning) that could improve the performance.
 
@@ -855,19 +855,19 @@ The full paper can be accessed \href{https://essopenarchive.org/users/716273/art
 \hypertarget{ethical-considerations}{%
 \chapter{Ethical Considerations}\label{ethical-considerations}}
 
-Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible way. These concerns are not unique to ML models, but the complexity of ML methods makes it ever more important to think about these issues.
+Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible and reproducible way. These concerns are not unique to ML models, but the complexity of ML methods makes it even more important to think about these issues.
 
 \hypertarget{rigor}{%
 \section{Rigor}\label{rigor}}
 
-As researchers, we are responsible for our findings. Constructing ML models is similar to using statistical methods. If one goes through all combinations of predictors and fits a method many, many times, one of the models are bound to have a ``statistical significant'' result. It is thus important to report all models constructed and use multiple testing when applicable (see Chapter 13 ``Multiple Testing'' in \emph{An Introduction to Statistical Learning} by \citet{james2013introduction}).
+As researchers, we are responsible for our findings. Constructing ML models is similar to using statistical methods. If one goes through all combinations of predictors and fits a method many, many times, one of the models are bound to have a ``statistical significant'' result. It is thus important to report all models constructed and use multiple testing adjustment when applicable (see Chapter 13 ``Multiple Testing'' in \emph{An Introduction to Statistical Learning} by \citet{james2013introduction}).
 
 \hypertarget{reproducibility}{%
 \section{Reproducibility}\label{reproducibility}}
 
-To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to have all the code and data available online in a repository. If parts or all of the data should not be shared publicly, it helps to provide a simulated data set.
+To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to have all the code and data available in a repository. If parts or all of the data should not be shared publicly, it helps to provide a simulated data set.
 
-Another aspect of reproducibility is might be surprising. Try to use programming scripts rather than drag-and-drop software. Starting from reading in the data, write a script to read, clean, and wrangle with the data. The scripts can preserve all the steps of data analysis. In the future, when you cannot remember how you changed the data or how you arrived at a p-value, the scripts can show all the details, but drag-and-drop software will not leave any trace.
+Another aspect of reproducibility might be surprising. Try to use programming scripts rather than drag-and-drop software. Starting from reading in the data, write a script to read, clean, and wrangle with the data. The scripts can preserve all the steps of data analysis. In the future, when you cannot remember how you changed the data or how you arrived at a p-value, the scripts can show all the details, but drag-and-drop software will not leave any trace.
 
 Note that the best practice is to read in the data into the programming environment and make any data cleaning and merging in the script. You can save the cleaned version in a different file, but don't change the original file with the raw data.
 
@@ -879,7 +879,7 @@ Since research related to environmental sciences and natural resources could lik
 \hypertarget{uncertainty-qualification}{%
 \subsection{Uncertainty qualification}\label{uncertainty-qualification}}
 
-While all ML models can provide point estimates, not all can quantify uncertainty. It is, however, important to show how confident the model is about the estimates. If the conclusion of the study could affect an important policy change, it is crucial to present a full picture of the findings, which include uncertainty quantification. It is wildly different whether the model is 20\% or 95\% confident about its answer, for instance.
+While all supervised ML models can provide point estimates, not all can quantify uncertainty. It is, however, important to show how confident the model is about the estimates. If the conclusion of the study could affect an important policy change, it is crucial to present a full picture of the findings, which include uncertainty quantification. It is wildly different whether the model is 20\% or 95\% confident about its answer, for instance.
 
 \hypertarget{interpretability}{%
 \subsection{Interpretability}\label{interpretability}}

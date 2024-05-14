@@ -17,7 +17,7 @@ library(randomForest)
 We first read in the data and rename the variables, so coding is easier. 
 
 ```{r}
-wine <- read_delim("winequality-red.csv", delim = ';')
+wine <- read_delim("materials/winequality-red.csv", delim = ';')
 # shorten variable names
 fa <- wine$`fixed acidity`
 va <- as.numeric(wine$`volatile acidity`)
@@ -34,7 +34,7 @@ qual <- wine$quality
 winez <- data.frame(fa, va, ca, rs, ch, fsd, tsd, den, ph, sul, al, qual)
 ```
 
-To demonstrate how to construct Random Forests models with continuous and discrete outcomes, we also transform the continuous variable wine quality, our response variable, into two discrete variables. One has two levels: high vs low, and one has three levels: H, M, and L. The thresholds are decided rather arbitrarily, and you can use your domain knowledge to gauge how to set the thresholds. 
+To demonstrate how to construct Random Forests models with continuous and discrete outcomes, we also transform the continuous variable, wine quality, our response variable, into two discrete variables. One has two levels: high vs low, and one has three levels: H, M, and L. The thresholds are decided rather arbitrarily, and you can use your domain knowledge to gauge how to set the thresholds. 
 
 ```{r}
 # collapse qual into 2 labels
@@ -46,7 +46,7 @@ table(winez$qual2)
 table(winez$qual3)
 ```
 
-Next we separate the dataset into a training set (80%) and a testing set (20%). A seed is set so that the result can be reproduced. 
+Next we randomly separate the dataset into a training set (80% of the rows) and a testing set (20% of the rows). A seed is set so that the result can be reproduced. 
 
 ```{r}
 # separate data into a training set and a test set 
@@ -58,7 +58,7 @@ winez_test <- winez[-train,]
 
 ## Classification Models  
 
-Now we construct a Random Forests model with the two-level response. After the model is run, we calculate the predictions using the `predict` function. A plot for the important predictors are provided. We can see that `alcohol`, `sulphates`, and `volatile acidity` are three most important predictors for the outcome variable. A confusion matrix is created, and you can different metrics such as overall accuracy rate, sensitivity, specificity, etc.  
+Now we construct a Random Forests model with the two-level response. After the model is run, we calculate the predictions using the `predict` function. A plot for the important predictors are provided. We can see that `alcohol`, `sulphates`, and `volatile acidity` are three most important predictors for the outcome variable. A confusion matrix is created, which shows different metrics such as overall accuracy rate, sensitivity, specificity, etc.  
 
 ```{r rf, cache = TRUE}
 # random forest
