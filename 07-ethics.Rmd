@@ -1,6 +1,6 @@
 # Ethical Considerations  
 
-Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible and reproducible way. These concerns are not unique to ML models, but the complexity of ML methods makes it even more important to think about these issues.  
+Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible and reproducible way. These concerns are not unique to machine learning models, but the complexity of ML methods makes it even more important to think about these issues.  
 
 ## Rigor  
 
@@ -8,7 +8,7 @@ As researchers, we are responsible for our findings. Constructing ML models is s
 
 ## Reproducibility  
 
-To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to have all the code and data available in a repository. If parts or all of the data should not be shared publicly, it helps to provide a simulated data set.  
+To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to have all the code and data available in a repository. If parts or all of the data should not be shared publicly, it helps to provide a simulated data set. GitHub is a common choice for such a purpose. [Here](https://imperialcollegelondon.github.io/grad_school_git_course/l2-01-sharing_your_code/index.html) is a short introduction on how to use GitHub for code sharing.  
 
 Another aspect of reproducibility might be surprising. Try to use programming scripts rather than drag-and-drop software. Starting from reading in the data, write a script to read, clean, and wrangle with the data. The scripts can preserve all the steps of data analysis. In the future, when you cannot remember how you changed the data or how you arrived at a p-value, the scripts can show all the details, but drag-and-drop software will not leave any trace.
 

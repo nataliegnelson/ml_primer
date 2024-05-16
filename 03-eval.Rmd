@@ -14,13 +14,13 @@ where $\hat{y}_i$ is the predicted outcome of the $i^{th}$ observation and $y_i$
 $$Bias = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - y \bigg).$$ 
 The two metrics seem similar, but they reveal different aspects of model performance. In general, bias shows if the predictions are centered around the truth, while the MSE shows whether the predictions are centered around the truth *and* how far the predictions are from the truth. If the bias is zero, it means that the mean prediction goes towards the truth as the sample size increases to infinity. This is naturally a desired property, but you might be surprised that sometimes we are willing to accept some bias to reduce the variance.  
 
-One important formula, 
+One important formula is 
 $$MSE = Bias^2 + Variance,$$
 where 
 $$Variance = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - E(\hat{y}) \bigg)^2$$
 and 
 $$E(\hat{y}) = \frac{1}{n} \sum_{i=1}^n \hat{y}_i.$$
-We skip the derivation here, but the interested readers can find the derivation readily online. The formula tells us that, if the MSE is large but the bias is small, this means the model has a large variance. This is to say, if you fit the model multiple times, it has quite different results every time. These formulas might seem too technical, but the message is important. There is a trade off between the bias and variance; in other words, there is no free lunch. A balance between bias and variance is where many methods strive to achieve.  
+We skip the derivation here, but the interested readers can find the derivation readily online. The formula tells us that, if the MSE is large but the bias is small, this means the model has a large variance. This is to say, if you fit the model multiple times, it has quite different results. These formulas might seem too technical, but the message is important. There is a trade-off between bias and variance; in other words, there is no free lunch. A balance between bias and variance is where many methods strive to achieve.  
 
 ### Categorical Responses  
 
@@ -34,7 +34,7 @@ Overfitting means that the model can make good predictions with the available da
 
 One very standard way of evaluation is $k$-fold cross validation, commonly with $k=5$ or $k=10$. The idea is simple. Divide the data into $k$ groups. Each time, choose $k-1$ groups for training, fit the model on the last group, which is the test data, and calculate the desired metrics, such as MSE. 
 
-This way, although less data is used for training, the metrics are more accurate, because now we are not using the same data points for training and testing. Using metrics from cross validation for model selection can ensure that your model does not overfit.  
+This way, although less data is used for training, the metrics should be more accurate, because now we are not using the same data points for training and testing. Using metrics from cross validation for model selection can ensure that your model does not overfit.  
 
 
 ```{r, include = FALSE}

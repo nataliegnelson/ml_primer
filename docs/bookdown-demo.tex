@@ -127,7 +127,7 @@
 
 \title{Machine Learning Guidelines for Natural Resource Management Practitioners}
 \author{Shih-Ni Prim and Natalie Nelson}
-\date{2024-05-14}
+\date{2024-05-16}
 
 \begin{document}
 \maketitle
@@ -139,19 +139,19 @@
 \hypertarget{motivation}{%
 \chapter{Motivation}\label{motivation}}
 
-As machine learning (ML) has become a powerful tool, it is noted by some that ML has not been widely used in environmental studies. Some might prefer process based models, but they can be costly and ML provides a large variety of tools that should be explored. This booklet is meant to provide a concise guide for natural resource management practitioners. This book serves as a staring point rather than a comprehensive resource, so that practitioners can have a basic understanding of how ML works and how to utilize it to analyze data and answer research questions. When appropriate, we provide case studies and R code as well as other online resources to help the readers on the journey of gaining one powerful tool that is becoming omnipresent in the research world.
+As machine learning (ML) is becoming ever more powerful, some has noted that ML has not been widely used in environmental studies. Process based models might be preferred, but they can be costly and ML provides a wide variety of tools that should be explored. This booklet is meant to provide a concise guide for natural resource management practitioners. This book serves as a staring point rather than a comprehensive resource, so that practitioners can have a basic understanding of how ML works and how to utilize it to analyze data and answer research questions. We also provide case studies, R code, and links to online resources to help the readers on the journey of gaining one powerful tool that is becoming omnipresent in the research world.
 
 \hypertarget{intro}{%
 \chapter{Introduction}\label{intro}}
 
 What is machine learning (ML)? Essentially, machine learning teaches computer models to look for patterns or make predictions. You can think of machine learning models as finding underlying formulas from which the data come. To solve for such formulas, many, many mathematical calculations are involved. As we human beings are prone to mistakes for repetitive task, a more effective way to work with data is to identify a framework and give the framework and data to a computer model. The computer is best at repeating meticulous calculations to find a best guess based on our believes of the system and the data we observed.
 
-Even though ML models are commonly considered black boxes (or some might say opaque boxes), they are not necessarily so. Many ML methods lend easily to interpretation. Random Forests, for example, is a powerful method that can offer a glimpse into what the important variables are, even if the straightforward explanation that can come from a linear model is unavailable. Below we introduce the two main branches of machine learning.
+Even though ML models are commonly considered black boxes (or some might say opaque boxes), they are not necessarily so. Many ML methods lend easily to interpretation. Random Forests, for example, is a powerful method that provides important variables, even if a straightforward explanation that can come from a linear model is unavailable. Below we introduce the two main branches of machine learning.
 
 \hypertarget{supervised-learning}{%
 \section{Supervised Learning}\label{supervised-learning}}
 
-Simply put, supervised learning is when there are true answers for the model. For example, if we want to use environmental traits (temperature, precipitation, chemical composition) to predict algal growth. In a dataset that records such activities, the observed growths are the ``true'' answers. The model can then use the predictors to make predictions, and the comparison between the predictions and the truth can measure how well the model performs.
+Simply put, supervised learning is when there are true answers for the model. For example, if we want to use environmental traits (temperature, precipitation, chemical composition) to predict algal bloom. In a dataset that records such activities, the observed growths are the ``true'' answers. The model can then use the predictors to make predictions, and the comparison between the predictions and the observations/truth can measure how well the model performs.
 
 \hypertarget{unsupervised-learning}{%
 \section{Unsupervised Learning}\label{unsupervised-learning}}
@@ -242,7 +242,7 @@ After you read in data, do some checks. Below we use the embedded \texttt{mtcars
 ##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
 \end{verbatim}
 
-As seen above, the command \texttt{str} allows you to see the variables and their types. For this dataset, all variables are numerical. If some are categorical but they should be numerical, make sure you transform them into the right type of data. (Sometimes numbers can be saved as characters, and the analysis would not be correct if the datatype remains as character.)
+As seen above, the command \texttt{str} allows you to see the variables and their types. For this dataset, all variables are numerical. If some are categorical but they should be numerical, make sure you transform them into the right type of data. (Sometimes numbers are saved as characters, and the analysis would not be correct if the datatype remains as character.)
 
 Next, try to make some plots--typically histograms for numerical variables and barplots for categorical variables.
 
@@ -319,7 +319,7 @@ The summaries can show, for example, ranges and means of the variables. They can
 \hypertarget{data-requirement}{%
 \section{Data Requirement}\label{data-requirement}}
 
-It is difficult to talk about data requirement in a general sense. A few considerations are offered here. The data should be appropriate to the research questions. For example, if you want to know causal relationships, clinical trial data is the gold standard. Further, make sure that the sample size is large enough for what you want to study. If you would like to know the behavior of mice, repeatedly recording the behavior of one, or even five, mice will not be sufficient. Further, consistency in measurement should be consistent. Any major changes in the data collection methods should be taken into consideration. Sometimes adjustment can be made. The best practice is to consider how the data is collected and ensure that there is sufficient information in the data to answer the research questions.
+It is difficult to talk about data requirement in a general sense. A few considerations are offered here. The data should be appropriate to the research questions. For example, if you want to know causal relationships, clinical trial data is the gold standard. Further, make sure that the sample size is large enough for what you want to study. If you would like to know the behavior of mice, repeatedly recording the behavior of one mouse, or even five mice, will not be sufficient. Further, measurement should be consistent. Any major changes in the data collection methods should be taken into consideration. Sometimes adjustment can be made. The best practice is to consider how the data is collected and ensure that there is sufficient information in the data to answer the research questions.
 
 \hypertarget{strategies-for-missing-data}{%
 \section{Strategies for Missing Data}\label{strategies-for-missing-data}}
@@ -354,13 +354,13 @@ where \(\hat{y}_i\) is the predicted outcome of the \(i^{th}\) observation and \
 \[Bias = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - y \bigg).\]
 The two metrics seem similar, but they reveal different aspects of model performance. In general, bias shows if the predictions are centered around the truth, while the MSE shows whether the predictions are centered around the truth \emph{and} how far the predictions are from the truth. If the bias is zero, it means that the mean prediction goes towards the truth as the sample size increases to infinity. This is naturally a desired property, but you might be surprised that sometimes we are willing to accept some bias to reduce the variance.
 
-One important formula,
+One important formula is
 \[MSE = Bias^2 + Variance,\]
 where
 \[Variance = \frac{1}{n} \sum_{i=1}^n \bigg( \hat{y}_i - E(\hat{y}) \bigg)^2\]
 and
 \[E(\hat{y}) = \frac{1}{n} \sum_{i=1}^n \hat{y}_i.\]
-We skip the derivation here, but the interested readers can find the derivation readily online. The formula tells us that, if the MSE is large but the bias is small, this means the model has a large variance. This is to say, if you fit the model multiple times, it has quite different results every time. These formulas might seem too technical, but the message is important. There is a trade off between the bias and variance; in other words, there is no free lunch. A balance between bias and variance is where many methods strive to achieve.
+We skip the derivation here, but the interested readers can find the derivation readily online. The formula tells us that, if the MSE is large but the bias is small, this means the model has a large variance. This is to say, if you fit the model multiple times, it has quite different results. These formulas might seem too technical, but the message is important. There is a trade-off between bias and variance; in other words, there is no free lunch. A balance between bias and variance is where many methods strive to achieve.
 
 \hypertarget{categorical-responses}{%
 \subsection{Categorical Responses}\label{categorical-responses}}
@@ -377,7 +377,7 @@ Overfitting means that the model can make good predictions with the available da
 
 One very standard way of evaluation is \(k\)-fold cross validation, commonly with \(k=5\) or \(k=10\). The idea is simple. Divide the data into \(k\) groups. Each time, choose \(k-1\) groups for training, fit the model on the last group, which is the test data, and calculate the desired metrics, such as MSE.
 
-This way, although less data is used for training, the metrics are more accurate, because now we are not using the same data points for training and testing. Using metrics from cross validation for model selection can ensure that your model does not overfit.
+This way, although less data is used for training, the metrics should be more accurate, because now we are not using the same data points for training and testing. Using metrics from cross validation for model selection can ensure that your model does not overfit.
 
 \begin{figure}
 \centering
@@ -393,7 +393,7 @@ Here we discuss some machine learning methods you might find useful. Although li
 \hypertarget{tree-based-methods}{%
 \section{Tree-based Methods}\label{tree-based-methods}}
 
-Tree-based methods are popular for their ease for interpretation. Essentially, the algorithm tries to split the data into subsets by finding the most significant (or consequential) variables in a way that reduces the prediction error the most. For example, in the graph below, the variable that helps reduce prediction error at the first level is gender. In other words, the object being male or female can greatly help the algorithm predict the survival of passengers on Titanic.
+Tree-based methods are popular for their ease for interpretation. Essentially, the algorithm tries to split the data into subsets by finding the most significant (or consequential) variables in a way that reduces the prediction error the most. For example, in the graph below, the variable that helps reduce prediction error at the first level is gender. In other words, the property of being male or female can greatly help the algorithm predict the survival of passengers on Titanic.
 
 \begin{figure}
 \centering
@@ -406,7 +406,7 @@ Decision trees are easy to use but not very accurate for complex data; however, 
 \hypertarget{random-forests}{%
 \subsection{Random Forests}\label{random-forests}}
 
-For Random Forests, the algorithm randomly selects a smaller number, say \(m\), of predictors from the total number, say \(p\), each time a tree is being fit. This process is repeated many times, for example, \(500\) times. The average (for continuous responses) or the majority votes (for discrete responses) of the predictions from the individual trees are used as final predictions. By randomly choosing a subset of predictors each time, random forests can avoid relying on the same variables every time and prevent overfitting.
+For Random Forests, the algorithm randomly selects a smaller number, say \(m\), of predictors from the total number, say \(p\), each time a tree is being fit. This process is repeated many times, for example, \(500\) times. The average (for continuous responses) or the majority votes (for discrete responses) of the predictions from the individual trees are used as final predictions. By randomly choosing a subset of predictors each time, Random Forests can avoid relying on the same variables every time and prevent overfitting.
 
 Even though coefficients of each predictors are not available for random forests, you can easily get the important variables and at least know which variables are more important for predicting the response. You can also use Random Forests as a tool for variable selection and then use a different method to fit the model on a subset of predictors chosen by Random Forests.
 
@@ -428,12 +428,12 @@ Neural network has been enjoying its popularity. A neural network model is compo
 \caption{By Glosser.ca - Own work, Derivative of File: Artificial neural network.svg, CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=24913461}}
 \end{figure}
 
-So the input layer is the observed predictors, and each of the hidden layers has nodes that contain coefficients. You can think of these coefficients similar to those for linear models, except they do not have linear relationships with the observed predictors. These values are derived from finding the best fit between data and some kind of cost function; essentially, these values are meant to minimize the differences between observed outcome and predictions. When the values from one hidden layer are passed onto the next layer, a nonlinear activation function called \href{https://en.wikipedia.org/wiki/Rectifier_(neural_networks)}{ReLU} is commonly used. If the task is classification, the layer right before output is often some kind of algorithm to turn the values into predicted class. While neural network is a powerful ML model, the values in the nodes in the hidden layers are not interpretable. So this indeed is a black-box method. For interested readers, check out Chapter 10 Deep Learning in \citet{james2013introduction} (\emph{An Introduction to Statistical Learning}).
+So the input layer is the observed predictors, and each of the hidden layers has nodes that contain coefficients. You can think of these coefficients similar to those for linear models, except they do not have linear relationships with the observed predictors. These values are derived as the best fit between data and some kind of cost function; essentially, these values are meant to minimize the differences between observed outcome and predictions. When the values from one hidden layer are passed onto the next layer, a nonlinear activation function called \href{https://en.wikipedia.org/wiki/Rectifier_(neural_networks)}{ReLU} is commonly used. If the task is classification, the layer right before output is often an algorithm to turn the values into predicted class. While neural network is a powerful ML model, the values in the nodes in the hidden layers are not interpretable. So this indeed is a black-box method. For interested readers, check out Chapter 10 Deep Learning in \citet{james2013introduction} (\emph{An Introduction to Statistical Learning}).
 
 \hypertarget{gaussian-process-gp}{%
 \section{Gaussian Process (GP)}\label{gaussian-process-gp}}
 
-Another powerful ML method that could be useful for natural resource management type of research is Gaussian Process. This method, commonly called kriging in spatial statistics, is non-parametric, which sounds like there are no parameters in the model but in fact means there can be an infinite number of parameters. (Of course in any real model we'll have finite parameters, but that's the idea.) The fact that the parameters can increase towards infinity tells us that this is a flexible model. Essentially, for a GP model, and here I quote from Chapter 5 of Gramacy's \emph{Surrogates}, ``any finite collection of realizations (i.e.~\(n\) observations) is modeled as having a multivariate normal (MVN) distribution.'' In other words, the model tries to learn information from similar items, judging from some kind of distance from each other. MVN has some great properties. And, when there is a new data point, all the observed data points can be used to make prediction for it.
+Another ML method that could be useful for natural resource management type of research is Gaussian Process. This method, commonly called kriging in spatial statistics, is non-parametric, which sounds like there are no parameters in the model but in fact means there can be an infinite number of parameters. (Of course in any real model we'll have finite parameters, but that's the idea.) The fact that the parameters can increase towards infinity tells us that this is a flexible model. Essentially, for a GP model, and here I quote from Chapter 5 of Gramacy's \emph{Surrogates}, ``any finite collection of realizations (i.e.~\(n\) observations) is modeled as having a multivariate normal (MVN) distribution.'' In other words, the model tries to learn information from similar items, judging from some kind of distance from each other. MVN has some great properties. And, when there is a new data point, all the observed data points can be used to make prediction for it.
 
 GP is widely used in the machine learning, computer experiments, and spatial statistics communities. There are ready-made R packages, such as \texttt{GpGp} and \texttt{deepgp}. It's also easy to use in Python. Chapter 5 (\href{https://bookdown.org/rbg/surrogates/chap5.html}{``Gaussian Process Regression''}) of the book \emph{Surrogates} by \citet{gramacy2020surrogates} is a great resource if you are interested in learning more about Gaussian process! If you would like to see some theory of GP, check out another classic book \href{https://gaussianprocess.org/gpml/}{\emph{Gaussian Processes for Machine learning}} by \citet{CR2006gp}.
 
@@ -799,7 +799,7 @@ MSE & 0.289515 & 0.2907887 & 0.292777\\
 \hypertarget{case-studies}{%
 \chapter{Case Studies}\label{case-studies}}
 
-Since ML models are relatively easy to construct, they can at least be used to compare results or explore areas in which not much is known, so hypotheses can be made to help guide the directions of process-based models. Here we provide overviews of three case studies to demonstrate how ML models can be beneficial for environmental and natural resource management studies.
+Since machine learning models are relatively easy to construct, they can at least be used to compare results or explore areas in which not much is known, so hypotheses can be made to help guide the directions of process-based models. Here we provide overviews of three case studies to demonstrate how ML models can benefit environmental and natural resource management studies.
 
 \hypertarget{case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes}{%
 \section{Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes}\label{case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes}}
@@ -812,9 +812,9 @@ With the remote sensed images as important data sources, the researchers had to 
 \hypertarget{summary}{%
 \subsection{Summary}\label{summary}}
 
-In this study, \citet{fidan2023} build a Random Forests model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew's impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) develop a pluvial flood dataset using imagery, (2) test the performance of Random Forests models for the modeling flood in ``low-lying and flat agricultural terrain,'' (3) find important predictors, and (4) ``generate pluvial flood time series.''
+In this study, \citet{fidan2023} built a Random Forests model using gridded rainfall data, derived from remotely sensed imagery, from the 2016 hurricane Matthew's impact in Kinston, North Carolina. Besides the proprietary images, the researchers also included readily available geospatial landscape traits for the models. With the objectives of (1) developing a pluvial flood dataset using imagery, (2) testing the performance of Random Forests models for the modeling flood in ``low-lying and flat agricultural terrain,'' (3) finding important predictors, and (4) ``generat{[}ing{]} pluvial flood time series.''
 
-The outcome variable is binary in terms of flooding. Each pixel is treated as one data point. Non-flooded areas were covered by 5,875,480 pixels, and flooded areas by 678,010 pixels. Since there were many more non-flooded pixels than flooded pixels, overall accuracy alone would not be a good performance metric, since, if the model always predicts that a pixel is not flooded, the accuracy rate would be high. The researchers chose other metrics such as precision, recall, specificity, and F1 scores to reflect model performance in different scenarios. The model achieved an overall accuracy of 0.97 and an F1 score of 0.69. Considering that the no information rate (if the model predicts non-flooded all the time) is around 88.5\%, this performance seems satisfactory. They found the important variables to be population density, distance to the nearest river, height above nearest drainage, and distance to the nearest road.
+The outcome variable was binary in terms of flooding. Each pixel was treated as one data point. Non-flooded areas were covered by 5,875,480 pixels, and flooded areas by 678,010 pixels. Since there were many more non-flooded pixels than flooded pixels, overall accuracy alone would not be a good performance metric, since, if the model always predicted that a pixel was not flooded, the accuracy rate would be high. The researchers chose other metrics such as precision, recall, specificity, and F1 scores to reflect model performance in different scenarios. The model achieved an overall accuracy of 0.97 and an F1 score of 0.69. Considering that the no information rate (if the model predicts non-flooded all the time) was around 88.5\%, this performance seemed satisfactory. They found the important variables to be population density, distance to the nearest river, height above nearest drainage, and distance to the nearest road.
 
 The full paper can be accessed \href{https://www.sciencedirect.com/science/article/pii/S1364815223001445?dgcid=author}{here}.
 
@@ -824,14 +824,14 @@ The full paper can be accessed \href{https://www.sciencedirect.com/science/artic
 \hypertarget{takeaway-1}{%
 \subsection{Takeaway}\label{takeaway-1}}
 
-This study serves as a nice case study because (1) it demonstrates that Random Forests does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have known. These reasons help us establish trust in Random Forests models. Furthermore, Random Forests models are easy and cheap ton construct. The R package \texttt{caret} and function \texttt{rf}, used by \citet{chazal2024}, is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by \texttt{caret::rf}, help greatly with interpretation.
+This study serves as a nice case study because (1) it demonstrates that Random Forests does well with nonlinear relationships between the predictors and outcomes, (2) the performance is at least as good as other studies, (3) the findings are consistent with what researchers have known. These reasons help us establish trust in Random Forests models. Furthermore, Random Forests models are easy and cheap to construct. The R package \texttt{caret} and function \texttt{rf}, used by \citet{chazal2024}, is easy to use and quick to run, if the number of trees are reasonably chosen. The important variables, readily provided by \texttt{caret::rf}, help greatly with interpretation.
 
 \hypertarget{summary-1}{%
 \subsection{Summary}\label{summary-1}}
 
 This study's goal was to predict near-term (1-3 days) fecal contamination in coastal shellfish growing waters. For each of the five management areas, \citet{chazal2024} constructed five Random Forests models to (1) use watershed characteristics as well as antecedent hydrologic and meteorologic observations to predict the level of fecal coliform (FC), (2) test whether forecasted rainfall can be useful for predictions, and (3) find important variables. Let's focus on goals (1) and (3) for this case study.
 
-For their first goal, depending on the management areas, the \(R^2\) value is between 0.40 and 0.74. According to \citet{chazal2024}, this performance is similar to that of previous studies. The other settings are typical of ML studies. They split the data into 80\% training and 20\% testing and used the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other. For their third goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind are high on the importance for prediction. These findings are consistent with the current understanding. In short, this study demonstrates the reliability and ease for construction and interpretation of random forest models.
+For their first goal, depending on the management areas, the \(R^2\) value was between 0.40 and 0.74. According to \citet{chazal2024}, this performance is similar to that of previous studies. The other settings were typical of ML studies. They split the data into 80\% training and 20\% testing and used the variance inflation factor (VIF) to remove variables that are collinear, which means some variables are correlated with each other. For their third goal, they found (1) antecedent rainfall, (2) river stage threshold, and (3) wind to be high on the importance for prediction. These findings are consistent with the current understanding. In short, this study demonstrates the reliability and ease for construction and interpretation of Random Forests models.
 
 The full paper can be accessed \href{https://www.sciencedirect.com/science/article/pii/S0025326X24000304?via\%3Dihub}{here}.
 
@@ -841,21 +841,21 @@ The full paper can be accessed \href{https://www.sciencedirect.com/science/artic
 \hypertarget{takeaway-2}{%
 \subsection{Takeaway}\label{takeaway-2}}
 
-Although its results are considered moderate, this study demonstrates how ML models can be used to help with decision making and planning. As \citet{carbajal-carrasco2024} state, ``Even though ML models are unable to explain underlying processes, they can surpass the predictive accuracy of process-based models, making ML algorithms particularly useful for yield forecasting at scales that are often computationally prohibitive for process-based models.'' Using remote sensing data and considering a multitude of predictor sets, this study is able to test out how to find the best combination of predictors, the best aggregation periods, and the optimal timing of constructing models. It is promising that they find that the end of the mid-season is an optimal time for constructing models, leaving four to eight weeks for planning. One can assume that with further examination and inclusion of other predictors, some models can give reliable forecasting in advance. Such models are highly applicable in other fields to help with policy making, process planning, and even disaster preparedness.
+Although its results are considered moderate, this study demonstrates how ML models can be used to help with decision making and planning. As \citet{carbajal-carrasco2024} state, ``Even though ML models are unable to explain underlying processes, they can surpass the predictive accuracy of process-based models, making ML algorithms particularly useful for yield forecasting at scales that are often computationally prohibitive for process-based models.'' Using remote sensing data and considering a multitude of predictor sets, this study tested how to find the best combination of predictors, the best aggregation periods, and the optimal timing of constructing models. They found that the end of the mid-season was an optimal time for constructing models, leaving four to eight weeks for planning. One can assume that with further examination and inclusion of other predictors, some models can give reliable forecasting in advance. Such models are highly applicable in other fields to help with policy making, process planning, and even disaster preparedness.
 
 \hypertarget{summary-2}{%
 \subsection{Summary}\label{summary-2}}
 
-Using stationary and temporal predictors from multi-temporal remote sensing data to make early yield forecasting, \citet{carbajal-carrasco2024} use four ML methods--Random Forest Regression (RFR), Artificial Neural Networks (ANN), Support Vector Machine (SVM), and Extreme Gradient Boosting (XGB)--to construct sweetpotato yield models at the county level in and around the Coastal Plain in North Carolina from 2008 to 2022. Besides the primary goal to predict yield, the authors also aim to (1) identify key predictors through variable selection, (2) implement the four ML methods, (3) determine the optimal aggregation periods for temporal variables, and (4) evaluate how early in the season the models can reliably predict end-of-season yields. The predictors considered include topography and soil traits (elevation, slope, aspect, sand, clay, pH, cation exchange capacity, bulk density, nitrogen, soil organic carbon), weather (maximum and minimum temperature around planting, precipitation) and vegetation greenness (NDVI). They considered 16- and 32-days as the time frames to aggregate data as well as comparing model performance of early, mid, and late models. They used the Boruta method for variable selection.
+Using stationary and temporal predictors from multi-temporal remote sensing data to make early yield forecasting, \citet{carbajal-carrasco2024} used four ML methods--Random Forest Regression (RFR), Artificial Neural Networks (ANN), Support Vector Machine (SVM), and Extreme Gradient Boosting (XGB)--to construct sweetpotato yield models at the county level in and around the Coastal Plain in North Carolina from 2008 to 2022. Besides the primary goal to predict yield, the authors also aimed to (1) identify key predictors through variable selection, (2) implement the four ML methods, (3) determine the optimal aggregation periods for temporal variables, and (4) evaluate how early in the season the models can reliably predict end-of-season yields. The predictors considered included topography and soil traits (elevation, slope, aspect, sand, clay, pH, cation exchange capacity, bulk density, nitrogen, soil organic carbon), weather (maximum and minimum temperature around planting, precipitation) and vegetation greenness (NDVI). They considered 16- and 32-days as the time frames to aggregate data as well as comparing model performance of early, mid, and late models. They used the Boruta method for variable selection.
 
-The authors chose the Random Forest Regression algorithm with 16-day composite predictors using early- to mid-growing season as the best model. The \(R^2\) value is \(0.44\) and RMSE (root mean squared error) as \(3.53 t.ha^{-1}\). The authors describe the two above metrics as acceptable for forecasting. Elevation was found to be the most important predictor. They also conclude that the best time to run the model is before the end of the mid-season, approximately four to eight weeks before harvest. The authors cite the small sample size (95 records from 17 counties) as a major limitation and propose other predictors (e.g.~solar-induced chlorophyll fluorescence) and ML models (e.g.~Deep Learning) that could improve the performance.
+The authors chose the Random Forest Regression algorithm with 16-day composite predictors using early- to mid-growing season as the best model. The \(R^2\) value is \(0.44\) and RMSE (root mean squared error) as \(3.53 t.ha^{-1}\). The authors describe the two above metrics as acceptable for forecasting. Elevation was found to be the most important predictor. They also conclude that the best time to run the model was before the end of the mid-season, approximately four to eight weeks before harvest. The authors cite the small sample size (95 records from 17 counties) as a major limitation and propose other predictors (e.g.~solar-induced chlorophyll fluorescence) and ML models (e.g.~Deep Learning) that could improve the performance.
 
 The full paper can be accessed \href{https://essopenarchive.org/users/716273/articles/870897-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning}{here}.
 
 \hypertarget{ethical-considerations}{%
 \chapter{Ethical Considerations}\label{ethical-considerations}}
 
-Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible and reproducible way. These concerns are not unique to ML models, but the complexity of ML methods makes it even more important to think about these issues.
+Ethics might sound heavy, but this section is mainly about ensuring that the analysis is carried out in a responsible and reproducible way. These concerns are not unique to machine learning models, but the complexity of ML methods makes it even more important to think about these issues.
 
 \hypertarget{rigor}{%
 \section{Rigor}\label{rigor}}
@@ -865,7 +865,7 @@ As researchers, we are responsible for our findings. Constructing ML models is s
 \hypertarget{reproducibility}{%
 \section{Reproducibility}\label{reproducibility}}
 
-To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to have all the code and data available in a repository. If parts or all of the data should not be shared publicly, it helps to provide a simulated data set.
+To allow for others to reproduce your work, it is important to provide enough details in terms of methods, data processing, code implementation, etc. It is also encouraged to have all the code and data available in a repository. If parts or all of the data should not be shared publicly, it helps to provide a simulated data set. GitHub is a common choice for such a purpose. \href{https://imperialcollegelondon.github.io/grad_school_git_course/l2-01-sharing_your_code/index.html}{Here} is a short introduction of how to use GitHub for code sharing.
 
 Another aspect of reproducibility might be surprising. Try to use programming scripts rather than drag-and-drop software. Starting from reading in the data, write a script to read, clean, and wrangle with the data. The scripts can preserve all the steps of data analysis. In the future, when you cannot remember how you changed the data or how you arrived at a p-value, the scripts can show all the details, but drag-and-drop software will not leave any trace.
 
@@ -900,11 +900,13 @@ Below we provide some tips for what to do and what not to do when you build mach
 \begin{itemize}
 \tightlist
 \item
+  Do consider whether the data is appropriate for your research questions.
+\item
   Do data exploratory analysis before jumping into analysis. Look at summary statistics and make plots to familiarize yourself with the data.
 \item
   Document the process with reasonable details, so you or other researchers can reproduce the study if needed.
 \item
-  Along the same line, if you write script for your code, add comments along the way.
+  Along the same line, if you write scripts for your code, add comments along the way.
 \item
   In the publication, explain what the result entails and the limitations of the model.
 \item

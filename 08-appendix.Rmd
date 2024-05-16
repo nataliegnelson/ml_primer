@@ -6,9 +6,10 @@ Below we provide some tips for what to do and what not to do when you build mach
 
 ### Do's  
 
+* Do consider whether the data is appropriate for your research questions. 
 * Do data exploratory analysis before jumping into analysis. Look at summary statistics and make plots to familiarize yourself with the data. 
 * Document the process with reasonable details, so you or other researchers can reproduce the study if needed. 
-* Along the same line, if you write script for your code, add comments along the way. 
+* Along the same line, if you write scripts for your code, add comments along the way. 
 * In the publication, explain what the result entails and the limitations of the model. 
 * When possible, use interpretable and/or parsimonious models. Think Occam's razor. 
 * Make data and code available to others if possible. 

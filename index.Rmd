@@ -14,7 +14,7 @@ description: "This is a minimal example of using the bookdown package to write a
 
 # Motivation  
 
-As machine learning (ML) has become a powerful tool, it is noted by some that ML has not been widely used in environmental studies. Some might prefer process based models, but they can be costly and ML provides a large variety of tools that should be explored. This booklet is meant to provide a concise guide for natural resource management practitioners. This book serves as a staring point rather than a comprehensive resource, so that practitioners can have a basic understanding of how ML works and how to utilize it to analyze data and answer research questions. When appropriate, we provide case studies and R code as well as other online resources to help the readers on the journey of gaining one powerful tool that is becoming omnipresent in the research world.  
+As machine learning (ML) is becoming ever more powerful, some has noted that ML has not been widely used in environmental studies. Process based models might be preferred, but they can be costly and ML provides a wide variety of tools that should be explored. This booklet is meant to provide a concise guide for natural resource management practitioners. This book serves as a staring point rather than a comprehensive resource, so that practitioners can have a basic understanding of how ML works and how to utilize it to analyze data and answer research questions. We also provide case studies, R code, and links to online resources to help the readers on the journey of gaining one powerful tool that is becoming omnipresent in the research world.  
 
 
 ```{r eval=FALSE, include = FALSE}
