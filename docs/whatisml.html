@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>2 What is machine learning? | A Machine Learning Primer for Natural Resource Management</title>
+<meta name="author" content="Natalie Nelson, Shih-Ni Prim, et al.">
+<meta name="description" content="Machine learning teaches computer models to make predictions from patterns in data (ref). To find patterns in data, many, many mathematical calculations are involved. Computers are needed to...">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta property="og:title" content="2 What is machine learning? | A Machine Learning Primer for Natural Resource Management">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Machine learning teaches computer models to make predictions from patterns in data (ref). To find patterns in data, many, many mathematical calculations are involved. Computers are needed to...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 What is machine learning? | A Machine Learning Primer for Natural Resource Management">
+<meta name="twitter:description" content="Machine learning teaches computer models to make predictions from patterns in data (ref). To find patterns in data, many, many mathematical calculations are involved. Computers are needed to...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">A Machine Learning Primer for Natural Resource Management</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
+<li><a class="active" href="whatisml.html"><span class="header-section-number">2</span> What is machine learning?</a></li>
+<li><a class="" href="keyconsiderations.html"><span class="header-section-number">3</span> Key considerations</a></li>
+<li><a class="" href="casestudies.html"><span class="header-section-number">4</span> Case studies</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="whatisml" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> What is machine learning?<a class="anchor" aria-label="anchor" href="#whatisml"><i class="fas fa-link"></i></a>
+</h1>
+<p>Machine learning teaches computer models to make predictions from patterns in data (ref). To find patterns in data, many, many mathematical calculations are involved. Computers are needed to develop machine learning models, and advances in computing gave rise to machine learning (ref).</p>
+<div id="how-is-machine-learning-useful-for-natural-resources-management" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> How is machine learning useful for natural resources management?<a class="anchor" aria-label="anchor" href="#how-is-machine-learning-useful-for-natural-resources-management"><i class="fas fa-link"></i></a>
+</h2>
+<p>Historically, environmental and agricultural systems were primarily modeled with “process-based” or “mechanistic” models, which are models that simulate key system processes based on their underlying physics, chemistry, or biology (ref). Models were often used to fill gaps in direct measurements of various environmental and agricultural phenomena. In the past, collecting any type of environmental or agricultural data was grueling, time consuming, and done by people. Today, some variables still require tough and tedious work to measure, but many variables are now readily measured with sensors and other automated instruments.
+As an example of how process-based models are used, let’s consider the flow of water through an open channel. If you were estimating the velocity of water through an open channel using a process-based approach, you may use Manning’s Equation, which simulates water velocity as a function of the channel’s physical properties like its slope and cross sectional area. To apply Manning’s Equation, you would have to take measurements of the channel’s dimensions.</p>
+<p>However, with machine learning, you do not have to simulate environmental and agricultural variables using underlying processes. Instead, you can create a model that makes predictions from patterns in data. Machine learning models require that you have some measurements of your response or target variable, which is the variable you are seeking to estimate. In our current example, water velocity in the channel is the target variable. You also need measurements of predictor variables, or variables that you will use to predict your response.</p>
+<p>As one hypothetical example, a machine learning model of water velocity in an open channel might make predictions based on images instead of physical channel properties. A camera could be situated towards the channel to take time-lapse photos every few minutes. A machine learning model could then be developed to predict water velocity based on the appearance of the water in the images. For a real-world example of this, check out Chapman et al. (2024), Stage and discharge prediction from documentary time-lapse imagery, in PLoS ONE.</p>
+<p>To create such a machine learning model, water velocity measurements would be needed to create a training set, or data used to train or develop the machine learning model. The water velocity measurements would be collected at the same time as the images, so the images could then be directly related to water velocity measurements (i.e., when the image looks like this, the water velocity is that). The predictor variables would be derived from the images. A machine learning algorithm could be selected to search for patterns between the images – e.g., the shading/color of individual image pixels, relationships between neighboring pixels – and the water velocity measurements. Once these patterns are established, they can be used to estimate water velocity from new images as they are collected. Importantly, the image-based machine learning model knows nothing about the underlying physics controlling water velocity in the channel; it has simply learned that certain patterns in the images correspond to higher or lower water velocities.</p>
+<p>Machine learning models can easily be expanded to include many different types of predictor variables. For example, the image-based machine learning model for water velocity could be further built out to include additional predictors like rainfall, irrigation, and time of year. The flexibility of machine learning models allows them to consider many diverse streams of information when learning patterns from which to make predictions. To see additional examples of machine learning models developed for natural resource management applications, see chapter 4.</p>
+</div>
+<div id="pros-and-cons-of-machine-learning" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Pros and cons of machine learning<a class="anchor" aria-label="anchor" href="#pros-and-cons-of-machine-learning"><i class="fas fa-link"></i></a>
+</h2>
+<p>Because they make predictions from correlative patterns between the predictor and response variables, machine learning models have parallels to simpler statistical models like linear regression (ref). However, machine learning models consist of hundreds, thousands, or millions of individual equations, while a linear regression model consists of only one equation. Because of their many equations, machine learning models are commonly considered “black boxes” since peering into a machine learning model can feel like looking into a pitch black box – you don’t precisely know what’s inside (ref). Methods now exist to help us illuminate machine learning black boxes, and the field of “interpretable” or “explainable” machine learning has made great strides in support of better understanding the inner workings of these models (ref). Still, machine learning models are substantially more challenging to interpret than most other model alternatives.</p>
+<p>While challenges to interpretation are a clear pitfall of machine learning models, their complicated structures allow for them to pick up on relatively subtle or nuanced relationships between datasets, making them effective predictive tools (ref). In many cases, machine learning models outperform process-based models (e.g., their predictions have greater accuracy than the predictions from other models) (ref). The ability to create strong predictions is arguably the hallmark strength of machine learning. The previously described flexibility of being able to include many different diverse data types (e.g., images, sensor data, weather station observations) as predictors is also a key strength. But, because they do not necessarily account for underlying processes, machine learning models are at risk of spurious predictions, particularly if developed irresponsibly. In chapter 3, we include questions you can ask to evaluate whether a model was developed responsibly, and assess whether it is vulnerable to making spurious predictions.</p>
+</div>
+<div id="broad-classifications-of-machine-learning-models" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Broad classifications of machine learning models<a class="anchor" aria-label="anchor" href="#broad-classifications-of-machine-learning-models"><i class="fas fa-link"></i></a>
+</h2>
+<p>In the previous example on image-based predictions of water velocity, we summarized the use of a supervised learning approach. Simply put, supervised learning is when there are true answers for the model, or there are measurements for the response variable (ref). In the water velocity model example, water velocity measurements were used during model development to facilitate the learning of patterns in the images that could specifically be used to predict water velocity. Once a supervised learning model is developed, the predictions from the model can be compared with the measurements to assess how well the model predicts.</p>
+<p>Unsupervised learning, on the other hand, performs tasks that do not have answers for the model. For example, instead of using the images of the stream to estimate water velocity, an unsupervised machine learning model could be used to group or cluster images with shared similarities. Unsupervised learning is often used as a computer-assisted way of exploring patterns in data (ref). Sometimes, the groups or clusters uncovered by an unsupervised learning model can be assigned labels that are of use for other modeling or analysis efforts.</p>
+</div>
+<div id="an-example-of-supervised-and-unsupervised-learning-the-history-of-the-national-land-cover-database" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> An example of supervised and unsupervised learning: The history of the National Land Cover Database<a class="anchor" aria-label="anchor" href="#an-example-of-supervised-and-unsupervised-learning-the-history-of-the-national-land-cover-database"><i class="fas fa-link"></i></a>
+</h2>
+<p>The <a href="https://www.usgs.gov/centers/eros/science/national-land-cover-database">National Land Cover Database or Dataset (NLCD)</a> is created by the U.S. Geological Survey and its partners to map land cover across the contiguous U.S. The data are updated every few years, creating a historical record of land cover change across the country over time. In the 1970s and 1980s, land cover mapping was performed by manually delineating areas from aerial photographs. In 1992, the NLCD premiered a land cover data product that was created from Landsat satellite imagery. Landsat imagery has pixels that are 30 meters by 30 meters. To create the 1992 product, NLCD imagery was clustered into 100 groups using an unsupervised learning approach, and people evaluated the 100 groups and manually assigned them to land cover categories (e.g., forest, developed area). Later, to create the 2001 NLCD product, a supervised learning approach was used in which areas of known land cover were used to train a model to predict land cover categories based on Landsat imagery. Read more about the history of the NLCD program in Chapter 18 of The Nature of Geographic Information (DiBiase et al.)[<a href="https://www.e-education.psu.edu/natureofgeoinfo/" class="uri">https://www.e-education.psu.edu/natureofgeoinfo/</a>].</p>
+</div>
+<div id="machine-learning-algorithms" class="section level2" number="2.5">
+<h2>
+<span class="header-section-number">2.5</span> Machine learning algorithms<a class="anchor" aria-label="anchor" href="#machine-learning-algorithms"><i class="fas fa-link"></i></a>
+</h2>
+<p>Within the two broad classifications of machine learning (supervised and unsupervised), there is an overwhelming number of machine learning algorithms, or specific computer model frameworks for implementing machine learning. The sheer number of machine learning algorithms attests to its power and versatility. This primer does not catalog different machine learning algorithms. As a starting point, you can see some algorithm examples at the resources below.
+Which machine learning algorithm should I use by SAS blogs
+Machine Learning Cheat Sheet by Datacamp</p>
+</div>
+<div id="a-deeper-dive-into-machine-learning" class="section level2" number="2.6">
+<h2>
+<span class="header-section-number">2.6</span> A deeper dive into machine learning<a class="anchor" aria-label="anchor" href="#a-deeper-dive-into-machine-learning"><i class="fas fa-link"></i></a>
+</h2>
+<p>If you would like to learn more about machine learning, check out An Introduction to Statistical Learning by James et al. (2013). This book provides a wealth of information on machine learning models, and the authors assume the readers are mainly interested in applying, rather than deeply studying, machine learning models. The four premises offered by the authors, listed on pp 8-9, demonstrate the practical focus of the book:
+&gt; Many statistical learning methods are relevant and useful in a wide range of academic and non-academic disciplines, beyond just the statistical sciences.
+&gt; Statistical learning should not be viewed as a series of black boxes.
+&gt; While it is important to know what job is performed by each cog, it is not necessary to have the skills to construct the machine inside the box!
+&gt; We presume that the reader is interested in applying statistical learning methods to real-world problems.</p>
+<p>There are free PDF versions of the books <a href="https://www.statlearning.com/">available online</a>, and examples are presented in both R and Python.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html"><span class="header-section-number">1</span> Welcome</a></div>
+<div class="next"><a href="keyconsiderations.html"><span class="header-section-number">3</span> Key considerations</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#whatisml"><span class="header-section-number">2</span> What is machine learning?</a></li>
+<li><a class="nav-link" href="#how-is-machine-learning-useful-for-natural-resources-management"><span class="header-section-number">2.1</span> How is machine learning useful for natural resources management?</a></li>
+<li><a class="nav-link" href="#pros-and-cons-of-machine-learning"><span class="header-section-number">2.2</span> Pros and cons of machine learning</a></li>
+<li><a class="nav-link" href="#broad-classifications-of-machine-learning-models"><span class="header-section-number">2.3</span> Broad classifications of machine learning models</a></li>
+<li><a class="nav-link" href="#an-example-of-supervised-and-unsupervised-learning-the-history-of-the-national-land-cover-database"><span class="header-section-number">2.4</span> An example of supervised and unsupervised learning: The history of the National Land Cover Database</a></li>
+<li><a class="nav-link" href="#machine-learning-algorithms"><span class="header-section-number">2.5</span> Machine learning algorithms</a></li>
+<li><a class="nav-link" href="#a-deeper-dive-into-machine-learning"><span class="header-section-number">2.6</span> A deeper dive into machine learning</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>A Machine Learning Primer for Natural Resource Management</strong>" was written by Natalie Nelson, Shih-Ni Prim, et al.. It was last built on 2024-10-15.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

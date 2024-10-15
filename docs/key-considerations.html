@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>3 Key considerations | A Machine Learning Primer for Natural Resource Management</title>
+<meta name="author" content="Natalie Nelson, Shih-Ni Prim, et al.">
+<meta name="description" content="Here, we offer some key questions natural resource management practitioners can ask before using or developing a machine learning model to inform day-to-day decision-making. Importantly, these...">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta property="og:title" content="3 Key considerations | A Machine Learning Primer for Natural Resource Management">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Here, we offer some key questions natural resource management practitioners can ask before using or developing a machine learning model to inform day-to-day decision-making. Importantly, these...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3 Key considerations | A Machine Learning Primer for Natural Resource Management">
+<meta name="twitter:description" content="Here, we offer some key questions natural resource management practitioners can ask before using or developing a machine learning model to inform day-to-day decision-making. Importantly, these...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">A Machine Learning Primer for Natural Resource Management</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
+<li><a class="" href="what-is-machine-learning.html"><span class="header-section-number">2</span> What is machine learning?</a></li>
+<li><a class="active" href="key-considerations.html"><span class="header-section-number">3</span> Key considerations</a></li>
+<li><a class="" href="case-studies.html"><span class="header-section-number">4</span> Case studies</a></li>
+<li><a class="" href="workflow.html"><span class="header-section-number">5</span> Workflow demonstration</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="key-considerations" class="section level1" number="3">
+<h1>
+<span class="header-section-number">3</span> Key considerations<a class="anchor" aria-label="anchor" href="#key-considerations"><i class="fas fa-link"></i></a>
+</h1>
+<p>Here, we offer some key questions natural resource management practitioners can ask before using or developing a machine learning model to inform day-to-day decision-making. Importantly, these questions are based on our own opinions and experiences, and should not be taken as definitive criteria. The questions are provided to help you start thinking critically through the process of using machine learning model outputs.</p>
+<div id="why-was-a-machine-learning-model-used-instead-of-a-process-based-model-or-more-easily-interpretable-statistical-model" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Why was a machine learning model used instead of a process-based model or more easily interpretable statistical model?<a class="anchor" aria-label="anchor" href="#why-was-a-machine-learning-model-used-instead-of-a-process-based-model-or-more-easily-interpretable-statistical-model"><i class="fas fa-link"></i></a>
+</h2>
+<p>Because process-based or mechanistic models capture underlying physical, biological, and chemical processes driving agricultural and environmental phenomena, they are, in theory, less vulnerable to making spurious predictions as compared to machine learning models. However, process-based model development is often time- and resource-intensive, and some agricultural and environmental phenomena are not well predicted or explained by process-based models (ref). Generally, the more a system is dominated by physical processes, the more predictable the system’s behaviors are by process-based models (ref); physical processes are often well represented by established mathematical formulations. On the other hand, for behaviors that are largely driven by system biology or ecology, process-based models can have poor performance because biological and ecological processes are more challenging to robustly and accurately represent with mathematical equations. For example, it is relatively easier to simulate changes in a lake’s water levels than the amount of algae in the lake.</p>
+<p>In cases when a physical or process-based model could have been developed instead of a machine learning model, it is reasonable to question whether the machine learning model is suitable to support decision-making. Similarly, if an easily interpretable model like a linear regression model can be used with adequate performance, that is generally preferable, as model users will have greater understanding of how the model operates.</p>
+</div>
+<div id="how-much-data-are-needed-to-develop-a-machine-learning-model" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> How much data are needed to develop a machine learning model?<a class="anchor" aria-label="anchor" href="#how-much-data-are-needed-to-develop-a-machine-learning-model"><i class="fas fa-link"></i></a>
+</h2>
+<p>There is no minimum dataset size for developing a machine learning model, but machine learning models should generally only be developed from large datasets (e.g., thousands or millions of data points). Since machine learning models learn patterns in data, there has to be enough data from which patterns can be learned. Importantly, the data should also be of high accuracy to ensure the machine learning model is developed from quality information. Because of the dataset size requirements, in environmental and agricultural systems, we often see machine learning models being developed with data from sensors and imagery, as such data collection systems produce large volumes of data.</p>
+</div>
+<div id="what-data-were-used-to-train-the-model" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> What data were used to train the model?<a class="anchor" aria-label="anchor" href="#what-data-were-used-to-train-the-model"><i class="fas fa-link"></i></a>
+</h2>
+<p>This is probably the most important question to ask. Because machine learning models make predictions from patterns in data, the data provided to train the model dictate the types of predictions a machine learning model can make. If a training dataset is narrow (e.g., it includes a short time period, a time period with little environmental variation, a limited number of locations, etc.), its predictions will not generalize. If a machine learning model was developed with data from corn fields in the Midwest, will its predictions apply to corn fields in Georgia? In particular, ask yourself (or the model developers), what is missing from the training data? For example, if you’re interested in predicting the effects of drought, how many drought periods are included in the data, and how severe were the droughts? Even if the training data are spatially extensive, think critically about whether the data may be biased or disproportionately unrepresentative in some way such that the data may not be generalizable.</p>
+<p>For example, research has shown that surface water quality monitoring in the Southeast U.S. disproportionately occurs in more affluent areas <a href="https://doi.org/10.22541/essoar.172191636.66550095/v2">(Oates et al., 2024)</a>, meaning that areas of greater social vulnerability have fewer monitoring stations. If a machine learning model were to be developed using all available water quality data in the Southeast for the purpose of predicting water quality in unmonitored areas, it might sound as though the training data are comprehensive for the region, but the model would ultimately be affected by the training data’s underlying bias. If a model developer is unable to disclose the data sources (e.g., because of data ownership/privacy concerns), they should still be able to provide information on general data characteristics such that you can assess whether the training data apply to your system of interest.</p>
+</div>
+<div id="how-was-the-model-tested-or-evaluated-were-any-measures-of-uncertainty-reported" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> How was the model tested or evaluated? Were any measures of uncertainty reported?<a class="anchor" aria-label="anchor" href="#how-was-the-model-tested-or-evaluated-were-any-measures-of-uncertainty-reported"><i class="fas fa-link"></i></a>
+</h2>
+<p>To understand how well a machine learning model performs, it is important to understand the model’s error, or the difference between the model’s predictions and true measurements. Error can be reported in many ways. One common metric is the Root Mean Square Error (RMSE), which is essentially the average model error. The RMSE is reported in the same units as the target variable, making it useful to interpret. Metrics like the coefficient of determination, or R2, are also commonly reported. Learn more about error metrics here. Understanding a model’s error is key to assessing its accuracy and reliability. In addition to error, modelers will ideally report measures of uncertainty. Uncertainty describes a range of plausible model outcomes. For example, let’s say you are running a machine learning model that can predict daily plant water demand and one of the predictors is rainfall. If you expect there could be 1-1.5” of rain today, you could run the plant water demand model with there being 1” of rain today, or 1.5” of rain. Both are plausible. When you run the model for the two scenarios, the difference in the predicted plant water demand would be described as the uncertainty in the model output. Consideration of uncertainty is a hallmark sign of responsible modeling.</p>
+<p>Are the model developers transparent about limitations and model performance?
+Be wary of salesmanship. Responsible modelers will clearly articulate limitations of the training data, and aspects of poor model performance. A model developer should be able to tell you if the model is effective or not at predicting different types of outcomes.</p>
+</div>
+<div id="how-did-the-modelers-choose-predictors-do-they-seem-to-understand-some-of-the-underlying-science-or-processes-of-the-agricultural-or-environmental-system-they-are-making-predictions-for" class="section level2" number="3.5">
+<h2>
+<span class="header-section-number">3.5</span> How did the modelers choose predictors? Do they seem to understand some of the underlying science or processes of the agricultural or environmental system they are making predictions for?<a class="anchor" aria-label="anchor" href="#how-did-the-modelers-choose-predictors-do-they-seem-to-understand-some-of-the-underlying-science-or-processes-of-the-agricultural-or-environmental-system-they-are-making-predictions-for"><i class="fas fa-link"></i></a>
+</h2>
+<p>Ideally, when predicting agricultural or environmental system behaviors in a machine learning model, there should be sound scientific reasoning regarding the selection of predictors. Judicious selection of predictors can also help to avoid spurious predictions.</p>
+</div>
+<div id="what-do-the-modelers-know-about-predictor-importance" class="section level2" number="3.6">
+<h2>
+<span class="header-section-number">3.6</span> What do the modelers know about predictor importance?<a class="anchor" aria-label="anchor" href="#what-do-the-modelers-know-about-predictor-importance"><i class="fas fa-link"></i></a>
+</h2>
+<p>Once a machine learning model is developed, there are methods available for identifying the predictors that carry the most weight, or are the most “important”, in the model. It can be helpful to understand which predictors are the most important, as you can then use your own understanding of environmental and agricultural system dynamics to corroborate whether the variables of most importance make sense. If an obscure variable is the most important in the model, it’s reasonable to question why, and whether the importance of an obscure predictor could negatively affect model performance.</p>
+</div>
+<div id="how-will-the-outputs-of-the-model-be-used" class="section level2" number="3.7">
+<h2>
+<span class="header-section-number">3.7</span> How will the outputs of the model be used?<a class="anchor" aria-label="anchor" href="#how-will-the-outputs-of-the-model-be-used"><i class="fas fa-link"></i></a>
+</h2>
+<p>Machine learning models should not be used to replace human decision-making in natural resources management, but can instead be used as a supportive tool. Machine learning models can synthesize a lot of information and identify patterns that are not readily interpretable for the average person, making them great decision-support tools. However, keep in mind that training data are almost always biased in some way, and those biases will propagate to the predictions.</p>
+</div>
+<div id="how-will-the-model-be-run-or-how-will-the-outputs-be-shared" class="section level2" number="3.8">
+<h2>
+<span class="header-section-number">3.8</span> How will the model be run, or how will the outputs be shared?<a class="anchor" aria-label="anchor" href="#how-will-the-model-be-run-or-how-will-the-outputs-be-shared"><i class="fas fa-link"></i></a>
+</h2>
+<p>Developing a machine learning model and creating a user-friendly system for applying and/or accessing outputs from a machine learning model are entirely different tasks. In some cases, a model can be developed and then shared via computer code, but end users may struggle to run the model using provided computer code, depending on their familiarity with programming. If you are working with a partner (e.g., university, consulting group) to produce a model, ensure there is a plan for transitioning the model such that you can use it with ease. Our team has created a resource for those interested in creating apps for disseminating models, <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009663">Ten Simple Rules for Researchers Who Want to Develop Web Apps</a>, which may provide helpful tips if your team is interested in exploring the use of web apps for model and model output dissemination.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="what-is-machine-learning.html"><span class="header-section-number">2</span> What is machine learning?</a></div>
+<div class="next"><a href="case-studies.html"><span class="header-section-number">4</span> Case studies</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#key-considerations"><span class="header-section-number">3</span> Key considerations</a></li>
+<li><a class="nav-link" href="#why-was-a-machine-learning-model-used-instead-of-a-process-based-model-or-more-easily-interpretable-statistical-model"><span class="header-section-number">3.1</span> Why was a machine learning model used instead of a process-based model or more easily interpretable statistical model?</a></li>
+<li><a class="nav-link" href="#how-much-data-are-needed-to-develop-a-machine-learning-model"><span class="header-section-number">3.2</span> How much data are needed to develop a machine learning model?</a></li>
+<li><a class="nav-link" href="#what-data-were-used-to-train-the-model"><span class="header-section-number">3.3</span> What data were used to train the model?</a></li>
+<li><a class="nav-link" href="#how-was-the-model-tested-or-evaluated-were-any-measures-of-uncertainty-reported"><span class="header-section-number">3.4</span> How was the model tested or evaluated? Were any measures of uncertainty reported?</a></li>
+<li><a class="nav-link" href="#how-did-the-modelers-choose-predictors-do-they-seem-to-understand-some-of-the-underlying-science-or-processes-of-the-agricultural-or-environmental-system-they-are-making-predictions-for"><span class="header-section-number">3.5</span> How did the modelers choose predictors? Do they seem to understand some of the underlying science or processes of the agricultural or environmental system they are making predictions for?</a></li>
+<li><a class="nav-link" href="#what-do-the-modelers-know-about-predictor-importance"><span class="header-section-number">3.6</span> What do the modelers know about predictor importance?</a></li>
+<li><a class="nav-link" href="#how-will-the-outputs-of-the-model-be-used"><span class="header-section-number">3.7</span> How will the outputs of the model be used?</a></li>
+<li><a class="nav-link" href="#how-will-the-model-be-run-or-how-will-the-outputs-be-shared"><span class="header-section-number">3.8</span> How will the model be run, or how will the outputs be shared?</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>A Machine Learning Primer for Natural Resource Management</strong>" was written by Natalie Nelson, Shih-Ni Prim, et al.. It was last built on 2024-10-15.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

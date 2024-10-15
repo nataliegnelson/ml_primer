@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>4 Case studies | A Machine Learning Primer for Natural Resource Management</title>
+<meta name="author" content="Natalie Nelson, Shih-Ni Prim, et al.">
+<meta name="description" content="To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling...">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta property="og:title" content="4 Case studies | A Machine Learning Primer for Natural Resource Management">
+<meta property="og:type" content="book">
+<meta property="og:description" content="To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="4 Case studies | A Machine Learning Primer for Natural Resource Management">
+<meta name="twitter:description" content="To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">A Machine Learning Primer for Natural Resource Management</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
+<li><a class="" href="whatisml.html"><span class="header-section-number">2</span> What is machine learning?</a></li>
+<li><a class="" href="keyconsiderations.html"><span class="header-section-number">3</span> Key considerations</a></li>
+<li><a class="active" href="casestudies.html"><span class="header-section-number">4</span> Case studies</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="casestudies" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Case studies<a class="anchor" aria-label="anchor" href="#casestudies"><i class="fas fa-link"></i></a>
+</h1>
+<p>To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling framework. These three case studies include models for predicting (1) daily pluvial flood dynamics in agricultural landscapes, (2) fecal coliform exceedances in shellfish growing waters, and (3) sweetpotato yields at the county-scale. All three models use Random Forest, a specific type of machine learning algorithm. Random Forest creates many (e.g., hundreds or thousands) of regression or classification trees to predict categories or continuous values of the response variable. Random Forest is considered a particularly effective algorithm for working with environmental and agricultural data (refs), as it can effectively capture nonlinear and complex interactions between variables. All three case studies offer interpretations of the most important predictor variables in the model, and explanations as to why those predictors may be the most important.</p>
+<div id="case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes-fidan-et-al.-2023" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes (Fidan et al., 2023)<a class="anchor" aria-label="anchor" href="#case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes-fidan-et-al.-2023"><i class="fas fa-link"></i></a>
+</h2>
+<p>Response variable: Binary categories of “flooded” or “not flooded”
+Predictor variables: Soil characteristics (flood frequency, drainage class), elevation, height above nearest drainage, slope, topographic wetness index, distance to nearest stream, distance to nearest road, population, multi-day precipitation</p>
+<p>In this study, the model developers focused on an agricultural area that experienced pluvial, or rain-driven, flooding following a major hurricane. The area was treated as a grid, where the grid was divided into square pixels of equal area. The model was developed to estimate the likelihood of a pixel being flooded or not flooded based on landscape characteristics (e.g., soils, land cover type), and recent rainfall patterns.</p>
+<p>Read the full study <a href="https://www.sciencedirect.com/science/article/pii/S1364815223001445?dgcid=author">here</a>.</p>
+</div>
+<div id="case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters-chazal-et-al.-2024" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters (Chazal et al., 2024)<a class="anchor" aria-label="anchor" href="#case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters-chazal-et-al.-2024"><i class="fas fa-link"></i></a>
+</h2>
+<p>Response variable: Fecal coliform (bacteria) concentrations
+Predictor variables: Rainfall, river stage, wind speed and direction, lengths of artificial and natural channelization, land use and land cover, soil drainage class, air and water temperatures, month (i.e., time of year)</p>
+<p>In this study, the model developers used long-term monitoring data from the Florida Department of Agriculture and Consumer Services shellfish sanitation program. The monitoring data were collected at specific sampling locations across the coast of Florida where shellfish are grown for harvest. The model was developed to predict the likelihood of a fecal coliform (i.e., bacteria) concentration exceedance at each station where routine monitoring data are collected. Predictors in the model included a range of variables that could explain the source and transport of the bacteria, as well as factors that could affect the survivability of the bacteria in the water (e.g., temperature).</p>
+<p>Read the full study <a href="https://doi.org/10.1016/j.marpolbul.2024.116053">here</a>.</p>
+</div>
+<div id="case-study-3-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning-carbajal-carrasco-et-al.-2024" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Case Study 3: In-season Sweetpotato Yield Forecasting using Multitemporal Remote Sensing Environmental Observations and Machine Learning (Carbajal Carrasco et al., 2024)<a class="anchor" aria-label="anchor" href="#case-study-3-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning-carbajal-carrasco-et-al.-2024"><i class="fas fa-link"></i></a>
+</h2>
+<p>Response variable: Sweetpotato yields at the county scale, reported by the USDA National Agricultural Statistics Service
+Predictor variables: Elevation, slope, aspect, soil characteristics (% clay, % sand, pH, cation exchange capacity, bulk density, nitrogen, organic carbon), rainfall, maximum temperature, minimum temperature, and the Normalized Difference Vegetation Index calculated from satellite imagery (Landsat and Sentinel-2)</p>
+<p>In this study, a model was developed to predict end-of-season sweetpotato yields at the county scale using early season predictors, such that the model can be used to forecast harvested yields early in the growing season. The model uses a range of predictors that capture climatic and physical properties that influence sweetpotato yields over large spatial scales, but does not account for cultural or management practices.</p>
+<p>Read the full study <a href="https://doi.org/10.22541/essoar.171415899.94920111/v1">here</a>. Note that this study is currently undergoing peer review, and its findings should be considered preliminary.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="keyconsiderations.html"><span class="header-section-number">3</span> Key considerations</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#casestudies"><span class="header-section-number">4</span> Case studies</a></li>
+<li><a class="nav-link" href="#case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes-fidan-et-al.-2023"><span class="header-section-number">4.1</span> Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes (Fidan et al., 2023)</a></li>
+<li><a class="nav-link" href="#case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters-chazal-et-al.-2024"><span class="header-section-number">4.2</span> Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters (Chazal et al., 2024)</a></li>
+<li><a class="nav-link" href="#case-study-3-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning-carbajal-carrasco-et-al.-2024"><span class="header-section-number">4.3</span> Case Study 3: In-season Sweetpotato Yield Forecasting using Multitemporal Remote Sensing Environmental Observations and Machine Learning (Carbajal Carrasco et al., 2024)</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>A Machine Learning Primer for Natural Resource Management</strong>" was written by Natalie Nelson, Shih-Ni Prim, et al.. It was last built on 2024-10-15.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
