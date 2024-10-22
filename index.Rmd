@@ -1,6 +1,6 @@
 --- 
 title: "A Machine Learning Primer for Natural Resource Management"
-author: "Natalie Nelson, Shih-Ni Prim, et al."
+author: "Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth, Brian Reich"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -28,7 +28,7 @@ For those of you who are interested in developing machine learning models, the m
 Support for this primer was provided by the U.S. Department of Agriculture National Institute of Food and Agriculture grant number 2019-67021-29936.
 
 ## Citation
-*Authors vary by chapter* (2024), A Machine Learning Primer for Natural Resources Management, Accessed online via go.ncsu.edu/mlprimer. 
+Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth, Brian Reich (*authors vary by chapter*). 2024. A Machine Learning Primer for Natural Resources Management, Accessed online via go.ncsu.edu/mlprimer. 
 
 ## License
 This work is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1).  
