@@ -1,29 +1,37 @@
 # Case studies
 
-To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling framework. These three case studies include models for predicting (1) daily pluvial flood dynamics in agricultural landscapes, (2) fecal coliform exceedances in shellfish growing waters, and (3) sweetpotato yields at the county-scale. All three models use Random Forest, a specific type of machine learning algorithm. Random Forest creates many (e.g., hundreds or thousands) of regression or classification trees to predict categories or continuous values of the response variable. Random Forest is considered a particularly effective algorithm for working with environmental and agricultural data (refs), as it can effectively capture nonlinear and complex interactions between variables. All three case studies offer interpretations of the most important predictor variables in the model, and explanations as to why those predictors may be the most important. 
+*Authors: [Natalie G. Nelson](https://bae.ncsu.edu/people/nnelson4/), [Shih-Ni Prim](https://www.linkedin.com/in/shih-ni-prim-14033336/), [Sheila Saia](https://sheilasaia.rbind.io/), [Khara Grieger](https://cals.ncsu.edu/applied-ecology/people/kdgriege/), [Anders Huseth](https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/), [Brian Reich](https://statistics.sciences.ncsu.edu/people/bjreich/)*
 
-## Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes (Fidan et al., 2023)
+To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling framework. These three case studies include models for predicting (1) daily pluvial flood dynamics in agricultural landscapes, (2) fecal coliform exceedances in shellfish growing waters, and (3) sweetpotato yields at the county-scale. All three models use Random Forest, a specific type of machine learning algorithm. Random Forest creates many (e.g., hundreds or thousands) of regression or classification trees to predict categories or continuous values of the response variable. Random Forest is considered a particularly effective algorithm for working with environmental and agricultural data, as it can effectively capture nonlinear and complex interactions between variables. All three case studies offer interpretations of the most important predictor variables in the model, and explanations as to why those predictors may be the most important. 
 
-Response variable: Binary categories of “flooded” or “not flooded”
-Predictor variables: Soil characteristics (flood frequency, drainage class), elevation, height above nearest drainage, slope, topographic wetness index, distance to nearest stream, distance to nearest road, population, multi-day precipitation
+## 1: Daily pluvial flood prediction
+
+**Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes (Fidan et al., 2023)**
+
+* Response variable: Binary categories of “flooded” or “not flooded”
+* Predictor variables: Soil characteristics (flood frequency, drainage class), elevation, height above nearest drainage, slope, topographic wetness index, distance to nearest stream, distance to nearest road, population, multi-day precipitation
 
 In this study, the model developers focused on an agricultural area that experienced pluvial, or rain-driven, flooding following a major hurricane. The area was treated as a grid, where the grid was divided into square pixels of equal area. The model was developed to estimate the likelihood of a pixel being flooded or not flooded based on landscape characteristics (e.g., soils, land cover type), and recent rainfall patterns.
 
 Read the full study [here](https://www.sciencedirect.com/science/article/pii/S1364815223001445?dgcid=author). 
 
-## Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters (Chazal et al., 2024)
+## 2: Fecal coliform forecasting
 
-Response variable: Fecal coliform (bacteria) concentrations
-Predictor variables: Rainfall, river stage, wind speed and direction, lengths of artificial and natural channelization, land use and land cover, soil drainage class, air and water temperatures, month (i.e., time of year)
+**Short-term forecasting of fecal coliforms in shellfish growing waters (Chazal et al., 2024)**
+
+* Response variable: Fecal coliform (bacteria) concentrations
+* Predictor variables: Rainfall, river stage, wind speed and direction, lengths of artificial and natural channelization, land use and land cover, soil drainage class, air and water temperatures, month (i.e., time of year)
 
 In this study, the model developers used long-term monitoring data from the Florida Department of Agriculture and Consumer Services shellfish sanitation program. The monitoring data were collected at specific sampling locations across the coast of Florida where shellfish are grown for harvest. The model was developed to predict the likelihood of a fecal coliform (i.e., bacteria) concentration exceedance at each station where routine monitoring data are collected. Predictors in the model included a range of variables that could explain the source and transport of the bacteria, as well as factors that could affect the survivability of the bacteria in the water (e.g., temperature). 
 
 Read the full study [here](https://doi.org/10.1016/j.marpolbul.2024.116053). 
 
-## Case Study 3: In-season Sweetpotato Yield Forecasting using Multitemporal Remote Sensing Environmental Observations and Machine Learning (Carbajal Carrasco et al., 2024)
+## 3: In-season sweetpotato yield forecasting
 
-Response variable: Sweetpotato yields at the county scale, reported by the USDA National Agricultural Statistics Service
-Predictor variables: Elevation, slope, aspect, soil characteristics (% clay, % sand, pH, cation exchange capacity, bulk density, nitrogen, organic carbon), rainfall, maximum temperature, minimum temperature, and the Normalized Difference Vegetation Index calculated from satellite imagery (Landsat and Sentinel-2)
+**In-season Sweetpotato Yield Forecasting using Multitemporal Remote Sensing Environmental Observations and Machine Learning (Carbajal Carrasco et al., 2024)**
+
+* Response variable: Sweetpotato yields at the county scale, reported by the USDA National Agricultural Statistics Service
+* Predictor variables: Elevation, slope, aspect, soil characteristics (% clay, % sand, pH, cation exchange capacity, bulk density, nitrogen, organic carbon), rainfall, maximum temperature, minimum temperature, and the Normalized Difference Vegetation Index calculated from satellite imagery (Landsat and Sentinel-2)
 
 In this study, a model was developed to predict end-of-season sweetpotato yields at the county scale using early season predictors, such that the model can be used to forecast harvested yields early in the growing season. The model uses a range of predictors that capture climatic and physical properties that influence sweetpotato yields over large spatial scales, but does not account for cultural or management practices. 
 

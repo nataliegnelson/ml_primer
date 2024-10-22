@@ -1,5 +1,7 @@
 # Workflow demonstration {#workflow}
 
+*Authors: [Shih-Ni Prim](https://www.linkedin.com/in/shih-ni-prim-14033336/)*
+
 In this section, we use a dataset to exemplify a typical workflow for constructing machine learning models. We skip exploratory data analysis, or the process of exploring your data to understand its structure and components, but such exploration should always occur prior to any modeling. For more on exploratory data analysis, refer to [Chapter 4 Exploratory Data Analysis](https://bookdown.org/rdpeng/artofdatascience/exploratory-data-analysis.html) in *The Art of Data Science* by Roger D. Peng and Elizabeth Matsui.  
 
 The dataset analyzed here contains wine quality and traits, and our goal is to predict the quality of wine using traits. The dataset can be found [here](https://www.kaggle.com/datasets/yasserh/wine-quality-dataset).  

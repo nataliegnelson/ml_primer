@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>4 Case studies | A Machine Learning Primer for Natural Resource Management</title>
 <meta name="author" content="Natalie Nelson, Shih-Ni Prim, et al.">
-<meta name="description" content="To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling...">
+<meta name="description" content="Authors: Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth, Brian Reich To illustrate the use of machine learning across diverse natural resource management applications,...">
 <meta name="generator" content="bookdown 0.40 with bs4_book()">
 <meta property="og:title" content="4 Case studies | A Machine Learning Primer for Natural Resource Management">
 <meta property="og:type" content="book">
-<meta property="og:description" content="To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling...">
+<meta property="og:description" content="Authors: Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth, Brian Reich To illustrate the use of machine learning across diverse natural resource management applications,...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="4 Case studies | A Machine Learning Primer for Natural Resource Management">
-<meta name="twitter:description" content="To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling...">
+<meta name="twitter:description" content="Authors: Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth, Brian Reich To illustrate the use of machine learning across diverse natural resource management applications,...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -58,31 +58,41 @@
 <h1>
 <span class="header-section-number">4</span> Case studies<a class="anchor" aria-label="anchor" href="#case-studies"><i class="fas fa-link"></i></a>
 </h1>
-<p>To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling framework. These three case studies include models for predicting (1) daily pluvial flood dynamics in agricultural landscapes, (2) fecal coliform exceedances in shellfish growing waters, and (3) sweetpotato yields at the county-scale. All three models use Random Forest, a specific type of machine learning algorithm. Random Forest creates many (e.g., hundreds or thousands) of regression or classification trees to predict categories or continuous values of the response variable. Random Forest is considered a particularly effective algorithm for working with environmental and agricultural data (refs), as it can effectively capture nonlinear and complex interactions between variables. All three case studies offer interpretations of the most important predictor variables in the model, and explanations as to why those predictors may be the most important.</p>
-<div id="case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes-fidan-et-al.-2023" class="section level2" number="4.1">
+<p><em>Authors: <a href="https://bae.ncsu.edu/people/nnelson4/">Natalie G. Nelson</a>, <a href="https://www.linkedin.com/in/shih-ni-prim-14033336/">Shih-Ni Prim</a>, <a href="https://sheilasaia.rbind.io/">Sheila Saia</a>, <a href="https://cals.ncsu.edu/applied-ecology/people/kdgriege/">Khara Grieger</a>, <a href="https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/">Anders Huseth</a>, <a href="https://statistics.sciences.ncsu.edu/people/bjreich/">Brian Reich</a></em></p>
+<p>To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling framework. These three case studies include models for predicting (1) daily pluvial flood dynamics in agricultural landscapes, (2) fecal coliform exceedances in shellfish growing waters, and (3) sweetpotato yields at the county-scale. All three models use Random Forest, a specific type of machine learning algorithm. Random Forest creates many (e.g., hundreds or thousands) of regression or classification trees to predict categories or continuous values of the response variable. Random Forest is considered a particularly effective algorithm for working with environmental and agricultural data, as it can effectively capture nonlinear and complex interactions between variables. All three case studies offer interpretations of the most important predictor variables in the model, and explanations as to why those predictors may be the most important.</p>
+<div id="daily-pluvial-flood-prediction" class="section level2" number="4.1">
 <h2>
-<span class="header-section-number">4.1</span> Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes (Fidan et al., 2023)<a class="anchor" aria-label="anchor" href="#case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes-fidan-et-al.-2023"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1</span> 1: Daily pluvial flood prediction<a class="anchor" aria-label="anchor" href="#daily-pluvial-flood-prediction"><i class="fas fa-link"></i></a>
 </h2>
-<p>Response variable: Binary categories of “flooded” or “not flooded”
-Predictor variables: Soil characteristics (flood frequency, drainage class), elevation, height above nearest drainage, slope, topographic wetness index, distance to nearest stream, distance to nearest road, population, multi-day precipitation</p>
+<p><strong>Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes (Fidan et al., 2023)</strong></p>
+<ul>
+<li>Response variable: Binary categories of “flooded” or “not flooded”</li>
+<li>Predictor variables: Soil characteristics (flood frequency, drainage class), elevation, height above nearest drainage, slope, topographic wetness index, distance to nearest stream, distance to nearest road, population, multi-day precipitation</li>
+</ul>
 <p>In this study, the model developers focused on an agricultural area that experienced pluvial, or rain-driven, flooding following a major hurricane. The area was treated as a grid, where the grid was divided into square pixels of equal area. The model was developed to estimate the likelihood of a pixel being flooded or not flooded based on landscape characteristics (e.g., soils, land cover type), and recent rainfall patterns.</p>
 <p>Read the full study <a href="https://www.sciencedirect.com/science/article/pii/S1364815223001445?dgcid=author">here</a>.</p>
 </div>
-<div id="case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters-chazal-et-al.-2024" class="section level2" number="4.2">
+<div id="fecal-coliform-forecasting" class="section level2" number="4.2">
 <h2>
-<span class="header-section-number">4.2</span> Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters (Chazal et al., 2024)<a class="anchor" aria-label="anchor" href="#case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters-chazal-et-al.-2024"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2</span> 2: Fecal coliform forecasting<a class="anchor" aria-label="anchor" href="#fecal-coliform-forecasting"><i class="fas fa-link"></i></a>
 </h2>
-<p>Response variable: Fecal coliform (bacteria) concentrations
-Predictor variables: Rainfall, river stage, wind speed and direction, lengths of artificial and natural channelization, land use and land cover, soil drainage class, air and water temperatures, month (i.e., time of year)</p>
+<p><strong>Short-term forecasting of fecal coliforms in shellfish growing waters (Chazal et al., 2024)</strong></p>
+<ul>
+<li>Response variable: Fecal coliform (bacteria) concentrations</li>
+<li>Predictor variables: Rainfall, river stage, wind speed and direction, lengths of artificial and natural channelization, land use and land cover, soil drainage class, air and water temperatures, month (i.e., time of year)</li>
+</ul>
 <p>In this study, the model developers used long-term monitoring data from the Florida Department of Agriculture and Consumer Services shellfish sanitation program. The monitoring data were collected at specific sampling locations across the coast of Florida where shellfish are grown for harvest. The model was developed to predict the likelihood of a fecal coliform (i.e., bacteria) concentration exceedance at each station where routine monitoring data are collected. Predictors in the model included a range of variables that could explain the source and transport of the bacteria, as well as factors that could affect the survivability of the bacteria in the water (e.g., temperature).</p>
 <p>Read the full study <a href="https://doi.org/10.1016/j.marpolbul.2024.116053">here</a>.</p>
 </div>
-<div id="case-study-3-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning-carbajal-carrasco-et-al.-2024" class="section level2" number="4.3">
+<div id="in-season-sweetpotato-yield-forecasting" class="section level2" number="4.3">
 <h2>
-<span class="header-section-number">4.3</span> Case Study 3: In-season Sweetpotato Yield Forecasting using Multitemporal Remote Sensing Environmental Observations and Machine Learning (Carbajal Carrasco et al., 2024)<a class="anchor" aria-label="anchor" href="#case-study-3-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning-carbajal-carrasco-et-al.-2024"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3</span> 3: In-season sweetpotato yield forecasting<a class="anchor" aria-label="anchor" href="#in-season-sweetpotato-yield-forecasting"><i class="fas fa-link"></i></a>
 </h2>
-<p>Response variable: Sweetpotato yields at the county scale, reported by the USDA National Agricultural Statistics Service
-Predictor variables: Elevation, slope, aspect, soil characteristics (% clay, % sand, pH, cation exchange capacity, bulk density, nitrogen, organic carbon), rainfall, maximum temperature, minimum temperature, and the Normalized Difference Vegetation Index calculated from satellite imagery (Landsat and Sentinel-2)</p>
+<p><strong>In-season Sweetpotato Yield Forecasting using Multitemporal Remote Sensing Environmental Observations and Machine Learning (Carbajal Carrasco et al., 2024)</strong></p>
+<ul>
+<li>Response variable: Sweetpotato yields at the county scale, reported by the USDA National Agricultural Statistics Service</li>
+<li>Predictor variables: Elevation, slope, aspect, soil characteristics (% clay, % sand, pH, cation exchange capacity, bulk density, nitrogen, organic carbon), rainfall, maximum temperature, minimum temperature, and the Normalized Difference Vegetation Index calculated from satellite imagery (Landsat and Sentinel-2)</li>
+</ul>
 <p>In this study, a model was developed to predict end-of-season sweetpotato yields at the county scale using early season predictors, such that the model can be used to forecast harvested yields early in the growing season. The model uses a range of predictors that capture climatic and physical properties that influence sweetpotato yields over large spatial scales, but does not account for cultural or management practices.</p>
 <p>Read the full study <a href="https://doi.org/10.22541/essoar.171415899.94920111/v1">here</a>. Note that this study is currently undergoing peer review, and its findings should be considered preliminary.</p>
 
@@ -95,9 +105,9 @@ Predictor variables: Elevation, slope, aspect, soil characteristics (% clay, % s
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#case-studies"><span class="header-section-number">4</span> Case studies</a></li>
-<li><a class="nav-link" href="#case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes-fidan-et-al.-2023"><span class="header-section-number">4.1</span> Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes (Fidan et al., 2023)</a></li>
-<li><a class="nav-link" href="#case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters-chazal-et-al.-2024"><span class="header-section-number">4.2</span> Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters (Chazal et al., 2024)</a></li>
-<li><a class="nav-link" href="#case-study-3-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning-carbajal-carrasco-et-al.-2024"><span class="header-section-number">4.3</span> Case Study 3: In-season Sweetpotato Yield Forecasting using Multitemporal Remote Sensing Environmental Observations and Machine Learning (Carbajal Carrasco et al., 2024)</a></li>
+<li><a class="nav-link" href="#daily-pluvial-flood-prediction"><span class="header-section-number">4.1</span> 1: Daily pluvial flood prediction</a></li>
+<li><a class="nav-link" href="#fecal-coliform-forecasting"><span class="header-section-number">4.2</span> 2: Fecal coliform forecasting</a></li>
+<li><a class="nav-link" href="#in-season-sweetpotato-yield-forecasting"><span class="header-section-number">4.3</span> 3: In-season sweetpotato yield forecasting</a></li>
 </ul>
 
       <div class="book-extra">
@@ -114,7 +124,7 @@ Predictor variables: Elevation, slope, aspect, soil characteristics (% clay, % s
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>A Machine Learning Primer for Natural Resource Management</strong>" was written by Natalie Nelson, Shih-Ni Prim, et al.. It was last built on 2024-10-15.</p>
+    <p>"<strong>A Machine Learning Primer for Natural Resource Management</strong>" was written by Natalie Nelson, Shih-Ni Prim, et al.. It was last built on 2024-10-22.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

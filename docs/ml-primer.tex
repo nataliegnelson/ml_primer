@@ -127,7 +127,7 @@
 
 \title{A Machine Learning Primer for Natural Resource Management}
 \author{Natalie Nelson, Shih-Ni Prim, et al.}
-\date{2024-10-15}
+\date{2024-10-22}
 
 \begin{document}
 \maketitle
@@ -161,7 +161,7 @@ Support for this primer was provided by the U.S. Department of Agriculture Natio
 \hypertarget{citation}{%
 \section{Citation}\label{citation}}
 
-Nelson, N.G., Prim. S., others? (2024), Machine Learning in Natural Resources Management: A Primer, Accessed online via \url{https://nataliegnelson.github.io/ml_primer/}.
+\emph{Authors vary by chapter} (2024), A Machine Learning Primer for Natural Resources Management, Accessed online via go.ncsu.edu/mlprimer.
 
 \hypertarget{license}{%
 \section{License}\label{license}}
@@ -171,144 +171,151 @@ This work is licensed under \href{https://creativecommons.org/licenses/by-nc-sa/
 \hypertarget{what-is-machine-learning}{%
 \chapter{What is machine learning?}\label{what-is-machine-learning}}
 
-Machine learning teaches computer models to make predictions from patterns in data (ref). To find patterns in data, many, many mathematical calculations are involved. Computers are needed to develop machine learning models, and advances in computing gave rise to machine learning (ref).
+\emph{Authors: \href{https://bae.ncsu.edu/people/nnelson4/}{Natalie G. Nelson}, \href{https://www.linkedin.com/in/shih-ni-prim-14033336/}{Shih-Ni Prim}, \href{https://sheilasaia.rbind.io/}{Sheila Saia}, \href{https://cals.ncsu.edu/applied-ecology/people/kdgriege/}{Khara Grieger}, \href{https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/}{Anders Huseth}, \href{https://statistics.sciences.ncsu.edu/people/bjreich/}{Brian Reich}}
+
+Machine learning methods teach computer models to make predictions from patterns in data (Zhi et al., 2024){[}\url{https://doi.org/10.1038/s44221-024-00202-z}{]}. To find patterns in data, many, many mathematical calculations are involved. Computers are needed to develop machine learning models, and advances in computing gave rise to machine learning.
 
 \hypertarget{how-is-machine-learning-useful-for-natural-resources-management}{%
 \section{How is machine learning useful for natural resources management?}\label{how-is-machine-learning-useful-for-natural-resources-management}}
 
-Historically, environmental and agricultural systems were primarily modeled with ``process-based'' or ``mechanistic'' models, which are models that simulate key system processes based on their underlying physics, chemistry, or biology (ref). Models were often used to fill gaps in direct measurements of various environmental and agricultural phenomena. In the past, collecting any type of environmental or agricultural data was grueling, time consuming, and done by people. Today, some variables still require tough and tedious work to measure, but many variables are now readily measured with sensors and other automated instruments.
-As an example of how process-based models are used, let's consider the flow of water through an open channel. If you were estimating the velocity of water through an open channel using a process-based approach, you may use Manning's Equation, which simulates water velocity as a function of the channel's physical properties like its slope and cross sectional area. To apply Manning's Equation, you would have to take measurements of the channel's dimensions.
+Historically, environmental and agricultural systems were primarily modeled with ``process-based'' or ``mechanistic'' models, which are models that simulate key system processes based on their underlying physics, chemistry, or biology \href{https://link.springer.com/book/10.1007/b106568}{(Haefner 2005)}. Models were often used to fill gaps in direct measurements of various environmental and agricultural phenomena. In the past, collecting any type of environmental or agricultural data was grueling, time consuming, and done by people. Today, some variables still require tough and tedious work to measure, but many variables are now readily measured with sensors and other automated instruments.
+As an example of how process-based models are used, let's consider the flow of water through an open channel. If you were estimating the velocity of water through an open channel using a process-based approach, you may use \href{https://www.weather.gov/aprfc/normaldepthcalc}{Manning's Equation}, which simulates water velocity as a function of the channel's physical properties like its slope and cross sectional area. To apply Manning's Equation, you would have to take measurements of the channel's dimensions.
 
-However, with machine learning, you do not have to simulate environmental and agricultural variables using underlying processes. Instead, you can create a model that makes predictions from patterns in data. Machine learning models require that you have some measurements of your response or target variable, which is the variable you are seeking to estimate. In our current example, water velocity in the channel is the target variable. You also need measurements of predictor variables, or variables that you will use to predict your response.
+However, with machine learning, you do not have to simulate environmental and agricultural variables using underlying processes. Instead, you can create a model that makes predictions from patterns in data. Machine learning models require that you have some measurements of your \emph{response} or \emph{target} variable, which is the variable you are seeking to estimate. In our current example, water velocity in the channel is the target variable. You also need measurements of \emph{predictor} variables, or variables that you will use to predict your response.
 
-As one hypothetical example, a machine learning model of water velocity in an open channel might make predictions based on images instead of physical channel properties. A camera could be situated towards the channel to take time-lapse photos every few minutes. A machine learning model could then be developed to predict water velocity based on the appearance of the water in the images. For a real-world example of this, check out Chapman et al.~(2024), Stage and discharge prediction from documentary time-lapse imagery, in PLoS ONE.
+As one hypothetical example, a machine learning model of water velocity in an open channel might make predictions based on images instead of physical channel properties. A camera could be situated towards the channel to take time-lapse photos every few minutes. A machine learning model could then be developed to predict water velocity based on the appearance of the water in the images. For a real-world example of this, check out Chapman et al.~(2024), \href{https://journals.plos.org/water/article?id=10.1371/journal.pwat.0000106}{Stage and discharge prediction from documentary time-lapse imagery}, in \emph{PLoS ONE}.
 
-To create such a machine learning model, water velocity measurements would be needed to create a training set, or data used to train or develop the machine learning model. The water velocity measurements would be collected at the same time as the images, so the images could then be directly related to water velocity measurements (i.e., when the image looks like this, the water velocity is that). The predictor variables would be derived from the images. A machine learning algorithm could be selected to search for patterns between the images -- e.g., the shading/color of individual image pixels, relationships between neighboring pixels -- and the water velocity measurements. Once these patterns are established, they can be used to estimate water velocity from new images as they are collected. Importantly, the image-based machine learning model knows nothing about the underlying physics controlling water velocity in the channel; it has simply learned that certain patterns in the images correspond to higher or lower water velocities.
+To create such a machine learning model, water velocity measurements would be needed to create a \emph{training set}, or data used to \emph{train} or develop the machine learning model. The water velocity measurements would be collected at the same time as the images, so the images could then be directly related to water velocity measurements (i.e., when the image looks like this, the water velocity is that). The \emph{predictor} variables would be derived from the images. A machine learning algorithm could be selected to search for patterns between the images -- e.g., the shading/color of individual image pixels, relationships between neighboring pixels -- and the water velocity measurements. Once these patterns are established, they can be used to estimate water velocity from new images as they are collected. Importantly, the image-based machine learning model knows nothing about the underlying physics controlling water velocity in the channel; it has simply learned that certain patterns in the images correspond to higher or lower water velocities.
 
 Machine learning models can easily be expanded to include many different types of predictor variables. For example, the image-based machine learning model for water velocity could be further built out to include additional predictors like rainfall, irrigation, and time of year. The flexibility of machine learning models allows them to consider many diverse streams of information when learning patterns from which to make predictions. To see additional examples of machine learning models developed for natural resource management applications, see chapter 4.
 
-\hypertarget{pros-and-cons-of-machine-learning}{%
-\section{Pros and cons of machine learning}\label{pros-and-cons-of-machine-learning}}
+\hypertarget{pros-and-cons}{%
+\section{Pros and cons}\label{pros-and-cons}}
 
-Because they make predictions from correlative patterns between the predictor and response variables, machine learning models have parallels to simpler statistical models like linear regression (ref). However, machine learning models consist of hundreds, thousands, or millions of individual equations, while a linear regression model consists of only one equation. Because of their many equations, machine learning models are commonly considered ``black boxes'' since peering into a machine learning model can feel like looking into a pitch black box -- you don't precisely know what's inside (ref). Methods now exist to help us illuminate machine learning black boxes, and the field of ``interpretable'' or ``explainable'' machine learning has made great strides in support of better understanding the inner workings of these models (ref). Still, machine learning models are substantially more challenging to interpret than most other model alternatives.
+Because they make predictions from correlative patterns between the predictor and response variables, machine learning models have parallels to simpler statistical models like linear regression. However, machine learning models consist of hundreds, thousands, or millions of individual equations, while a linear regression model consists of only one equation. Because of their many equations, \href{https://www.nature.com/news/can-we-open-the-black-box-of-ai-1.20731}{machine learning models are commonly considered ``black boxes''} since peering into a machine learning model can feel like looking into a pitch black box -- you don't precisely know what's inside. Methods now exist to help us illuminate machine learning black boxes, and the field of ``interpretable'' or ``explainable'' machine learning has made great strides in support of better understanding the inner workings of these models \href{https://doi.org/10.1109/JPROC.2021.3060483}{(Samek et al., 2021)}. Still, machine learning models are substantially more challenging to interpret than most other model alternatives.
 
-While challenges to interpretation are a clear pitfall of machine learning models, their complicated structures allow for them to pick up on relatively subtle or nuanced relationships between datasets, making them effective predictive tools (ref). In many cases, machine learning models outperform process-based models (e.g., their predictions have greater accuracy than the predictions from other models) (ref). The ability to create strong predictions is arguably the hallmark strength of machine learning. The previously described flexibility of being able to include many different diverse data types (e.g., images, sensor data, weather station observations) as predictors is also a key strength. But, because they do not necessarily account for underlying processes, machine learning models are at risk of spurious predictions, particularly if developed irresponsibly. In chapter 3, we include questions you can ask to evaluate whether a model was developed responsibly, and assess whether it is vulnerable to making spurious predictions.
+While challenges to interpretation are a clear pitfall of machine learning models, their complicated structures allow for them to pick up on relatively subtle or nuanced relationships between datasets, making them effective predictive tools. In many cases, machine learning models outperform process-based models (e.g., their predictions can have greater accuracy than the predictions from other models). The ability to create strong predictions is arguably the hallmark strength of machine learning. The previously described flexibility of being able to include many different diverse data types (e.g., images, sensor data, weather station observations) as predictors is also a key strength. But, because they do not necessarily account for underlying processes, machine learning models are at risk of spurious predictions, particularly if developed irresponsibly. In chapter 3, we include questions you can ask to evaluate whether a model was developed responsibly, and assess whether it is vulnerable to making spurious predictions.
 
-\hypertarget{broad-classifications-of-machine-learning-models}{%
-\section{Broad classifications of machine learning models}\label{broad-classifications-of-machine-learning-models}}
+\hypertarget{classes-of-machine-learning-models}{%
+\section{Classes of machine learning models}\label{classes-of-machine-learning-models}}
 
-In the previous example on image-based predictions of water velocity, we summarized the use of a supervised learning approach. Simply put, supervised learning is when there are true answers for the model, or there are measurements for the response variable (ref). In the water velocity model example, water velocity measurements were used during model development to facilitate the learning of patterns in the images that could specifically be used to predict water velocity. Once a supervised learning model is developed, the predictions from the model can be compared with the measurements to assess how well the model predicts.
+In the previous example on image-based predictions of water velocity, we summarized the use of a \emph{supervised} learning approach. Simply put, supervised learning is when there are true answers for the model, or there are measurements for the response variable \href{https://doi.org/10.1007/s42979-021-00592-x}{(Sarker 2021)}. In the water velocity model example, water velocity measurements were used during model development to facilitate the learning of patterns in the images that could specifically be used to predict water velocity. Once a supervised learning model is developed, the predictions from the model can be compared with the measurements to assess how well the model predicts.
 
-Unsupervised learning, on the other hand, performs tasks that do not have answers for the model. For example, instead of using the images of the stream to estimate water velocity, an unsupervised machine learning model could be used to group or cluster images with shared similarities. Unsupervised learning is often used as a computer-assisted way of exploring patterns in data (ref). Sometimes, the groups or clusters uncovered by an unsupervised learning model can be assigned labels that are of use for other modeling or analysis efforts.
+\emph{Unsupervised} learning, on the other hand, performs tasks that do not have answers for the model. For example, instead of using the images of the stream to estimate water velocity, an unsupervised machine learning model could be used to group or cluster images with shared similarities. Unsupervised learning is often used as a computer-assisted way of exploring patterns in data \href{https://doi.org/10.1007/s42979-021-00592-x}{(Sarker 2021)}. Sometimes, the groups or clusters uncovered by an unsupervised learning model can be assigned labels that are of use for other modeling or analysis efforts.
 
-\hypertarget{an-example-of-supervised-and-unsupervised-learning-the-history-of-the-national-land-cover-database}{%
-\section{An example of supervised and unsupervised learning: The history of the National Land Cover Database}\label{an-example-of-supervised-and-unsupervised-learning-the-history-of-the-national-land-cover-database}}
+\hypertarget{an-example-of-supervised-and-unsupervised-learning}{%
+\section{An example of supervised and unsupervised learning}\label{an-example-of-supervised-and-unsupervised-learning}}
 
-The \href{https://www.usgs.gov/centers/eros/science/national-land-cover-database}{National Land Cover Database or Dataset (NLCD)} is created by the U.S. Geological Survey and its partners to map land cover across the contiguous U.S. The data are updated every few years, creating a historical record of land cover change across the country over time. In the 1970s and 1980s, land cover mapping was performed by manually delineating areas from aerial photographs. In 1992, the NLCD premiered a land cover data product that was created from Landsat satellite imagery. Landsat imagery has pixels that are 30 meters by 30 meters. To create the 1992 product, NLCD imagery was clustered into 100 groups using an unsupervised learning approach, and people evaluated the 100 groups and manually assigned them to land cover categories (e.g., forest, developed area). Later, to create the 2001 NLCD product, a supervised learning approach was used in which areas of known land cover were used to train a model to predict land cover categories based on Landsat imagery. Read more about the history of the NLCD program in Chapter 18 of The Nature of Geographic Information (DiBiase et al.){[}\url{https://www.e-education.psu.edu/natureofgeoinfo/}{]}.
+The \href{https://www.usgs.gov/centers/eros/science/national-land-cover-database}{National Land Cover Database or Dataset (NLCD)} is created by the U.S. Geological Survey and its partners to map land cover across the contiguous U.S. The data are updated every few years, creating a historical record of land cover change across the country over time. In the 1970s and 1980s, land cover mapping was performed by manually delineating areas from aerial photographs. In 1992, the NLCD premiered a land cover data product that was created from Landsat satellite imagery. Landsat imagery has pixels that are 30 meters by 30 meters. To create the 1992 product, NLCD imagery was clustered into 100 groups using an unsupervised learning approach, and people evaluated the 100 groups and manually assigned them to land cover categories (e.g., forest, developed area). Later, to create the 2001 NLCD product, a supervised learning approach was used in which areas of known land cover were used to train a model to predict land cover categories based on Landsat imagery. Read more about the history of the NLCD program in Chapter 18 of \emph{The Nature of Geographic Information} \href{https://www.e-education.psu.edu/natureofgeoinfo/}{(DiBiase et al.)}.
 
-\hypertarget{machine-learning-algorithms}{%
-\section{Machine learning algorithms}\label{machine-learning-algorithms}}
+\hypertarget{algorithms}{%
+\section{Algorithms}\label{algorithms}}
 
-Within the two broad classifications of machine learning (supervised and unsupervised), there is an overwhelming number of machine learning algorithms, or specific computer model frameworks for implementing machine learning. The sheer number of machine learning algorithms attests to its power and versatility. This primer does not catalog different machine learning algorithms. As a starting point, you can see some algorithm examples at the resources below.
-Which machine learning algorithm should I use by SAS blogs
-Machine Learning Cheat Sheet by Datacamp
+Within the two broad classifications of machine learning (supervised and unsupervised), there is an overwhelming number of machine learning \emph{algorithms}, or specific computer model frameworks for implementing machine learning. The sheer number of machine learning algorithms attests to its power and versatility. This primer does not catalog different machine learning algorithms. As a starting point, you can see some algorithm examples at the resources below.
+\href{https://blogs.sas.com/content/subconsciousmusings/2020/12/09/machine-learning-algorithm-use/}{Which machine learning algorithm should I use} by SAS blogs
+\href{https://www.datacamp.com/cheat-sheet/machine-learning-cheat-sheet?utm_source=google\&utm_medium=paid_search\&utm_campaignid=19589720830\&utm_adgroupid=157098107695\&utm_device=c\&utm_keyword=\&utm_matchtype=\&utm_network=g\&utm_adpostion=\&utm_creative=698229375346\&utm_targetid=dsa-2264919291829\&utm_loc_interest_ms=\&utm_loc_physical_ms=9009732\&utm_content=DSA~blog~Julia\&utm_campaign=230119_1-sea~dsa~tofu_2-b2c_3-us_4-prc_5-na_6-na_7-le_8-pdsh-go_9-na_10-na_11-na-may24\&gad_source=1\&gclid=Cj0KCQjw6PGxBhCVARIsAIumnWai3I4X4UtrhM_2dA1pUpmAmC-iErsp57Cv6p4fEQugIVbGrx1VT2YaAsr7EALw_wcB}{Machine Learning Cheat Sheet} by Datacamp
 
-\hypertarget{a-deeper-dive-into-machine-learning}{%
-\section{A deeper dive into machine learning}\label{a-deeper-dive-into-machine-learning}}
+\hypertarget{a-deeper-dive}{%
+\section{A deeper dive}\label{a-deeper-dive}}
 
-If you would like to learn more about machine learning, check out An Introduction to Statistical Learning by James et al.~(2013). This book provides a wealth of information on machine learning models, and the authors assume the readers are mainly interested in applying, rather than deeply studying, machine learning models. The four premises offered by the authors, listed on pp 8-9, demonstrate the practical focus of the book:
-
-\begin{quote}
+If you would like to learn more about machine learning, check out \href{https://www.statlearning.com/}{\emph{An Introduction to Statistical Learning} by James et al.~(2013)}. This book provides a wealth of information on machine learning models, and the authors assume the readers are mainly interested in applying, rather than deeply studying, machine learning models. The four premises offered by the authors, listed on pp 8-9, demonstrate the practical focus of the book:
 Many statistical learning methods are relevant and useful in a wide range of academic and non-academic disciplines, beyond just the statistical sciences.
 Statistical learning should not be viewed as a series of black boxes.
 While it is important to know what job is performed by each cog, it is not necessary to have the skills to construct the machine inside the box!
 We presume that the reader is interested in applying statistical learning methods to real-world problems.
-\end{quote}
-
 There are free PDF versions of the books \href{https://www.statlearning.com/}{available online}, and examples are presented in both R and Python.
 
 \hypertarget{key-considerations}{%
 \chapter{Key considerations}\label{key-considerations}}
 
+\emph{Authors: \href{https://bae.ncsu.edu/people/nnelson4/}{Natalie G. Nelson}, \href{https://www.linkedin.com/in/shih-ni-prim-14033336/}{Shih-Ni Prim}, \href{https://sheilasaia.rbind.io/}{Sheila Saia}, \href{https://cals.ncsu.edu/applied-ecology/people/kdgriege/}{Khara Grieger}, \href{https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/}{Anders Huseth}, \href{https://statistics.sciences.ncsu.edu/people/bjreich/}{Brian Reich}}
+
 Here, we offer some key questions natural resource management practitioners can ask before using or developing a machine learning model to inform day-to-day decision-making. Importantly, these questions are based on our own opinions and experiences, and should not be taken as definitive criteria. The questions are provided to help you start thinking critically through the process of using machine learning model outputs.
 
-\hypertarget{why-was-a-machine-learning-model-used-instead-of-a-process-based-model-or-more-easily-interpretable-statistical-model}{%
-\section{Why was a machine learning model used instead of a process-based model or more easily interpretable statistical model?}\label{why-was-a-machine-learning-model-used-instead-of-a-process-based-model-or-more-easily-interpretable-statistical-model}}
-
-Because process-based or mechanistic models capture underlying physical, biological, and chemical processes driving agricultural and environmental phenomena, they are, in theory, less vulnerable to making spurious predictions as compared to machine learning models. However, process-based model development is often time- and resource-intensive, and some agricultural and environmental phenomena are not well predicted or explained by process-based models (ref). Generally, the more a system is dominated by physical processes, the more predictable the system's behaviors are by process-based models (ref); physical processes are often well represented by established mathematical formulations. On the other hand, for behaviors that are largely driven by system biology or ecology, process-based models can have poor performance because biological and ecological processes are more challenging to robustly and accurately represent with mathematical equations. For example, it is relatively easier to simulate changes in a lake's water levels than the amount of algae in the lake.
+\textbf{Why was a machine learning model used instead of a process-based model or more easily interpretable statistical model?}
+Because process-based or mechanistic models capture underlying physical, biological, and chemical processes driving agricultural and environmental phenomena, they are, in theory, less vulnerable to making spurious predictions as compared to machine learning models. However, process-based model development is often time- and resource-intensive, and some agricultural and environmental phenomena are not well predicted or explained by process-based models. Generally, the more a system is dominated by physical processes, the more predictable the system's behaviors are by process-based models \href{https://link.springer.com/book/10.1007/b106568}{(Haefner 2005)}; physical processes are often well represented by established mathematical formulations. On the other hand, for behaviors that are largely driven by system biology or ecology, process-based models can have poor performance because biological and ecological processes are more challenging to robustly and accurately represent with mathematical equations. For example, it is reasonable to assume that it will be easier to simulate changes in a lake's water levels than the amount of algae in the lake.
 
 In cases when a physical or process-based model could have been developed instead of a machine learning model, it is reasonable to question whether the machine learning model is suitable to support decision-making. Similarly, if an easily interpretable model like a linear regression model can be used with adequate performance, that is generally preferable, as model users will have greater understanding of how the model operates.
 
-\hypertarget{how-much-data-are-needed-to-develop-a-machine-learning-model}{%
-\section{How much data are needed to develop a machine learning model?}\label{how-much-data-are-needed-to-develop-a-machine-learning-model}}
-
+\textbf{How much data are needed to develop a machine learning model?}
 There is no minimum dataset size for developing a machine learning model, but machine learning models should generally only be developed from large datasets (e.g., thousands or millions of data points). Since machine learning models learn patterns in data, there has to be enough data from which patterns can be learned. Importantly, the data should also be of high accuracy to ensure the machine learning model is developed from quality information. Because of the dataset size requirements, in environmental and agricultural systems, we often see machine learning models being developed with data from sensors and imagery, as such data collection systems produce large volumes of data.
 
-\hypertarget{what-data-were-used-to-train-the-model}{%
-\section{What data were used to train the model?}\label{what-data-were-used-to-train-the-model}}
-
+\textbf{What data were used to train the model?}
 This is probably the most important question to ask. Because machine learning models make predictions from patterns in data, the data provided to train the model dictate the types of predictions a machine learning model can make. If a training dataset is narrow (e.g., it includes a short time period, a time period with little environmental variation, a limited number of locations, etc.), its predictions will not generalize. If a machine learning model was developed with data from corn fields in the Midwest, will its predictions apply to corn fields in Georgia? In particular, ask yourself (or the model developers), what is missing from the training data? For example, if you're interested in predicting the effects of drought, how many drought periods are included in the data, and how severe were the droughts? Even if the training data are spatially extensive, think critically about whether the data may be biased or disproportionately unrepresentative in some way such that the data may not be generalizable.
 
 For example, research has shown that surface water quality monitoring in the Southeast U.S. disproportionately occurs in more affluent areas \href{https://doi.org/10.22541/essoar.172191636.66550095/v2}{(Oates et al., 2024)}, meaning that areas of greater social vulnerability have fewer monitoring stations. If a machine learning model were to be developed using all available water quality data in the Southeast for the purpose of predicting water quality in unmonitored areas, it might sound as though the training data are comprehensive for the region, but the model would ultimately be affected by the training data's underlying bias. If a model developer is unable to disclose the data sources (e.g., because of data ownership/privacy concerns), they should still be able to provide information on general data characteristics such that you can assess whether the training data apply to your system of interest.
 
-\hypertarget{how-was-the-model-tested-or-evaluated-were-any-measures-of-uncertainty-reported}{%
-\section{How was the model tested or evaluated? Were any measures of uncertainty reported?}\label{how-was-the-model-tested-or-evaluated-were-any-measures-of-uncertainty-reported}}
+\textbf{How was the model tested or evaluated? Were any measures of uncertainty reported?}
+To understand how well a machine learning model performs, it is important to understand the model's error, or the difference between the model's predictions and true measurements. Error can be reported in many ways. One common metric is the Root Mean Square Error (RMSE), which is essentially the average model error. The RMSE is reported in the same units as the target variable, making it useful to interpret. Metrics like the coefficient of determination, or R2, are also commonly reported. Learn more about commonly used error metrics \href{https://medium.com/@brandon93.w/regression-model-evaluation-metrics-r-squared-adjusted-r-squared-mse-rmse-and-mae-24dcc0e4cbd3}{here}. Understanding a model's error is key to assessing its accuracy and reliability. In addition to error, modelers will ideally report measures of uncertainty. Uncertainty describes a range of plausible model outcomes. For example, let's say you are running a machine learning model that can predict daily plant water demand and one of the predictors is rainfall. If you expect there could be 1-1.5'' of rain today, you could run the plant water demand model with there being 1'' of rain today, or 1.5'' of rain. Both are plausible. When you run the model for the two scenarios, the difference in the predicted plant water demand would be described as the uncertainty in the model output. Consideration of uncertainty is a hallmark sign of responsible modeling.
 
-To understand how well a machine learning model performs, it is important to understand the model's error, or the difference between the model's predictions and true measurements. Error can be reported in many ways. One common metric is the Root Mean Square Error (RMSE), which is essentially the average model error. The RMSE is reported in the same units as the target variable, making it useful to interpret. Metrics like the coefficient of determination, or R2, are also commonly reported. Learn more about error metrics here. Understanding a model's error is key to assessing its accuracy and reliability. In addition to error, modelers will ideally report measures of uncertainty. Uncertainty describes a range of plausible model outcomes. For example, let's say you are running a machine learning model that can predict daily plant water demand and one of the predictors is rainfall. If you expect there could be 1-1.5'' of rain today, you could run the plant water demand model with there being 1'' of rain today, or 1.5'' of rain. Both are plausible. When you run the model for the two scenarios, the difference in the predicted plant water demand would be described as the uncertainty in the model output. Consideration of uncertainty is a hallmark sign of responsible modeling.
-
-Are the model developers transparent about limitations and model performance?
+\textbf{Are the model developers transparent about limitations and model performance?}
 Be wary of salesmanship. Responsible modelers will clearly articulate limitations of the training data, and aspects of poor model performance. A model developer should be able to tell you if the model is effective or not at predicting different types of outcomes.
 
-\hypertarget{how-did-the-modelers-choose-predictors-do-they-seem-to-understand-some-of-the-underlying-science-or-processes-of-the-agricultural-or-environmental-system-they-are-making-predictions-for}{%
-\section{How did the modelers choose predictors? Do they seem to understand some of the underlying science or processes of the agricultural or environmental system they are making predictions for?}\label{how-did-the-modelers-choose-predictors-do-they-seem-to-understand-some-of-the-underlying-science-or-processes-of-the-agricultural-or-environmental-system-they-are-making-predictions-for}}
-
+\textbf{How did the modelers choose predictors? Do they seem to understand some of the underlying science or processes of the agricultural or environmental system they are making predictions for?}
 Ideally, when predicting agricultural or environmental system behaviors in a machine learning model, there should be sound scientific reasoning regarding the selection of predictors. Judicious selection of predictors can also help to avoid spurious predictions.
 
-\hypertarget{what-do-the-modelers-know-about-predictor-importance}{%
-\section{What do the modelers know about predictor importance?}\label{what-do-the-modelers-know-about-predictor-importance}}
-
+\textbf{What do the modelers know about predictor importance?}
 Once a machine learning model is developed, there are methods available for identifying the predictors that carry the most weight, or are the most ``important'', in the model. It can be helpful to understand which predictors are the most important, as you can then use your own understanding of environmental and agricultural system dynamics to corroborate whether the variables of most importance make sense. If an obscure variable is the most important in the model, it's reasonable to question why, and whether the importance of an obscure predictor could negatively affect model performance.
 
-\hypertarget{how-will-the-outputs-of-the-model-be-used}{%
-\section{How will the outputs of the model be used?}\label{how-will-the-outputs-of-the-model-be-used}}
-
+\textbf{How will the outputs of the model be used?}
 Machine learning models should not be used to replace human decision-making in natural resources management, but can instead be used as a supportive tool. Machine learning models can synthesize a lot of information and identify patterns that are not readily interpretable for the average person, making them great decision-support tools. However, keep in mind that training data are almost always biased in some way, and those biases will propagate to the predictions.
 
-\hypertarget{how-will-the-model-be-run-or-how-will-the-outputs-be-shared}{%
-\section{How will the model be run, or how will the outputs be shared?}\label{how-will-the-model-be-run-or-how-will-the-outputs-be-shared}}
-
+\textbf{How will the model be run, or how will the outputs be shared?}
 Developing a machine learning model and creating a user-friendly system for applying and/or accessing outputs from a machine learning model are entirely different tasks. In some cases, a model can be developed and then shared via computer code, but end users may struggle to run the model using provided computer code, depending on their familiarity with programming. If you are working with a partner (e.g., university, consulting group) to produce a model, ensure there is a plan for transitioning the model such that you can use it with ease. Our team has created a resource for those interested in creating apps for disseminating models, \href{https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009663}{Ten Simple Rules for Researchers Who Want to Develop Web Apps}, which may provide helpful tips if your team is interested in exploring the use of web apps for model and model output dissemination.
 
 \hypertarget{case-studies}{%
 \chapter{Case studies}\label{case-studies}}
 
-To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling framework. These three case studies include models for predicting (1) daily pluvial flood dynamics in agricultural landscapes, (2) fecal coliform exceedances in shellfish growing waters, and (3) sweetpotato yields at the county-scale. All three models use Random Forest, a specific type of machine learning algorithm. Random Forest creates many (e.g., hundreds or thousands) of regression or classification trees to predict categories or continuous values of the response variable. Random Forest is considered a particularly effective algorithm for working with environmental and agricultural data (refs), as it can effectively capture nonlinear and complex interactions between variables. All three case studies offer interpretations of the most important predictor variables in the model, and explanations as to why those predictors may be the most important.
+\emph{Authors: \href{https://bae.ncsu.edu/people/nnelson4/}{Natalie G. Nelson}, \href{https://www.linkedin.com/in/shih-ni-prim-14033336/}{Shih-Ni Prim}, \href{https://sheilasaia.rbind.io/}{Sheila Saia}, \href{https://cals.ncsu.edu/applied-ecology/people/kdgriege/}{Khara Grieger}, \href{https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/}{Anders Huseth}, \href{https://statistics.sciences.ncsu.edu/people/bjreich/}{Brian Reich}}
 
-\hypertarget{case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes-fidan-et-al.-2023}{%
-\section{Case Study 1: Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes (Fidan et al., 2023)}\label{case-study-1-machine-learning-approach-for-modeling-daily-pluvial-flood-dynamics-in-agricultural-landscapes-fidan-et-al.-2023}}
+To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling framework. These three case studies include models for predicting (1) daily pluvial flood dynamics in agricultural landscapes, (2) fecal coliform exceedances in shellfish growing waters, and (3) sweetpotato yields at the county-scale. All three models use Random Forest, a specific type of machine learning algorithm. Random Forest creates many (e.g., hundreds or thousands) of regression or classification trees to predict categories or continuous values of the response variable. Random Forest is considered a particularly effective algorithm for working with environmental and agricultural data, as it can effectively capture nonlinear and complex interactions between variables. All three case studies offer interpretations of the most important predictor variables in the model, and explanations as to why those predictors may be the most important.
 
-Response variable: Binary categories of ``flooded'' or ``not flooded''
-Predictor variables: Soil characteristics (flood frequency, drainage class), elevation, height above nearest drainage, slope, topographic wetness index, distance to nearest stream, distance to nearest road, population, multi-day precipitation
+\hypertarget{daily-pluvial-flood-prediction}{%
+\section{1: Daily pluvial flood prediction}\label{daily-pluvial-flood-prediction}}
+
+\textbf{Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes (Fidan et al., 2023)}
+
+\begin{itemize}
+\tightlist
+\item
+  Response variable: Binary categories of ``flooded'' or ``not flooded''
+\item
+  Predictor variables: Soil characteristics (flood frequency, drainage class), elevation, height above nearest drainage, slope, topographic wetness index, distance to nearest stream, distance to nearest road, population, multi-day precipitation
+\end{itemize}
 
 In this study, the model developers focused on an agricultural area that experienced pluvial, or rain-driven, flooding following a major hurricane. The area was treated as a grid, where the grid was divided into square pixels of equal area. The model was developed to estimate the likelihood of a pixel being flooded or not flooded based on landscape characteristics (e.g., soils, land cover type), and recent rainfall patterns.
 
 Read the full study \href{https://www.sciencedirect.com/science/article/pii/S1364815223001445?dgcid=author}{here}.
 
-\hypertarget{case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters-chazal-et-al.-2024}{%
-\section{Case Study 2: Short-term forecasting of fecal coliforms in shellfish growing waters (Chazal et al., 2024)}\label{case-study-2-short-term-forecasting-of-fecal-coliforms-in-shellfish-growing-waters-chazal-et-al.-2024}}
+\hypertarget{fecal-coliform-forecasting}{%
+\section{2: Fecal coliform forecasting}\label{fecal-coliform-forecasting}}
 
-Response variable: Fecal coliform (bacteria) concentrations
-Predictor variables: Rainfall, river stage, wind speed and direction, lengths of artificial and natural channelization, land use and land cover, soil drainage class, air and water temperatures, month (i.e., time of year)
+\textbf{Short-term forecasting of fecal coliforms in shellfish growing waters (Chazal et al., 2024)}
+
+\begin{itemize}
+\tightlist
+\item
+  Response variable: Fecal coliform (bacteria) concentrations
+\item
+  Predictor variables: Rainfall, river stage, wind speed and direction, lengths of artificial and natural channelization, land use and land cover, soil drainage class, air and water temperatures, month (i.e., time of year)
+\end{itemize}
 
 In this study, the model developers used long-term monitoring data from the Florida Department of Agriculture and Consumer Services shellfish sanitation program. The monitoring data were collected at specific sampling locations across the coast of Florida where shellfish are grown for harvest. The model was developed to predict the likelihood of a fecal coliform (i.e., bacteria) concentration exceedance at each station where routine monitoring data are collected. Predictors in the model included a range of variables that could explain the source and transport of the bacteria, as well as factors that could affect the survivability of the bacteria in the water (e.g., temperature).
 
 Read the full study \href{https://doi.org/10.1016/j.marpolbul.2024.116053}{here}.
 
-\hypertarget{case-study-3-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning-carbajal-carrasco-et-al.-2024}{%
-\section{Case Study 3: In-season Sweetpotato Yield Forecasting using Multitemporal Remote Sensing Environmental Observations and Machine Learning (Carbajal Carrasco et al., 2024)}\label{case-study-3-in-season-sweetpotato-yield-forecasting-using-multitemporal-remote-sensing-environmental-observations-and-machine-learning-carbajal-carrasco-et-al.-2024}}
+\hypertarget{in-season-sweetpotato-yield-forecasting}{%
+\section{3: In-season sweetpotato yield forecasting}\label{in-season-sweetpotato-yield-forecasting}}
 
-Response variable: Sweetpotato yields at the county scale, reported by the USDA National Agricultural Statistics Service
-Predictor variables: Elevation, slope, aspect, soil characteristics (\% clay, \% sand, pH, cation exchange capacity, bulk density, nitrogen, organic carbon), rainfall, maximum temperature, minimum temperature, and the Normalized Difference Vegetation Index calculated from satellite imagery (Landsat and Sentinel-2)
+\textbf{In-season Sweetpotato Yield Forecasting using Multitemporal Remote Sensing Environmental Observations and Machine Learning (Carbajal Carrasco et al., 2024)}
+
+\begin{itemize}
+\tightlist
+\item
+  Response variable: Sweetpotato yields at the county scale, reported by the USDA National Agricultural Statistics Service
+\item
+  Predictor variables: Elevation, slope, aspect, soil characteristics (\% clay, \% sand, pH, cation exchange capacity, bulk density, nitrogen, organic carbon), rainfall, maximum temperature, minimum temperature, and the Normalized Difference Vegetation Index calculated from satellite imagery (Landsat and Sentinel-2)
+\end{itemize}
 
 In this study, a model was developed to predict end-of-season sweetpotato yields at the county scale using early season predictors, such that the model can be used to forecast harvested yields early in the growing season. The model uses a range of predictors that capture climatic and physical properties that influence sweetpotato yields over large spatial scales, but does not account for cultural or management practices.
 
@@ -316,6 +323,8 @@ Read the full study \href{https://doi.org/10.22541/essoar.171415899.94920111/v1}
 
 \hypertarget{workflow}{%
 \chapter{Workflow demonstration}\label{workflow}}
+
+\emph{Authors: \href{https://www.linkedin.com/in/shih-ni-prim-14033336/}{Shih-Ni Prim}}
 
 In this section, we use a dataset to exemplify a typical workflow for constructing machine learning models. We skip exploratory data analysis, or the process of exploring your data to understand its structure and components, but such exploration should always occur prior to any modeling. For more on exploratory data analysis, refer to \href{https://bookdown.org/rdpeng/artofdatascience/exploratory-data-analysis.html}{Chapter 4 Exploratory Data Analysis} in \emph{The Art of Data Science} by Roger D. Peng and Elizabeth Matsui.
 
