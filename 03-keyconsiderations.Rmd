@@ -1,6 +1,6 @@
 # Key considerations
 
-*Authors: [Natalie G. Nelson](https://bae.ncsu.edu/people/nnelson4/), [Shih-Ni Prim](https://www.linkedin.com/in/shih-ni-prim-14033336/), [Sheila Saia](https://sheilasaia.rbind.io/), [Khara Grieger](https://cals.ncsu.edu/applied-ecology/people/kdgriege/), [Anders Huseth](https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/), [Brian Reich](https://statistics.sciences.ncsu.edu/people/bjreich/)*
+*Authors: [Natalie G. Nelson](https://bae.ncsu.edu/people/nnelson4/), [Shih-Ni Prim](https://www.linkedin.com/in/shih-ni-prim-14033336/), [Sheila Saia](https://sheilasaia.rbind.io/), [Khara Grieger](https://cals.ncsu.edu/applied-ecology/people/kdgriege/), [Anders Huseth](https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/)*
 
 Here, we offer some key questions natural resource management practitioners can ask before using or developing a machine learning model to inform day-to-day decision-making. Importantly, these questions are based on our own opinions and experiences, and should not be taken as definitive criteria. The questions are provided to help you start thinking critically through the process of using machine learning model outputs. 
 

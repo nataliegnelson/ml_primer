@@ -1,6 +1,6 @@
 # What is machine learning?
 
-*Authors: [Natalie G. Nelson](https://bae.ncsu.edu/people/nnelson4/), [Shih-Ni Prim](https://www.linkedin.com/in/shih-ni-prim-14033336/), [Sheila Saia](https://sheilasaia.rbind.io/), [Khara Grieger](https://cals.ncsu.edu/applied-ecology/people/kdgriege/), [Anders Huseth](https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/), [Brian Reich](https://statistics.sciences.ncsu.edu/people/bjreich/)*
+*Authors: [Natalie G. Nelson](https://bae.ncsu.edu/people/nnelson4/), [Shih-Ni Prim](https://www.linkedin.com/in/shih-ni-prim-14033336/), [Sheila Saia](https://sheilasaia.rbind.io/), [Khara Grieger](https://cals.ncsu.edu/applied-ecology/people/kdgriege/), [Anders Huseth](https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/)*
 
 Machine learning methods teach computer models to make predictions from patterns in data [(Zhi et al., 2024)](https://doi.org/10.1038/s44221-024-00202-z). To find patterns in data, many, many mathematical calculations are involved. Computers are needed to develop machine learning models, and advances in computing gave rise to machine learning.  
 

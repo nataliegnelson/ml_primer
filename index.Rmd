@@ -1,6 +1,6 @@
 --- 
 title: "A Machine Learning Primer for Natural Resource Management"
-author: "Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth, Brian Reich"
+author: "Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
