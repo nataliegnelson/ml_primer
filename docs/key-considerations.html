@@ -5,15 +5,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>3 Key considerations | A Machine Learning Primer for Natural Resource Management</title>
-<meta name="author" content="Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth, Brian Reich">
-<meta name="description" content="Authors: Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth, Brian Reich Here, we offer some key questions natural resource management practitioners can ask before using or...">
+<meta name="author" content="Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth">
+<meta name="description" content="Authors: Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth Here, we offer some key questions natural resource management practitioners can ask before using or developing a...">
 <meta name="generator" content="bookdown 0.40 with bs4_book()">
 <meta property="og:title" content="3 Key considerations | A Machine Learning Primer for Natural Resource Management">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Authors: Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth, Brian Reich Here, we offer some key questions natural resource management practitioners can ask before using or...">
+<meta property="og:description" content="Authors: Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth Here, we offer some key questions natural resource management practitioners can ask before using or developing a...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3 Key considerations | A Machine Learning Primer for Natural Resource Management">
-<meta name="twitter:description" content="Authors: Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth, Brian Reich Here, we offer some key questions natural resource management practitioners can ask before using or...">
+<meta name="twitter:description" content="Authors: Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth Here, we offer some key questions natural resource management practitioners can ask before using or developing a...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -58,7 +58,7 @@
 <h1>
 <span class="header-section-number">3</span> Key considerations<a class="anchor" aria-label="anchor" href="#key-considerations"><i class="fas fa-link"></i></a>
 </h1>
-<p><em>Authors: <a href="https://bae.ncsu.edu/people/nnelson4/">Natalie G. Nelson</a>, <a href="https://www.linkedin.com/in/shih-ni-prim-14033336/">Shih-Ni Prim</a>, <a href="https://sheilasaia.rbind.io/">Sheila Saia</a>, <a href="https://cals.ncsu.edu/applied-ecology/people/kdgriege/">Khara Grieger</a>, <a href="https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/">Anders Huseth</a>, <a href="https://statistics.sciences.ncsu.edu/people/bjreich/">Brian Reich</a></em></p>
+<p><em>Authors: <a href="https://bae.ncsu.edu/people/nnelson4/">Natalie G. Nelson</a>, <a href="https://www.linkedin.com/in/shih-ni-prim-14033336/">Shih-Ni Prim</a>, <a href="https://sheilasaia.rbind.io/">Sheila Saia</a>, <a href="https://cals.ncsu.edu/applied-ecology/people/kdgriege/">Khara Grieger</a>, <a href="https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/">Anders Huseth</a></em></p>
 <p>Here, we offer some key questions natural resource management practitioners can ask before using or developing a machine learning model to inform day-to-day decision-making. Importantly, these questions are based on our own opinions and experiences, and should not be taken as definitive criteria. The questions are provided to help you start thinking critically through the process of using machine learning model outputs.</p>
 <p><strong>Why was a machine learning model used instead of a process-based model or more easily interpretable statistical model?</strong></p>
 <p>Because process-based or mechanistic models capture underlying physical, biological, and chemical processes driving agricultural and environmental phenomena, they are, in theory, less vulnerable to making spurious predictions as compared to machine learning models. However, process-based model development is often time- and resource-intensive, and some agricultural and environmental phenomena are not well predicted or explained by process-based models. Generally, the more a system is dominated by physical processes, the more predictable the system’s behaviors are by process-based models <a href="https://link.springer.com/book/10.1007/b106568">(Haefner 2005)</a>; physical processes are often well represented by established mathematical formulations. On the other hand, for behaviors that are largely driven by system biology or ecology, process-based models can have poor performance because biological and ecological processes are more challenging to robustly and accurately represent with mathematical equations. For example, it is reasonable to assume that it will be easier to simulate changes in a lake’s water levels than the amount of algae in the lake.</p>
@@ -103,7 +103,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>A Machine Learning Primer for Natural Resource Management</strong>" was written by Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth, Brian Reich. It was last built on 2024-10-22.</p>
+    <p>"<strong>A Machine Learning Primer for Natural Resource Management</strong>" was written by Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth. It was last built on 2024-10-30.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
