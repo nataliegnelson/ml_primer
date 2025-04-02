@@ -1,69 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>3 What is machine learning? | A Machine Learning Primer for Natural Resource Management</title>
-<meta name="author" content="Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth">
-<meta name="description" content="Machine learning methods teach computer models to make predictions from patterns in data (Zhi et al., 2024). To find patterns in data, numerous mathematical calculations are required. Computers...">
-<meta name="generator" content="bookdown 0.40 with bs4_book()">
-<meta property="og:title" content="3 What is machine learning? | A Machine Learning Primer for Natural Resource Management">
-<meta property="og:type" content="book">
-<meta property="og:description" content="Machine learning methods teach computer models to make predictions from patterns in data (Zhi et al., 2024). To find patterns in data, numerous mathematical calculations are required. Computers...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="3 What is machine learning? | A Machine Learning Primer for Natural Resource Management">
-<meta name="twitter:description" content="Machine learning methods teach computer models to make predictions from patterns in data (Zhi et al., 2024). To find patterns in data, numerous mathematical calculations are required. Computers...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
-    
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  </style>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 What is machine learning? | A Machine Learning Primer for Natural Resource Management</title>
+  <meta name="description" content="This primer serves as a succinct guidebook on using machine learning in natural resources management." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 What is machine learning? | A Machine Learning Primer for Natural Resource Management" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This primer serves as a succinct guidebook on using machine learning in natural resources management." />
+  <meta name="github-repo" content="nataliegnelson/ml_primer" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 What is machine learning? | A Machine Learning Primer for Natural Resource Management" />
+  
+  <meta name="twitter:description" content="This primer serves as a succinct guidebook on using machine learning in natural resources management." />
+  
+
+<meta name="author" content="Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth" />
+
+
+<meta name="date" content="2025-04-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="what-is-machine-learning.html"/>
+<link rel="next" href="key-considerations.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">A Machine Learning Primer for Natural Resource Management</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
-<li><a class="" href="what-is-machine-learning.html"><span class="header-section-number">2</span> What is machine learning?</a></li>
-<li><a class="active" href="what-is-machine-learning-1.html"><span class="header-section-number">3</span> What is machine learning?</a></li>
-<li><a class="" href="key-considerations.html"><span class="header-section-number">4</span> Key considerations</a></li>
-<li><a class="" href="case-studies.html"><span class="header-section-number">5</span> Case studies</a></li>
-<li><a class="" href="workflow.html"><span class="header-section-number">6</span> Workflow demonstration</a></li>
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Machine Learning Primer</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-use-this-primer"><i class="fa fa-check"></i><b>1.1</b> How to use this primer</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#learning-how-to-code"><i class="fa fa-check"></i><b>1.2</b> Learning how to code</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.3</b> Acknowledgements</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#citation"><i class="fa fa-check"></i><b>1.4</b> Citation</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.5</b> License</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="what-is-machine-learning.html"><a href="what-is-machine-learning.html"><i class="fa fa-check"></i><b>2</b> What is machine learning?</a></li>
+<li class="chapter" data-level="3" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html"><i class="fa fa-check"></i><b>3</b> What is machine learning?</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html#how-is-machine-learning-useful-for-natural-resources-management"><i class="fa fa-check"></i><b>3.1</b> How is machine learning useful for natural resources management?</a></li>
+<li class="chapter" data-level="3.2" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html#pros-and-cons"><i class="fa fa-check"></i><b>3.2</b> Pros and cons</a></li>
+<li class="chapter" data-level="3.3" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html#classes-of-machine-learning-models"><i class="fa fa-check"></i><b>3.3</b> Classes of machine learning models</a></li>
+<li class="chapter" data-level="3.4" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html#an-example-of-supervised-and-unsupervised-learning"><i class="fa fa-check"></i><b>3.4</b> An example of supervised and unsupervised learning</a></li>
+<li class="chapter" data-level="3.5" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html#algorithms"><i class="fa fa-check"></i><b>3.5</b> Algorithms</a></li>
+<li class="chapter" data-level="3.6" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html#a-deeper-dive"><i class="fa fa-check"></i><b>3.6</b> A deeper dive</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="key-considerations.html"><a href="key-considerations.html"><i class="fa fa-check"></i><b>4</b> Key considerations</a></li>
+<li class="chapter" data-level="5" data-path="case-studies.html"><a href="case-studies.html"><i class="fa fa-check"></i><b>5</b> Case studies</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="case-studies.html"><a href="case-studies.html#daily-pluvial-flood-prediction"><i class="fa fa-check"></i><b>5.1</b> 1: Daily pluvial flood prediction</a></li>
+<li class="chapter" data-level="5.2" data-path="case-studies.html"><a href="case-studies.html#fecal-coliform-forecasting"><i class="fa fa-check"></i><b>5.2</b> 2: Fecal coliform forecasting</a></li>
+<li class="chapter" data-level="5.3" data-path="case-studies.html"><a href="case-studies.html#in-season-sweetpotato-yield-forecasting"><i class="fa fa-check"></i><b>5.3</b> 3: In-season sweetpotato yield forecasting</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>6</b> Workflow demonstration</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="workflow.html"><a href="workflow.html#prepare-the-data"><i class="fa fa-check"></i><b>6.1</b> Prepare the data</a></li>
+<li class="chapter" data-level="6.2" data-path="workflow.html"><a href="workflow.html#classification-model"><i class="fa fa-check"></i><b>6.2</b> Classification model</a></li>
+<li class="chapter" data-level="6.3" data-path="workflow.html"><a href="workflow.html#continuous-model"><i class="fa fa-check"></i><b>6.3</b> Continuous model</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
 </ul>
 
-        <div class="book-extra">
-          
-        </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="what-is-machine-learning-1" class="section level1" number="3">
-<h1>
-<span class="header-section-number">3</span> What is machine learning?<a class="anchor" aria-label="anchor" href="#what-is-machine-learning-1"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Machine Learning Primer for Natural Resource Management</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="what-is-machine-learning-1" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> What is machine learning?<a href="what-is-machine-learning-1.html#what-is-machine-learning-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Machine learning methods teach computer models to make predictions from patterns in data <a href="https://doi.org/10.1038/s44221-024-00202-z">(Zhi et al., 2024)</a>. To find patterns in data, numerous mathematical calculations are required. Computers are essential for developing machine learning models, and advances in computing have given rise to machine learning <a href="https://doi.org/10.1126/science.aaa8415">(Jordan and Mitchell, 2015)</a>.</p>
-<div id="how-is-machine-learning-useful-for-natural-resources-management" class="section level2" number="3.1">
-<h2>
-<span class="header-section-number">3.1</span> How is machine learning useful for natural resources management?<a class="anchor" aria-label="anchor" href="#how-is-machine-learning-useful-for-natural-resources-management"><i class="fas fa-link"></i></a>
-</h2>
+<div id="how-is-machine-learning-useful-for-natural-resources-management" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> How is machine learning useful for natural resources management?<a href="what-is-machine-learning-1.html#how-is-machine-learning-useful-for-natural-resources-management" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Historically, environmental and agricultural systems were primarily modeled with “process-based” or “mechanistic” models, which are models that simulate key system processes based on their underlying physics, chemistry, or biology <a href="https://link.springer.com/book/10.1007/b106568">(Haefner 2005)</a>. Models were often used to fill gaps in direct measurements of various environmental and agricultural phenomena. In the past, collecting any type of environmental or agricultural data was grueling, time consuming, and done by people. Today, some variables still require tough and tedious work to measure, but many variables are now readily measured with sensors and other automated instruments.
 As an example of how process-based models are used, let’s consider the flow of water through an open channel. If you were estimating the velocity of water through an open channel using a process-based approach, you may use <a href="https://www.weather.gov/aprfc/normaldepthcalc">Manning’s Equation</a>, which simulates water velocity as a function of the channel’s physical properties like its slope and cross sectional area. To apply Manning’s Equation, you would have to take measurements of the channel’s dimensions.</p>
 <p>However, with machine learning, you do not have to simulate environmental and agricultural variables using underlying processes. Instead, you can create a model that makes predictions from patterns in data. Machine learning models require that you have some measurements of your <em>response</em> or <em>target</em> variable, which is the variable you are seeking to estimate. In our current example, water velocity in the channel is the target variable. You also need measurements of <em>predictor</em> variables, or variables that you will use to predict your response.</p>
@@ -71,80 +203,94 @@ As an example of how process-based models are used, let’s consider the flow of
 <p>To create such a machine learning model, water velocity measurements would be needed to create a <em>training set</em>, or data used to <em>train</em> or develop the machine learning model. The water velocity measurements would be collected at the same time as the images, so the images could then be directly related to water velocity measurements (i.e., when the image looks like this, the water velocity is that). The <em>predictor</em> variables would be derived from the images. A machine learning algorithm could be selected to search for patterns between the images – e.g., the shading/color of individual image pixels, relationships between neighboring pixels – and the water velocity measurements. Once these patterns are established, they can be used to estimate water velocity from new images as they are collected. Importantly, the image-based machine learning model knows nothing about the underlying physics controlling water velocity in the channel; it has simply learned that certain patterns in the images correspond to higher or lower water velocities.</p>
 <p>Machine learning models can easily be expanded to include many different types of predictor variables. For example, the image-based machine learning model for water velocity could be further built out to include additional predictors like rainfall, irrigation, and time of year. The flexibility of machine learning models allows them to consider many diverse streams of information when learning patterns from which to make predictions. To see additional examples of machine learning models developed for natural resource management applications, see chapter 4.</p>
 </div>
-<div id="pros-and-cons" class="section level2" number="3.2">
-<h2>
-<span class="header-section-number">3.2</span> Pros and cons<a class="anchor" aria-label="anchor" href="#pros-and-cons"><i class="fas fa-link"></i></a>
-</h2>
+<div id="pros-and-cons" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Pros and cons<a href="what-is-machine-learning-1.html#pros-and-cons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Because they make predictions from correlative patterns between the predictor and response variables, machine learning models have parallels to simpler statistical models like linear regression. However, machine learning models consist of hundreds, thousands, or millions of individual equations, while a linear regression model consists of only one equation. Because of their many equations, <a href="https://www.nature.com/news/can-we-open-the-black-box-of-ai-1.20731">machine learning models are commonly considered “black boxes”</a> since peering into a machine learning model can feel like looking into a pitch black box – you don’t precisely know what’s inside. Methods now exist to help us illuminate machine learning black boxes, and the field of “interpretable” or “explainable” machine learning has made great strides in support of better understanding the inner workings of these models <a href="https://doi.org/10.1109/JPROC.2021.3060483">(Samek et al., 2021)</a>. Still, machine learning models are substantially more challenging to interpret than most other model alternatives.</p>
 <p>While challenges to interpretation are a clear pitfall of machine learning models, their complicated structures allow for them to pick up on relatively subtle or nuanced relationships between datasets, making them effective predictive tools <a href="https://doi.org/10.3897/oneeco.1.e8621">(Thessen 2016)</a>. In many cases, machine learning models outperform process-based models (e.g., their predictions can have greater accuracy than the predictions from other models). The ability to create strong predictions is arguably the hallmark strength of machine learning. The previously described flexibility of being able to include many different diverse data types (e.g., images, sensor data, weather station observations) as predictors is also a key strength. But, because they do not necessarily account for underlying processes, machine learning models are at risk of inaccurate or misleading predictions, particularly if developed irresponsibly. Further, even with an accurate model, the data that feed into it need to be appropriate for the machine learning task. In chapter 3, we include questions you can ask to evaluate whether a model was developed responsibly, assess whether it is vulnerable to making misleading predictions, and understand whether the data is suitable for the model.</p>
 </div>
-<div id="classes-of-machine-learning-models" class="section level2" number="3.3">
-<h2>
-<span class="header-section-number">3.3</span> Classes of machine learning models<a class="anchor" aria-label="anchor" href="#classes-of-machine-learning-models"><i class="fas fa-link"></i></a>
-</h2>
+<div id="classes-of-machine-learning-models" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Classes of machine learning models<a href="what-is-machine-learning-1.html#classes-of-machine-learning-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the previous example on image-based predictions of water velocity, we summarized the use of a <em>supervised</em> learning approach. Simply put, supervised learning is when there are true answers for the model, or there are measurements for the response variable <a href="https://doi.org/10.1007/s42979-021-00592-x">(Sarker 2021)</a>. In the water velocity model example, water velocity measurements were used during model development to facilitate the learning of patterns in the images that could specifically be used to predict water velocity. Once a supervised learning model is developed, the predictions from the model can be compared with the measurements to assess how well the model predicts.</p>
 <p><em>Unsupervised</em> learning, on the other hand, performs tasks that do not have answers for the model. For example, instead of using the images of the stream to estimate water velocity, an unsupervised machine learning model could be used to group or cluster images with shared similarities. Unsupervised learning is often used as a computer-assisted way of exploring patterns in data <a href="https://doi.org/10.1007/s42979-021-00592-x">(Sarker 2021)</a>. Sometimes, the groups or clusters uncovered by an unsupervised learning model can be assigned labels that are of use for other modeling or analysis efforts.</p>
 </div>
-<div id="an-example-of-supervised-and-unsupervised-learning" class="section level2" number="3.4">
-<h2>
-<span class="header-section-number">3.4</span> An example of supervised and unsupervised learning<a class="anchor" aria-label="anchor" href="#an-example-of-supervised-and-unsupervised-learning"><i class="fas fa-link"></i></a>
-</h2>
+<div id="an-example-of-supervised-and-unsupervised-learning" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> An example of supervised and unsupervised learning<a href="what-is-machine-learning-1.html#an-example-of-supervised-and-unsupervised-learning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <a href="https://www.usgs.gov/centers/eros/science/national-land-cover-database">National Land Cover Database or Dataset (NLCD)</a> is created by the U.S. Geological Survey and its partners to map land cover across the contiguous U.S. The data are updated every few years, creating a historical record of land cover change across the country over time. In the 1970s and 1980s, land cover mapping was performed by manually delineating areas from aerial photographs. In 1992, the NLCD premiered a land cover data product that was created from Landsat satellite imagery. Landsat imagery has pixels that are 30 meters by 30 meters. To create the 1992 product, NLCD imagery was clustered into 100 groups using an unsupervised learning approach, and people evaluated the 100 groups and manually assigned them to land cover categories (e.g., forest, developed area). Later, to create the 2001 NLCD product, a supervised learning approach was used in which areas of known land cover were used to train a model to predict land cover categories based on Landsat imagery. Read more about the history of the NLCD program in Chapter 18 of <em>The Nature of Geographic Information</em> <a href="https://www.e-education.psu.edu/natureofgeoinfo/">(DiBiase et al.)</a>.</p>
 </div>
-<div id="algorithms" class="section level2" number="3.5">
-<h2>
-<span class="header-section-number">3.5</span> Algorithms<a class="anchor" aria-label="anchor" href="#algorithms"><i class="fas fa-link"></i></a>
-</h2>
+<div id="algorithms" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Algorithms<a href="what-is-machine-learning-1.html#algorithms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Within the two broad classifications of machine learning (supervised and unsupervised), there is an overwhelming number of machine learning <em>algorithms</em>, or specific computer model frameworks for implementing machine learning. The sheer number of machine learning algorithms attests to its power and versatility. This primer does not catalog different machine learning algorithms. As a starting point, you can see some algorithm examples at the resources below.
 <a href="https://blogs.sas.com/content/subconsciousmusings/2020/12/09/machine-learning-algorithm-use/">Which machine learning algorithm should I use</a> by SAS blogs
 <a href="https://www.datacamp.com/cheat-sheet/machine-learning-cheat-sheet?utm_source=google&amp;utm_medium=paid_search&amp;utm_campaignid=19589720830&amp;utm_adgroupid=157098107695&amp;utm_device=c&amp;utm_keyword=&amp;utm_matchtype=&amp;utm_network=g&amp;utm_adpostion=&amp;utm_creative=698229375346&amp;utm_targetid=dsa-2264919291829&amp;utm_loc_interest_ms=&amp;utm_loc_physical_ms=9009732&amp;utm_content=DSA~blog~Julia&amp;utm_campaign=230119_1-sea~dsa~tofu_2-b2c_3-us_4-prc_5-na_6-na_7-le_8-pdsh-go_9-na_10-na_11-na-may24&amp;gad_source=1&amp;gclid=Cj0KCQjw6PGxBhCVARIsAIumnWai3I4X4UtrhM_2dA1pUpmAmC-iErsp57Cv6p4fEQugIVbGrx1VT2YaAsr7EALw_wcB">Machine Learning Cheat Sheet</a> by Datacamp</p>
 </div>
-<div id="a-deeper-dive" class="section level2" number="3.6">
-<h2>
-<span class="header-section-number">3.6</span> A deeper dive<a class="anchor" aria-label="anchor" href="#a-deeper-dive"><i class="fas fa-link"></i></a>
-</h2>
+<div id="a-deeper-dive" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> A deeper dive<a href="what-is-machine-learning-1.html#a-deeper-dive" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you would like to learn more about machine learning, check out <a href="https://www.statlearning.com/"><em>An Introduction to Statistical Learning</em> by James et al. (2013)</a>. This book provides a wealth of information on machine learning models, and the authors assume the readers are mainly interested in applying, rather than deeply studying, machine learning models. There are free PDF versions of the books <a href="https://www.statlearning.com/">available online</a>, and examples are presented in both R and Python.</p>
 
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="what-is-machine-learning.html"><span class="header-section-number">2</span> What is machine learning?</a></div>
-<div class="next"><a href="key-considerations.html"><span class="header-section-number">4</span> Key considerations</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#what-is-machine-learning-1"><span class="header-section-number">3</span> What is machine learning?</a></li>
-<li><a class="nav-link" href="#how-is-machine-learning-useful-for-natural-resources-management"><span class="header-section-number">3.1</span> How is machine learning useful for natural resources management?</a></li>
-<li><a class="nav-link" href="#pros-and-cons"><span class="header-section-number">3.2</span> Pros and cons</a></li>
-<li><a class="nav-link" href="#classes-of-machine-learning-models"><span class="header-section-number">3.3</span> Classes of machine learning models</a></li>
-<li><a class="nav-link" href="#an-example-of-supervised-and-unsupervised-learning"><span class="header-section-number">3.4</span> An example of supervised and unsupervised learning</a></li>
-<li><a class="nav-link" href="#algorithms"><span class="header-section-number">3.5</span> Algorithms</a></li>
-<li><a class="nav-link" href="#a-deeper-dive"><span class="header-section-number">3.6</span> A deeper dive</a></li>
-</ul>
+            </section>
 
-      <div class="book-extra">
-        <ul class="list-unstyled">
-          
-        </ul>
-</div>
-    </nav>
-</div>
-
-</div>
-</div> <!-- .container -->
-
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>A Machine Learning Primer for Natural Resource Management</strong>" was written by Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth. It was last built on 2025-04-02.</p>
+          </div>
+        </div>
+      </div>
+<a href="what-is-machine-learning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="key-considerations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
   </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-whatisml.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["ml-primer.pdf", "ml-primer.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
 
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -156,22 +302,7 @@ As an example of how process-based models are used, let’s consider the flow of
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
 </script>
 </body>
+
 </html>
