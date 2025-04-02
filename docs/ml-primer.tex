@@ -127,7 +127,7 @@
 
 \title{A Machine Learning Primer for Natural Resource Management}
 \author{Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth}
-\date{2024-10-30}
+\date{2025-04-02}
 
 \begin{document}
 \maketitle
@@ -161,7 +161,7 @@ Support for this primer was provided by the U.S. Department of Agriculture Natio
 \hypertarget{citation}{%
 \section{Citation}\label{citation}}
 
-Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth (\emph{authors vary by chapter}). 2024. A Machine Learning Primer for Natural Resources Management, Accessed online via go.ncsu.edu/mlprimer.
+Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth (\emph{authors vary by chapter}). 2025. A Machine Learning Primer for Natural Resources Management, Accessed online via go.ncsu.edu/mlprimer.
 
 \hypertarget{license}{%
 \section{License}\label{license}}
@@ -173,7 +173,10 @@ This work is licensed under \href{https://creativecommons.org/licenses/by-nc-sa/
 
 \emph{Authors: \href{https://bae.ncsu.edu/people/nnelson4/}{Natalie G. Nelson}, \href{https://www.linkedin.com/in/shih-ni-prim-14033336/}{Shih-Ni Prim}, \href{https://sheilasaia.rbind.io/}{Sheila Saia}, \href{https://cals.ncsu.edu/applied-ecology/people/kdgriege/}{Khara Grieger}, \href{https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/}{Anders Huseth}}
 
-Machine learning methods teach computer models to make predictions from patterns in data \href{https://doi.org/10.1038/s44221-024-00202-z}{(Zhi et al., 2024)}. To find patterns in data, many, many mathematical calculations are involved. Computers are needed to develop machine learning models, and advances in computing gave rise to machine learning.
+\hypertarget{what-is-machine-learning-1}{%
+\chapter{What is machine learning?}\label{what-is-machine-learning-1}}
+
+Machine learning methods teach computer models to make predictions from patterns in data \href{https://doi.org/10.1038/s44221-024-00202-z}{(Zhi et al., 2024)}. To find patterns in data, numerous mathematical calculations are required. Computers are essential for developing machine learning models, and advances in computing have given rise to machine learning \href{https://doi.org/10.1126/science.aaa8415}{(Jordan and Mitchell, 2015)}.
 
 \hypertarget{how-is-machine-learning-useful-for-natural-resources-management}{%
 \section{How is machine learning useful for natural resources management?}\label{how-is-machine-learning-useful-for-natural-resources-management}}
@@ -194,7 +197,7 @@ Machine learning models can easily be expanded to include many different types o
 
 Because they make predictions from correlative patterns between the predictor and response variables, machine learning models have parallels to simpler statistical models like linear regression. However, machine learning models consist of hundreds, thousands, or millions of individual equations, while a linear regression model consists of only one equation. Because of their many equations, \href{https://www.nature.com/news/can-we-open-the-black-box-of-ai-1.20731}{machine learning models are commonly considered ``black boxes''} since peering into a machine learning model can feel like looking into a pitch black box -- you don't precisely know what's inside. Methods now exist to help us illuminate machine learning black boxes, and the field of ``interpretable'' or ``explainable'' machine learning has made great strides in support of better understanding the inner workings of these models \href{https://doi.org/10.1109/JPROC.2021.3060483}{(Samek et al., 2021)}. Still, machine learning models are substantially more challenging to interpret than most other model alternatives.
 
-While challenges to interpretation are a clear pitfall of machine learning models, their complicated structures allow for them to pick up on relatively subtle or nuanced relationships between datasets, making them effective predictive tools. In many cases, machine learning models outperform process-based models (e.g., their predictions can have greater accuracy than the predictions from other models). The ability to create strong predictions is arguably the hallmark strength of machine learning. The previously described flexibility of being able to include many different diverse data types (e.g., images, sensor data, weather station observations) as predictors is also a key strength. But, because they do not necessarily account for underlying processes, machine learning models are at risk of spurious predictions, particularly if developed irresponsibly. In chapter 3, we include questions you can ask to evaluate whether a model was developed responsibly, and assess whether it is vulnerable to making spurious predictions.
+While challenges to interpretation are a clear pitfall of machine learning models, their complicated structures allow for them to pick up on relatively subtle or nuanced relationships between datasets, making them effective predictive tools \href{https://doi.org/10.3897/oneeco.1.e8621}{(Thessen 2016)}. In many cases, machine learning models outperform process-based models (e.g., their predictions can have greater accuracy than the predictions from other models). The ability to create strong predictions is arguably the hallmark strength of machine learning. The previously described flexibility of being able to include many different diverse data types (e.g., images, sensor data, weather station observations) as predictors is also a key strength. But, because they do not necessarily account for underlying processes, machine learning models are at risk of inaccurate or misleading predictions, particularly if developed irresponsibly. Further, even with an accurate model, the data that feed into it need to be appropriate for the machine learning task. In chapter 3, we include questions you can ask to evaluate whether a model was developed responsibly, assess whether it is vulnerable to making misleading predictions, and understand whether the data is suitable for the model.
 
 \hypertarget{classes-of-machine-learning-models}{%
 \section{Classes of machine learning models}\label{classes-of-machine-learning-models}}
@@ -212,24 +215,13 @@ The \href{https://www.usgs.gov/centers/eros/science/national-land-cover-database
 \section{Algorithms}\label{algorithms}}
 
 Within the two broad classifications of machine learning (supervised and unsupervised), there is an overwhelming number of machine learning \emph{algorithms}, or specific computer model frameworks for implementing machine learning. The sheer number of machine learning algorithms attests to its power and versatility. This primer does not catalog different machine learning algorithms. As a starting point, you can see some algorithm examples at the resources below.
-
-\begin{itemize}
-\tightlist
-\item
-  \href{https://blogs.sas.com/content/subconsciousmusings/2020/12/09/machine-learning-algorithm-use/}{Which machine learning algorithm should I use} by SAS blogs
-\item
-  \href{https://www.datacamp.com/cheat-sheet/machine-learning-cheat-sheet?utm_source=google\&utm_medium=paid_search\&utm_campaignid=19589720830\&utm_adgroupid=157098107695\&utm_device=c\&utm_keyword=\&utm_matchtype=\&utm_network=g\&utm_adpostion=\&utm_creative=698229375346\&utm_targetid=dsa-2264919291829\&utm_loc_interest_ms=\&utm_loc_physical_ms=9009732\&utm_content=DSA~blog~Julia\&utm_campaign=230119_1-sea~dsa~tofu_2-b2c_3-us_4-prc_5-na_6-na_7-le_8-pdsh-go_9-na_10-na_11-na-may24\&gad_source=1\&gclid=Cj0KCQjw6PGxBhCVARIsAIumnWai3I4X4UtrhM_2dA1pUpmAmC-iErsp57Cv6p4fEQugIVbGrx1VT2YaAsr7EALw_wcB}{Machine Learning Cheat Sheet} by Datacamp
-\end{itemize}
+\href{https://blogs.sas.com/content/subconsciousmusings/2020/12/09/machine-learning-algorithm-use/}{Which machine learning algorithm should I use} by SAS blogs
+\href{https://www.datacamp.com/cheat-sheet/machine-learning-cheat-sheet?utm_source=google\&utm_medium=paid_search\&utm_campaignid=19589720830\&utm_adgroupid=157098107695\&utm_device=c\&utm_keyword=\&utm_matchtype=\&utm_network=g\&utm_adpostion=\&utm_creative=698229375346\&utm_targetid=dsa-2264919291829\&utm_loc_interest_ms=\&utm_loc_physical_ms=9009732\&utm_content=DSA~blog~Julia\&utm_campaign=230119_1-sea~dsa~tofu_2-b2c_3-us_4-prc_5-na_6-na_7-le_8-pdsh-go_9-na_10-na_11-na-may24\&gad_source=1\&gclid=Cj0KCQjw6PGxBhCVARIsAIumnWai3I4X4UtrhM_2dA1pUpmAmC-iErsp57Cv6p4fEQugIVbGrx1VT2YaAsr7EALw_wcB}{Machine Learning Cheat Sheet} by Datacamp
 
 \hypertarget{a-deeper-dive}{%
 \section{A deeper dive}\label{a-deeper-dive}}
 
-If you would like to learn more about machine learning, check out \href{https://www.statlearning.com/}{\emph{An Introduction to Statistical Learning} by James et al.~(2013)}. This book provides a wealth of information on machine learning models, and the authors assume the readers are mainly interested in applying, rather than deeply studying, machine learning models. The four premises offered by the authors, listed on pp 8-9, demonstrate the practical focus of the book:
-Many statistical learning methods are relevant and useful in a wide range of academic and non-academic disciplines, beyond just the statistical sciences.
-Statistical learning should not be viewed as a series of black boxes.
-While it is important to know what job is performed by each cog, it is not necessary to have the skills to construct the machine inside the box!
-We presume that the reader is interested in applying statistical learning methods to real-world problems.
-There are free PDF versions of the books \href{https://www.statlearning.com/}{available online}, and examples are presented in both R and Python.
+If you would like to learn more about machine learning, check out \href{https://www.statlearning.com/}{\emph{An Introduction to Statistical Learning} by James et al.~(2013)}. This book provides a wealth of information on machine learning models, and the authors assume the readers are mainly interested in applying, rather than deeply studying, machine learning models. There are free PDF versions of the books \href{https://www.statlearning.com/}{available online}, and examples are presented in both R and Python.
 
 \hypertarget{key-considerations}{%
 \chapter{Key considerations}\label{key-considerations}}
@@ -252,7 +244,7 @@ There is no minimum dataset size for developing a machine learning model, but ma
 
 This is probably the most important question to ask. Because machine learning models make predictions from patterns in data, the data provided to train the model dictate the types of predictions a machine learning model can make. If a training dataset is narrow (e.g., it includes a short time period, a time period with little environmental variation, a limited number of locations, etc.), its predictions will not generalize. If a machine learning model was developed with data from corn fields in the Midwest, will its predictions apply to corn fields in Georgia? In particular, ask yourself (or the model developers), what is missing from the training data? For example, if you're interested in predicting the effects of drought, how many drought periods are included in the data, and how severe were the droughts? Even if the training data are spatially extensive, think critically about whether the data may be biased or disproportionately unrepresentative in some way such that the data may not be generalizable.
 
-For example, research has shown that surface water quality monitoring in the Southeast U.S. disproportionately occurs in more affluent areas \href{https://doi.org/10.22541/essoar.172191636.66550095/v2}{(Oates et al., 2024)}, meaning that areas of greater social vulnerability have fewer monitoring stations. If a machine learning model were to be developed using all available water quality data in the Southeast for the purpose of predicting water quality in unmonitored areas, it might sound as though the training data are comprehensive for the region, but the model would ultimately be affected by the training data's underlying bias. If a model developer is unable to disclose the data sources (e.g., because of data ownership/privacy concerns), they should still be able to provide information on general data characteristics such that you can assess whether the training data apply to your system of interest.
+For example, research has shown that surface water quality monitoring in the Southeast U.S. disproportionately occurs in more affluent areas \href{https://doi.org/10.22541/essoar.172191636.66550095/v2}{(Oates et al., 2024)}, meaning that areas of greater social vulnerability have fewer monitoring stations. If a machine learning model were developed using all available water quality data from the Southeast to predict water quality in unmonitored areas, it might give the impression that the training data comprehensively represent the region. However, the model would still be influenced by any underlying biases in the training data. If a model developer is unable to disclose the data sources (e.g., because of data ownership/privacy concerns), they should still be able to provide information on general data characteristics such that you can assess whether the training data apply to your system of interest.
 
 \textbf{How was the model tested or evaluated? Were any measures of uncertainty reported?}
 
@@ -264,7 +256,7 @@ Be wary of salesmanship. Responsible modelers will clearly articulate limitation
 
 \textbf{How did the modelers choose predictors? Do they seem to understand some of the underlying science or processes of the agricultural or environmental system they are making predictions for?}
 
-Ideally, when predicting agricultural or environmental system behaviors in a machine learning model, there should be sound scientific reasoning regarding the selection of predictors. Judicious selection of predictors can also help to avoid spurious predictions.
+Ideally, when predicting agricultural or environmental system behaviors in a machine learning model, there should be sound scientific reasoning regarding the selection of predictors. Judicious selection of predictors can also help to avoid misleading predictions.
 
 \textbf{What do the modelers know about predictor importance?}
 
@@ -283,7 +275,7 @@ Developing a machine learning model and creating a user-friendly system for appl
 
 \emph{Authors: \href{https://bae.ncsu.edu/people/nnelson4/}{Natalie G. Nelson} and \href{https://www.linkedin.com/in/shih-ni-prim-14033336/}{Shih-Ni Prim}}
 
-To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling framework. These three case studies include models for predicting (1) daily pluvial flood dynamics in agricultural landscapes, (2) fecal coliform exceedances in shellfish growing waters, and (3) sweetpotato yields at the county-scale. All three models use Random Forest, a specific type of machine learning algorithm. Random Forest creates many (e.g., hundreds or thousands) of regression or classification trees to predict categories or continuous values of the response variable. Random Forest is considered a particularly effective algorithm for working with environmental and agricultural data, as it can effectively capture nonlinear and complex interactions between variables. All three case studies offer interpretations of the most important predictor variables in the model, and explanations as to why those predictors may be the most important.
+To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling framework. These three case studies include models for predicting (1) daily pluvial flood dynamics in agricultural landscapes, (2) fecal coliform exceedances in shellfish growing waters, and (3) sweetpotato yields at the county-scale. All three models use Random Forest, a specific type of machine learning algorithm. Random Forest creates many (e.g., hundreds or thousands) regression or classification trees to predict categories or continuous values of the response variable. Random Forest is considered a particularly effective algorithm for working with environmental data \href{https://doi.org/10.3897/oneeco.1.e8621}{(Thessen 2016)}, as it can effectively capture nonlinear and complex interactions between variables. All three case studies offer interpretations of the most important predictor variables in the model, and explanations as to why those predictors may be the most important.
 
 \hypertarget{daily-pluvial-flood-prediction}{%
 \section{1: Daily pluvial flood prediction}\label{daily-pluvial-flood-prediction}}

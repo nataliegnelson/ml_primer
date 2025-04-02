@@ -6,6 +6,7 @@ acknowledgements
 citation
 license
 what-is-machine-learning
+what-is-machine-learning-1
 how-is-machine-learning-useful-for-natural-resources-management
 pros-and-cons
 classes-of-machine-learning-models

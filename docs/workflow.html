@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>5 Workflow demonstration | A Machine Learning Primer for Natural Resource Management</title>
+<title>6 Workflow demonstration | A Machine Learning Primer for Natural Resource Management</title>
 <meta name="author" content="Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth">
 <meta name="description" content="Authors: Shih-Ni Prim In this section, we use a dataset to exemplify a typical workflow for constructing machine learning models. We skip exploratory data analysis, or the process of exploring...">
 <meta name="generator" content="bookdown 0.40 with bs4_book()">
-<meta property="og:title" content="5 Workflow demonstration | A Machine Learning Primer for Natural Resource Management">
+<meta property="og:title" content="6 Workflow demonstration | A Machine Learning Primer for Natural Resource Management">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Authors: Shih-Ni Prim In this section, we use a dataset to exemplify a typical workflow for constructing machine learning models. We skip exploratory data analysis, or the process of exploring...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="5 Workflow demonstration | A Machine Learning Primer for Natural Resource Management">
+<meta name="twitter:title" content="6 Workflow demonstration | A Machine Learning Primer for Natural Resource Management">
 <meta name="twitter:description" content="Authors: Shih-Ni Prim In this section, we use a dataset to exemplify a typical workflow for constructing machine learning models. We skip exploratory data analysis, or the process of exploring...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -44,9 +44,10 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
 <li><a class="" href="what-is-machine-learning.html"><span class="header-section-number">2</span> What is machine learning?</a></li>
-<li><a class="" href="key-considerations.html"><span class="header-section-number">3</span> Key considerations</a></li>
-<li><a class="" href="case-studies.html"><span class="header-section-number">4</span> Case studies</a></li>
-<li><a class="active" href="workflow.html"><span class="header-section-number">5</span> Workflow demonstration</a></li>
+<li><a class="" href="what-is-machine-learning-1.html"><span class="header-section-number">3</span> What is machine learning?</a></li>
+<li><a class="" href="key-considerations.html"><span class="header-section-number">4</span> Key considerations</a></li>
+<li><a class="" href="case-studies.html"><span class="header-section-number">5</span> Case studies</a></li>
+<li><a class="active" href="workflow.html"><span class="header-section-number">6</span> Workflow demonstration</a></li>
 </ul>
 
         <div class="book-extra">
@@ -54,9 +55,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="workflow" class="section level1" number="5">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="workflow" class="section level1" number="6">
 <h1>
-<span class="header-section-number">5</span> Workflow demonstration<a class="anchor" aria-label="anchor" href="#workflow"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6</span> Workflow demonstration<a class="anchor" aria-label="anchor" href="#workflow"><i class="fas fa-link"></i></a>
 </h1>
 <p><em>Authors: <a href="https://www.linkedin.com/in/shih-ni-prim-14033336/">Shih-Ni Prim</a></em></p>
 <p>In this section, we use a dataset to exemplify a typical workflow for constructing machine learning models. We skip exploratory data analysis, or the process of exploring your data to understand its structure and components, but such exploration should always occur prior to any modeling. For more on exploratory data analysis, refer to <a href="https://bookdown.org/rdpeng/artofdatascience/exploratory-data-analysis.html">Chapter 4 Exploratory Data Analysis</a> in <em>The Art of Data Science</em> by Roger D. Peng and Elizabeth Matsui.</p>
@@ -68,9 +69,9 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rattle.togaware.com/">rattle</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests/">randomForest</a></span><span class="op">)</span></span></code></pre></div>
-<div id="prepare-the-data" class="section level2" number="5.1">
+<div id="prepare-the-data" class="section level2" number="6.1">
 <h2>
-<span class="header-section-number">5.1</span> Prepare the data<a class="anchor" aria-label="anchor" href="#prepare-the-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1</span> Prepare the data<a class="anchor" aria-label="anchor" href="#prepare-the-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>We first read in the data and rename the variables, so coding is easier.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -125,9 +126,9 @@
 <span><span class="va">winez_train</span> <span class="op">&lt;-</span> <span class="va">winez</span><span class="op">[</span><span class="va">train</span>,<span class="op">]</span></span>
 <span><span class="va">winez_test</span> <span class="op">&lt;-</span> <span class="va">winez</span><span class="op">[</span><span class="op">-</span><span class="va">train</span>,<span class="op">]</span></span></code></pre></div>
 </div>
-<div id="classification-model" class="section level2" number="5.2">
+<div id="classification-model" class="section level2" number="6.2">
 <h2>
-<span class="header-section-number">5.2</span> Classification model<a class="anchor" aria-label="anchor" href="#classification-model"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.2</span> Classification model<a class="anchor" aria-label="anchor" href="#classification-model"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now, we will construct a Random Forest model with a two-level response. After the model is run, we calculate the predictions using the <code>predict</code> function. A plot with the most important predictors in the model is provided. We can see that <code>alcohol</code>, <code>sulphates</code>, and <code>volatile acidity</code> are the three most important predictors for the outcome variable. A confusion matrix is created, which shows different metrics such as overall accuracy rate, sensitivity, specificity, etc.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
@@ -219,13 +220,13 @@
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:rfplots"></span>
 <img src="ml-primer_files/figure-html/rfplots-1.png" alt="Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)" width="100%" height="100%"><p class="caption">
-Figure 5.1: Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)
+Figure 6.1: Accuracy Rates vs Number of Predictors Used for 2-level Variable (left) and 3-level Variable (right)
 </p>
 </div>
 </div>
-<div id="continuous-model" class="section level2" number="5.3">
+<div id="continuous-model" class="section level2" number="6.3">
 <h2>
-<span class="header-section-number">5.3</span> Continuous model<a class="anchor" aria-label="anchor" href="#continuous-model"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3</span> Continuous model<a class="anchor" aria-label="anchor" href="#continuous-model"><i class="fas fa-link"></i></a>
 </h2>
 <p>Next, we construct a Random Forest models with the continuous outcome variable. We first set <span class="math inline">\(m\)</span> as the square root of the number of predictors, as this is commonly recommended. Confusion matrices cannot be provided for continuous responses, but we can calculate the mean squared error (MSE), find important variables, and show how the error decreases with the number of trees constructed. The three most important variables are again <code>alcohol</code>, <code>sulphates</code>, and <code>volatile acidity</code>.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
@@ -314,15 +315,15 @@ Figure 5.1: Accuracy Rates vs Number of Predictors Used for 2-level Variable (le
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="case-studies.html"><span class="header-section-number">4</span> Case studies</a></div>
+<div class="prev"><a href="case-studies.html"><span class="header-section-number">5</span> Case studies</a></div>
 <div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#workflow"><span class="header-section-number">5</span> Workflow demonstration</a></li>
-<li><a class="nav-link" href="#prepare-the-data"><span class="header-section-number">5.1</span> Prepare the data</a></li>
-<li><a class="nav-link" href="#classification-model"><span class="header-section-number">5.2</span> Classification model</a></li>
-<li><a class="nav-link" href="#continuous-model"><span class="header-section-number">5.3</span> Continuous model</a></li>
+<li><a class="nav-link" href="#workflow"><span class="header-section-number">6</span> Workflow demonstration</a></li>
+<li><a class="nav-link" href="#prepare-the-data"><span class="header-section-number">6.1</span> Prepare the data</a></li>
+<li><a class="nav-link" href="#classification-model"><span class="header-section-number">6.2</span> Classification model</a></li>
+<li><a class="nav-link" href="#continuous-model"><span class="header-section-number">6.3</span> Continuous model</a></li>
 </ul>
 
       <div class="book-extra">
@@ -339,7 +340,7 @@ Figure 5.1: Accuracy Rates vs Number of Predictors Used for 2-level Variable (le
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>A Machine Learning Primer for Natural Resource Management</strong>" was written by Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth. It was last built on 2024-10-30.</p>
+    <p>"<strong>A Machine Learning Primer for Natural Resource Management</strong>" was written by Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth. It was last built on 2025-04-02.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
