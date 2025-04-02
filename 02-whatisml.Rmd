@@ -2,7 +2,6 @@
 
 *Authors: [Natalie G. Nelson](https://bae.ncsu.edu/people/nnelson4/), [Shih-Ni Prim](https://www.linkedin.com/in/shih-ni-prim-14033336/), [Sheila Saia](https://sheilasaia.rbind.io/), [Khara Grieger](https://cals.ncsu.edu/applied-ecology/people/kdgriege/), [Anders Huseth](https://cals.ncsu.edu/entomology-and-plant-pathology/people/ashuseth/)*
 
-# What is machine learning?
 Machine learning methods teach computer models to make predictions from patterns in data [(Zhi et al., 2024)](https://doi.org/10.1038/s44221-024-00202-z). To find patterns in data, numerous  mathematical calculations are required. Computers are essential for developing machine learning models, and advances in computing have given rise to machine learning [(Jordan and Mitchell, 2015)](https://doi.org/10.1126/science.aaa8415).  
 
 ## How is machine learning useful for natural resources management?

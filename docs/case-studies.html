@@ -1,202 +1,69 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Case studies | A Machine Learning Primer for Natural Resource Management</title>
-  <meta name="description" content="This primer serves as a succinct guidebook on using machine learning in natural resources management." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="5 Case studies | A Machine Learning Primer for Natural Resource Management" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="This primer serves as a succinct guidebook on using machine learning in natural resources management." />
-  <meta name="github-repo" content="nataliegnelson/ml_primer" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Case studies | A Machine Learning Primer for Natural Resource Management" />
-  
-  <meta name="twitter:description" content="This primer serves as a succinct guidebook on using machine learning in natural resources management." />
-  
-
-<meta name="author" content="Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth" />
-
-
-<meta name="date" content="2025-04-02" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="key-considerations.html"/>
-<link rel="next" href="workflow.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-
-<link rel="stylesheet" href="style.css" type="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>4 Case studies | A Machine Learning Primer for Natural Resource Management</title>
+<meta name="author" content="Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth">
+<meta name="description" content="Authors: Natalie G. Nelson and Shih-Ni Prim To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which...">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta property="og:title" content="4 Case studies | A Machine Learning Primer for Natural Resource Management">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Authors: Natalie G. Nelson and Shih-Ni Prim To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="4 Case studies | A Machine Learning Primer for Natural Resource Management">
+<meta name="twitter:description" content="Authors: Natalie G. Nelson and Shih-Ni Prim To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">A Machine Learning Primer</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-use-this-primer"><i class="fa fa-check"></i><b>1.1</b> How to use this primer</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#learning-how-to-code"><i class="fa fa-check"></i><b>1.2</b> Learning how to code</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i><b>1.3</b> Acknowledgements</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#citation"><i class="fa fa-check"></i><b>1.4</b> Citation</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.5</b> License</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="what-is-machine-learning.html"><a href="what-is-machine-learning.html"><i class="fa fa-check"></i><b>2</b> What is machine learning?</a></li>
-<li class="chapter" data-level="3" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html"><i class="fa fa-check"></i><b>3</b> What is machine learning?</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html#how-is-machine-learning-useful-for-natural-resources-management"><i class="fa fa-check"></i><b>3.1</b> How is machine learning useful for natural resources management?</a></li>
-<li class="chapter" data-level="3.2" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html#pros-and-cons"><i class="fa fa-check"></i><b>3.2</b> Pros and cons</a></li>
-<li class="chapter" data-level="3.3" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html#classes-of-machine-learning-models"><i class="fa fa-check"></i><b>3.3</b> Classes of machine learning models</a></li>
-<li class="chapter" data-level="3.4" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html#an-example-of-supervised-and-unsupervised-learning"><i class="fa fa-check"></i><b>3.4</b> An example of supervised and unsupervised learning</a></li>
-<li class="chapter" data-level="3.5" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html#algorithms"><i class="fa fa-check"></i><b>3.5</b> Algorithms</a></li>
-<li class="chapter" data-level="3.6" data-path="what-is-machine-learning-1.html"><a href="what-is-machine-learning-1.html#a-deeper-dive"><i class="fa fa-check"></i><b>3.6</b> A deeper dive</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="key-considerations.html"><a href="key-considerations.html"><i class="fa fa-check"></i><b>4</b> Key considerations</a></li>
-<li class="chapter" data-level="5" data-path="case-studies.html"><a href="case-studies.html"><i class="fa fa-check"></i><b>5</b> Case studies</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="case-studies.html"><a href="case-studies.html#daily-pluvial-flood-prediction"><i class="fa fa-check"></i><b>5.1</b> 1: Daily pluvial flood prediction</a></li>
-<li class="chapter" data-level="5.2" data-path="case-studies.html"><a href="case-studies.html#fecal-coliform-forecasting"><i class="fa fa-check"></i><b>5.2</b> 2: Fecal coliform forecasting</a></li>
-<li class="chapter" data-level="5.3" data-path="case-studies.html"><a href="case-studies.html#in-season-sweetpotato-yield-forecasting"><i class="fa fa-check"></i><b>5.3</b> 3: In-season sweetpotato yield forecasting</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>6</b> Workflow demonstration</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="workflow.html"><a href="workflow.html#prepare-the-data"><i class="fa fa-check"></i><b>6.1</b> Prepare the data</a></li>
-<li class="chapter" data-level="6.2" data-path="workflow.html"><a href="workflow.html#classification-model"><i class="fa fa-check"></i><b>6.2</b> Classification model</a></li>
-<li class="chapter" data-level="6.3" data-path="workflow.html"><a href="workflow.html#continuous-model"><i class="fa fa-check"></i><b>6.3</b> Continuous model</a></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">A Machine Learning Primer for Natural Resource Management</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Machine Learning Primer for Natural Resource Management</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
+<li><a class="" href="what-is-machine-learning.html"><span class="header-section-number">2</span> What is machine learning?</a></li>
+<li><a class="" href="key-considerations.html"><span class="header-section-number">3</span> Key considerations</a></li>
+<li><a class="active" href="case-studies.html"><span class="header-section-number">4</span> Case studies</a></li>
+<li><a class="" href="workflow.html"><span class="header-section-number">5</span> Workflow demonstration</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="case-studies" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">5</span> Case studies<a href="case-studies.html#case-studies" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="case-studies" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Case studies<a class="anchor" aria-label="anchor" href="#case-studies"><i class="fas fa-link"></i></a>
+</h1>
 <p><em>Authors: <a href="https://bae.ncsu.edu/people/nnelson4/">Natalie G. Nelson</a> and <a href="https://www.linkedin.com/in/shih-ni-prim-14033336/">Shih-Ni Prim</a></em></p>
 <p>To illustrate the use of machine learning across diverse natural resource management applications, three case studies are presented here, all of which use the same machine learning modeling framework. These three case studies include models for predicting (1) daily pluvial flood dynamics in agricultural landscapes, (2) fecal coliform exceedances in shellfish growing waters, and (3) sweetpotato yields at the county-scale. All three models use Random Forest, a specific type of machine learning algorithm. Random Forest creates many (e.g., hundreds or thousands) regression or classification trees to predict categories or continuous values of the response variable. Random Forest is considered a particularly effective algorithm for working with environmental data <a href="https://doi.org/10.3897/oneeco.1.e8621">(Thessen 2016)</a>, as it can effectively capture nonlinear and complex interactions between variables. All three case studies offer interpretations of the most important predictor variables in the model, and explanations as to why those predictors may be the most important.</p>
-<div id="daily-pluvial-flood-prediction" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> 1: Daily pluvial flood prediction<a href="case-studies.html#daily-pluvial-flood-prediction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="daily-pluvial-flood-prediction" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> 1: Daily pluvial flood prediction<a class="anchor" aria-label="anchor" href="#daily-pluvial-flood-prediction"><i class="fas fa-link"></i></a>
+</h2>
 <p><strong>Machine learning approach for modeling daily pluvial flood dynamics in agricultural landscapes (Fidan et al., 2023)</strong></p>
 <ul>
 <li>Response variable: Binary categories of “flooded” or “not flooded”</li>
@@ -205,8 +72,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In this study, the model developers focused on an agricultural area that experienced pluvial, or rain-driven, flooding following a major hurricane. The area was treated as a grid, where the grid was divided into square pixels of equal area. The model was developed to estimate the likelihood of a pixel being flooded or not flooded based on landscape characteristics (e.g., soils, land cover type), and recent rainfall patterns.</p>
 <p>Read the full study <a href="https://www.sciencedirect.com/science/article/pii/S1364815223001445?dgcid=author">here</a>.</p>
 </div>
-<div id="fecal-coliform-forecasting" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> 2: Fecal coliform forecasting<a href="case-studies.html#fecal-coliform-forecasting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="fecal-coliform-forecasting" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> 2: Fecal coliform forecasting<a class="anchor" aria-label="anchor" href="#fecal-coliform-forecasting"><i class="fas fa-link"></i></a>
+</h2>
 <p><strong>Short-term forecasting of fecal coliforms in shellfish growing waters (Chazal et al., 2024)</strong></p>
 <ul>
 <li>Response variable: Fecal coliform (bacteria) concentrations</li>
@@ -215,8 +84,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In this study, the model developers used long-term monitoring data from the Florida Department of Agriculture and Consumer Services shellfish sanitation program. The monitoring data were collected at specific sampling locations across the coast of Florida where shellfish are grown for harvest. The model was developed to predict the likelihood of a fecal coliform (i.e., bacteria) concentration exceedance at each station where routine monitoring data are collected. Predictors in the model included a range of variables that could explain the source and transport of the bacteria, as well as factors that could affect the survivability of the bacteria in the water (e.g., temperature).</p>
 <p>Read the full study <a href="https://doi.org/10.1016/j.marpolbul.2024.116053">here</a>.</p>
 </div>
-<div id="in-season-sweetpotato-yield-forecasting" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> 3: In-season sweetpotato yield forecasting<a href="case-studies.html#in-season-sweetpotato-yield-forecasting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="in-season-sweetpotato-yield-forecasting" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> 3: In-season sweetpotato yield forecasting<a class="anchor" aria-label="anchor" href="#in-season-sweetpotato-yield-forecasting"><i class="fas fa-link"></i></a>
+</h2>
 <p><strong>In-season Sweetpotato Yield Forecasting using Multitemporal Remote Sensing Environmental Observations and Machine Learning (Carbajal Carrasco et al., 2024)</strong></p>
 <ul>
 <li>Response variable: Sweetpotato yields at the county scale, reported by the USDA National Agricultural Statistics Service</li>
@@ -227,68 +98,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="key-considerations.html"><span class="header-section-number">3</span> Key considerations</a></div>
+<div class="next"><a href="workflow.html"><span class="header-section-number">5</span> Workflow demonstration</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#case-studies"><span class="header-section-number">4</span> Case studies</a></li>
+<li><a class="nav-link" href="#daily-pluvial-flood-prediction"><span class="header-section-number">4.1</span> 1: Daily pluvial flood prediction</a></li>
+<li><a class="nav-link" href="#fecal-coliform-forecasting"><span class="header-section-number">4.2</span> 2: Fecal coliform forecasting</a></li>
+<li><a class="nav-link" href="#in-season-sweetpotato-yield-forecasting"><span class="header-section-number">4.3</span> 3: In-season sweetpotato yield forecasting</a></li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="key-considerations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="workflow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>A Machine Learning Primer for Natural Resource Management</strong>" was written by Natalie G. Nelson, Shih-Ni Prim, Sheila Saia, Khara Grieger, Anders Huseth. It was last built on 2025-04-02.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-casestudies.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["ml-primer.pdf", "ml-primer.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -300,7 +144,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>
